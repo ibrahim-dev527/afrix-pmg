@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Property Details | Afrix Properties &amp; Management Group</title>
+<meta name="description" content="View full details, photos and features of this premium property — Afrix PMG."/>
+<meta property="og:title" content="Property Details | Afrix PMG"/>
+<meta property="og:description" content="View full details, photos and features of this premium property — Afrix PMG."/>
+<meta property="og:image" content="images/logo.png"/>
+<link rel="icon" href="images/logo.png" type="image/png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.gallery-wrap{background:#fff;padding-bottom:16px;margin-top:calc(var(--nav-h));}
+.gallery-grid{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:300px 300px;gap:6px;border-radius:var(--radius-lg);overflow:hidden;}
+.g-main{grid-row:1/3;overflow:hidden;position:relative;cursor:pointer;}
+.g-thumb{overflow:hidden;cursor:pointer;position:relative;}
+.g-main img,.g-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+.g-main:hover img,.g-thumb:hover img{transform:scale(1.05);}
+.g-thumb:last-child::after{content:"+ More Photos";position:absolute;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:.88rem;}
+.g-badge{position:absolute;top:14px;left:14px;padding:4px 12px;border-radius:var(--radius-pill);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;z-index:2;}
+.det-layout{display:grid;grid-template-columns:1fr 360px;gap:40px;padding:36px 0 80px;}
+.d-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:700;color:var(--navy);margin-bottom:8px;}
+.d-loc{display:flex;align-items:center;gap:6px;color:var(--gray-600);font-size:.88rem;margin-bottom:18px;}
+.d-loc i{color:var(--gold);}
+.d-price-row{display:flex;align-items:center;gap:18px;margin-bottom:24px;padding-bottom:22px;border-bottom:1px solid var(--gray-200);}
+.d-price{font-size:1.9rem;font-weight:800;color:var(--navy);}
+.d-price span{font-size:.9rem;font-weight:500;color:var(--gray-400);}
+.d-meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px;}
+.d-meta-box{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:14px;text-align:center;}
+.d-meta-box i{font-size:1.1rem;color:var(--gold);display:block;margin-bottom:6px;}
+.d-meta-box strong{display:block;font-size:.9rem;font-weight:700;color:var(--navy);}
+.d-meta-box span{font-size:.71rem;color:var(--gray-400);}
+.d-section{margin-bottom:28px;}
+.d-section h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:11px;padding-bottom:7px;border-bottom:2px solid var(--gold-pale);}
+.d-desc{font-size:.875rem;color:var(--gray-600);line-height:1.8;}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:9px;}
+.feat-item{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--gray-600);background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:9px 12px;}
+.feat-item i{color:var(--gold);font-size:.78rem;}
+.inq-card{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:26px;position:sticky;top:calc(var(--nav-h)+16px);border:1.5px solid var(--gray-200);}
+.inq-card h3{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:18px;}
+.fg{margin-bottom:14px;}
+.fg label{display:block;font-size:.71rem;font-weight:700;color:var(--gray-600);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em;}
+.fg input,.fg textarea{width:100%;padding:10px 13px;border:1.5px solid var(--gray-200);border-radius:var(--radius);font-size:.855rem;font-family:inherit;color:var(--gray-900);background:var(--cream);transition:var(--transition);}
+.fg input:focus,.fg textarea:focus{outline:none;border-color:var(--gold);background:#fff;}
+.fg textarea{resize:vertical;min-height:80px;}
+.inq-btns{display:flex;flex-direction:column;gap:9px;margin-top:18px;}
+.inq-btns .btn{justify-content:center;width:100%;}
+.agent-box{display:flex;align-items:center;gap:12px;background:var(--cream);border-radius:var(--radius);padding:14px;margin-top:18px;}
+.agent-av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--navy));display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:.9rem;flex-shrink:0;}
+.agent-info strong{font-size:.86rem;color:var(--navy);display:block;}
+.agent-info span{font-size:.74rem;color:var(--gray-400);}
+.agent-info a{font-size:.76rem;color:var(--gold);display:block;margin-top:2px;}
+.sim-section{background:var(--cream);padding:60px 0;}
+.sim-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;}
+.not-found{text-align:center;padding:100px 0;}
+.bc-bar{background:#fff;padding:12px 0;}
+.bc-bar .container{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--gray-400);}
+.bc-bar a{color:var(--gold);}
+.bc-bar i{font-size:.6rem;}
+@media(max-width:1024px){.det-layout{grid-template-columns:1fr;}.inq-card{position:static;}}
+@media(max-width:768px){.gallery-grid{grid-template-columns:1fr;grid-template-rows:260px 160px 160px;}.g-main{grid-row:1/2;}.d-meta-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.png" alt="Afrix PMG" class="nav-logo-img" onerror="this.style.display='none'"/>
+      Afrix<span class="accent">PMG</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"><i class="fas fa-home fa-fw"></i> Home</a></li>
+      <li><a href="properties.html" class="active"><i class="fas fa-building fa-fw"></i> Properties</a></li>
+<li class="dropdown">
+        <a href="#"><i class="fas fa-concierge-bell fa-fw"></i> Services <i class="fas fa-chevron-down chev"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="services.html">All Services</a></li>
+          <li><a href="property-management.html">Property Management</a></li>
+          <li><a href="diaspora.html">Diaspora Services</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html"><i class="fas fa-users fa-fw"></i> About Us</a></li>
+      <li><a href="faq.html"><i class="fas fa-question-circle fa-fw"></i> FAQ</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope fa-fw"></i> Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://wa.me/233539484203?text=Hello%20Afrix%20Properties." class="btn btn-gold" target="_blank" rel="noopener"><i class="fas fa-plus-circle"></i> List Property</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div id="detContent"></div>
+<section class="sim-section" id="simSection" style="display:none">
+  <div class="container">
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--navy);margin-bottom:28px">Similar Properties</h2>
+    <div class="sim-grid" id="simGrid"></div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="footer-main container">
+    <div class="footer-brand">
+      <div class="footer-logo-area">
+        <img src="images/logo.png" alt="Afrix PMG" class="footer-logo-img" onerror="this.style.display='none'"/>
+        <div class="footer-brand-name">Afrix<span>PMG</span></div>
+      </div>
+      <p class="footer-tagline">Managing Value. Building Trust.</p>
+      <p>Ghana&#x27;s premier property management and real estate solutions group.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-btn" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul>
+      <li><a href="index.html">Home</a></li><li><a href="properties.html">Properties</a></li>
+      <li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li>
+      <li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Services</h4><ul>
+      <li><a href="services.html">Property Sales</a></li>
+      <li><a href="services.html">Property Letting</a></li>
+      <li><a href="property-management.html">Property Management</a></li>
+      <li><a href="diaspora.html">Diaspora Services</a></li>
+      <li><a href="services.html">Valuation</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Contact</h4>
+      <div class="footer-contact-item"><i class="fas fa-phone-alt"></i><div><a href="tel:0539484203">0539484203</a></div></div>
+      <div class="footer-contact-item"><i class="fas fa-envelope"></i><div><a href="mailto:lotsuibrahim2@gmail.com">lotsuibrahim2@gmail.com</a></div></div>
+      <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><div>Accra, Ghana</div></div>
+      <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><div><a href="https://wa.me/233539484203" target="_blank" style="color:#25D366">Chat on WhatsApp</a></div></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="container">
+    <p>&#169; 2026 Afrix Properties &amp; Management Group. All rights reserved.</p>
+    <p class="dev-credit">Website built by <a href="https://wa.me/233544823484?text=Hello%20Ibratech,%20I%20want%20a%20real%20estate%20website%20like%20Afrix" target="_blank" rel="noopener">Ibratech</a> &middot; <a href="tel:0544823484">0544823484</a></p>
+  </div></div>
+</footer>
+<a class="whatsapp-float" href="https://wa.me/233539484203?text=Hello%20Afrix." target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<script src="shared.js"></script>
+<script src="chatbot.js"></script>
+<script>
+const PROPERTIES=[
+  {id:1,title:"Luxury 4-Bedroom Villa",type:"villa",status:"sale",price:4200000,location:"East Legon, Accra",city:"accra",bedrooms:4,bathrooms:3,size:320,imgs:["https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&h=580&fit=crop","https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=450&h=290&fit=crop","https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=450&h=290&fit=crop"],desc:"Exquisite 4-bedroom villa with private pool, landscaped garden and smart home technology in the heart of East Legon. Features expansive living spaces, gourmet kitchen, and master suite with jacuzzi.",feats:["Swimming Pool","Smart Home","3-Car Parking","Landscaped Garden","24/7 Security","CCTV","Generator","Boys' Quarters"]},
+  {id:2,title:"Modern 3-Bedroom Apartment",type:"apartment",status:"rent",price:2800,location:"Cantonments, Accra",city:"accra",bedrooms:3,bathrooms:2,size:185,imgs:["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&h=580&fit=crop","https://images.unsplash.com/photo-1551038247-3d9af20df552?w=450&h=290&fit=crop","https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=450&h=290&fit=crop"],desc:"Stylish 3-bedroom apartment in a secure compound in Cantonments with modern finishes and amazing city views. Open-plan living, modern kitchen, and spacious balcony.",feats:["24/7 Security","Generator","Parking","Water Storage","Internet Ready","CCTV","Gym Access"]},
+  {id:3,title:"Executive 5-Bedroom Mansion",type:"villa",status:"sale",price:7500000,location:"Trasacco Valley, Accra",city:"accra",bedrooms:5,bathrooms:5,size:580,imgs:["https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=900&h=580&fit=crop","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=450&h=290&fit=crop","https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=450&h=290&fit=crop"],desc:"Prestigious 5-bedroom mansion in exclusive Trasacco Valley estate. Features an infinity pool, home gym, cinema room and guest house — truly world-class living.",feats:["Infinity Pool","Home Gym","Cinema Room","Guest House","Smart Security","Landscaped Garden","Triple Garage","Staff Quarters"]},
+  {id:4,title:"2-Bedroom Studio Apartment",type:"apartment",status:"rent",price:1500,location:"Airport Residential, Accra",city:"accra",bedrooms:2,bathrooms:2,size:110,imgs:["https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=900&h=580&fit=crop","https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=450&h=290&fit=crop","https://images.unsplash.com/photo-1551038247-3d9af20df552?w=450&h=290&fit=crop"],desc:"Well-furnished 2-bedroom apartment near Accra's international airport. Perfect for expats and professionals seeking comfort and convenience.",feats:["Fully Furnished","Air Conditioning","24hr Security","Backup Power","High-Speed WiFi","Parking"]},
+  {id:5,title:"3-Bedroom Townhouse",type:"townhouse",status:"sale",price:1200000,location:"Tema Community 25",city:"tema",bedrooms:3,bathrooms:2,size:210,imgs:["https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=900&h=580&fit=crop","https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=450&h=290&fit=crop","https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=450&h=290&fit=crop"],desc:"Modern 3-bedroom townhouse in a gated community in Tema. Features rooftop terrace, open-plan living and sea views.",feats:["Rooftop Terrace","Gated Community","Open Plan","Garden","Parking","Generator"]},
+  {id:6,title:"Luxury Penthouse",type:"penthouse",status:"sale",price:3800000,location:"Ridge, Accra",city:"accra",bedrooms:4,bathrooms:4,size:380,imgs:["https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=900&h=580&fit=crop","https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=450&h=290&fit=crop","https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=450&h=290&fit=crop"],desc:"Ultra-luxury penthouse on the 14th floor in Ridge with panoramic views of Accra and the Atlantic Ocean.",feats:["Panoramic Ocean View","Private Elevator","Rooftop Deck","24hr Concierge","Gym & Spa","Underground Parking"]},
+  {id:7,title:"4-Bedroom Family Home",type:"house",status:"sale",price:2100000,location:"Spintex Road, Accra",city:"accra",bedrooms:4,bathrooms:3,size:280,imgs:["https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=900&h=580&fit=crop","https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=450&h=290&fit=crop","https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=450&h=290&fit=crop"],desc:"Spacious 4-bedroom detached family home on Spintex Road with large garden and modern kitchen.",feats:["Large Garden","2-Car Parking","Borehole","24/7 Security","Generator","CCTV","Staff Quarters"]},
+  {id:8,title:"1-Bedroom Serviced Apartment",type:"apartment",status:"rent",price:900,location:"Labone, Accra",city:"accra",bedrooms:1,bathrooms:1,size:65,imgs:["https://images.unsplash.com/photo-1551038247-3d9af20df552?w=900&h=580&fit=crop","https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=450&h=290&fit=crop","https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=450&h=290&fit=crop"],desc:"Beautifully furnished 1-bedroom serviced apartment in upscale Labone with hotel-style amenities.",feats:["Fully Furnished","Housekeeping","Internet","Concierge","Gym Access","24hr Security"]},
+  {id:9,title:"Commercial Office Space",type:"office",status:"rent",price:8000,location:"Osu, Accra",city:"accra",bedrooms:0,bathrooms:2,size:350,imgs:["https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&h=580&fit=crop","https://images.unsplash.com/photo-1497366216548-37526070297c?w=450&h=290&fit=crop","https://images.unsplash.com/photo-1497366216548-37526070297c?w=450&h=290&fit=crop"],desc:"Premium 350m² open-plan office in Osu with 2 conference rooms, reception and high-speed internet.",feats:["Open Plan","2 Conference Rooms","Reception","10 Parking Spots","Generator","Air Conditioning"]},
+  {id:10,title:"2 Plots of Land",type:"land",status:"sale",price:450000,location:"Pokuase, Accra",city:"accra",bedrooms:0,bathrooms:0,size:500,imgs:["https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=900&h=580&fit=crop","https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=450&h=290&fit=crop","https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=450&h=290&fit=crop"],desc:"Two adjacent serviced plots totalling 500m² in fast-developing Pokuase with full title deed and road access.",feats:["Title Deed","Corner Plot","Road Access","Electricity Connection","Water Connection","Fenced"]},
+  {id:11,title:"3-Bedroom Semi-Detached",type:"house",status:"rent",price:3500,location:"East Legon Hills, Accra",city:"accra",bedrooms:3,bathrooms:2,size:200,imgs:["https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=900&h=580&fit=crop","https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=450&h=290&fit=crop","https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=450&h=290&fit=crop"],desc:"3-bedroom semi-detached house in East Legon Hills gated community with modern finishes and private garden.",feats:["Garden","Parking","Generator","CCTV","Water Storage","Gated Community"]},
+  {id:12,title:"5-Bedroom Detached Villa",type:"villa",status:"sale",price:5500000,location:"Kumasi, Ashanti",city:"kumasi",bedrooms:5,bathrooms:4,size:420,imgs:["https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&h=580&fit=crop","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=450&h=290&fit=crop","https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=450&h=290&fit=crop"],desc:"Magnificent 5-bedroom villa in Kumasi with private pool, manicured gardens and entertainment areas.",feats:["Swimming Pool","Garden","Triple Garage","Security","Generator","Borehole","Solar","Guest Quarters"]},
+];
+function load(){
+  const id=parseInt(new URLSearchParams(window.location.search).get('id'));
+  const p=PROPERTIES.find(x=>x.id===id);
+  const wrap=document.getElementById('detContent');
+  if(!p){
+    wrap.innerHTML='<div class="not-found container"><i class="fas fa-home" style="font-size:3rem;color:var(--gray-200);display:block;margin-bottom:14px"></i><h2 style="color:var(--navy);margin-bottom:8px">Property Not Found</h2><p style="color:var(--gray-600);margin-bottom:22px">This listing may have been removed or the ID is incorrect.</p><a href="properties.html" class="btn btn-gold">Browse All Properties</a></div>';
+    return;
+  }
+  document.title=p.title+' | Afrix PMG';
+  const pr=p.status==='rent'?`GHS ${p.price.toLocaleString()} <span>/month</span>`:`GHS ${p.price.toLocaleString()}`;
+  const imgs=p.imgs||[p.image,p.image,p.image];
+  const feats=(p.feats||[]).map(f=>`<div class="feat-item"><i class="fas fa-check-circle"></i>${f}</div>`).join('');
+  const metas=[
+    p.bedrooms?`<div class="d-meta-box"><i class="fas fa-bed"></i><strong>${p.bedrooms}</strong><span>Bedrooms</span></div>`:'',
+    p.bathrooms?`<div class="d-meta-box"><i class="fas fa-bath"></i><strong>${p.bathrooms}</strong><span>Bathrooms</span></div>`:'',
+    `<div class="d-meta-box"><i class="fas fa-ruler-combined"></i><strong>${p.size}m²</strong><span>Area</span></div>`,
+    `<div class="d-meta-box"><i class="fas fa-tag"></i><strong>${p.type.charAt(0).toUpperCase()+p.type.slice(1)}</strong><span>Type</span></div>`,
+  ].join('');
+  const viewMsg=encodeURIComponent(`Hello Afrix Properties, I'd like to schedule a viewing for "${p.title}" (ID: ${p.id}).`);
+  wrap.innerHTML=`
+    <div class="bc-bar"><div class="container">
+      <a href="index.html">Home</a><i class="fas fa-chevron-right"></i>
+      <a href="properties.html">Properties</a><i class="fas fa-chevron-right"></i>
+      <span>${p.title}</span>
+    </div></div>
+    <div class="gallery-wrap"><div class="container">
+      <div class="gallery-grid">
+        <div class="g-main"><span class="g-badge ${p.status==='sale'?'badge-sale':'badge-rent'}">For ${p.status==='sale'?'Sale':'Rent'}</span><img src="${imgs[0]}" alt="${p.title}"/></div>
+        <div class="g-thumb"><img src="${imgs[1]}" alt="${p.title}" loading="lazy"/></div>
+        <div class="g-thumb"><img src="${imgs[2]}" alt="${p.title}" loading="lazy"/></div>
+      </div>
+    </div></div>
+    <div class="container"><div class="det-layout">
+      <div>
+        <h1 class="d-title">${p.title}</h1>
+        <div class="d-loc"><i class="fas fa-map-marker-alt"></i>${p.location}</div>
+        <div class="d-price-row"><div class="d-price">${pr}</div><span class="property-badge ${p.status==='sale'?'badge-sale':'badge-rent'}" style="padding:6px 14px">For ${p.status==='sale'?'Sale':'Rent'}</span></div>
+        <div class="d-meta-grid">${metas}</div>
+        <div class="d-section"><h3>Description</h3><p class="d-desc">${p.desc}</p></div>
+        ${feats?`<div class="d-section"><h3>Features &amp; Amenities</h3><div class="feat-grid">${feats}</div></div>`:''}
+        <div class="d-section"><h3>Location</h3><div style="background:var(--gray-100);border-radius:var(--radius-lg);height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--gray-400);border:1.5px dashed var(--gray-300);"><i class="fas fa-map-marked-alt" style="font-size:1.8rem;color:var(--gray-300)"></i><strong style="color:var(--navy)">${p.location}</strong><span style="font-size:.8rem">Contact us for exact address &amp; directions</span></div></div>
+      </div>
+      <div><div class="inq-card">
+        <h3><i class="fas fa-envelope" style="color:var(--gold);margin-right:8px"></i>Enquire About This Property</h3>
+        <div class="fg"><label>Your Name</label><input type="text" id="inqName" placeholder="Full name"/></div>
+        <div class="fg"><label>Phone / WhatsApp</label><input type="tel" id="inqPhone" placeholder="+233 xxx xxx xxx"/></div>
+        <div class="fg"><label>Message</label><textarea id="inqMsg">I'm interested in ${p.title} (ID: ${p.id}) and would like more details.</textarea></div>
+        <div class="inq-btns">
+          <button class="btn btn-gold" onclick="sendInq(${p.id})"><i class="fab fa-whatsapp"></i> Enquire via WhatsApp</button>
+          <a href="https://wa.me/233539484203?text=${viewMsg}" class="btn btn-navy" target="_blank" rel="noopener"><i class="fas fa-calendar-check"></i> Schedule a Viewing</a>
+          <a href="tel:0539484203" class="btn btn-outline"><i class="fas fa-phone-alt"></i> Call: 0539484203</a>
+        </div>
+        <div class="agent-box"><div class="agent-av">A</div><div class="agent-info"><strong>Afrix Property Specialist</strong><span>Available Mon–Sat 8am–6pm</span><a href="https://wa.me/233539484203" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a></div></div>
+      </div></div>
+    </div></div>`;
+  loadSim(p);
+}
+function sendInq(id){
+  const name=document.getElementById('inqName').value.trim()||'A potential client';
+  const phone=document.getElementById('inqPhone').value.trim();
+  const msg=document.getElementById('inqMsg').value.trim();
+  window.open(`https://wa.me/233539484203?text=${encodeURIComponent(`Hello Afrix Properties, Name: ${name}${phone?' ('+phone+')':''}. ${msg}`)}`, '_blank');
+}
+function loadSim(p){
+  const sim=PROPERTIES.filter(x=>x.id!==p.id&&(x.type===p.type||x.city===p.city)).slice(0,3);
+  if(!sim.length) return;
+  document.getElementById('simSection').style.display='block';
+  document.getElementById('simGrid').innerHTML=sim.map(s=>`<div class="property-card" onclick="window.location='property-details.html?id=${s.id}'"><div class="property-card-img"><img src="${s.imgs?s.imgs[0]:s.image}" alt="${s.title}" loading="lazy"/><span class="property-badge ${s.status==='sale'?'badge-sale':'badge-rent'}">For ${s.status==='sale'?'Sale':'Rent'}</span></div><div class="property-card-body"><div class="property-price">GHS ${s.price.toLocaleString()}${s.status==='rent'?'<span>/mo</span>':''}</div><div class="property-title">${s.title}</div><div class="property-location"><i class="fas fa-map-marker-alt"></i>${s.location}</div></div></div>`).join('');
+}
+load();
+</script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Property Management | Afrix Properties &amp; Management Group</title>
+<meta name="description" content="Stress-free property management in Ghana. Afrix PMG handles tenants, maintenance, rent collection and reporting."/>
+<meta property="og:title" content="Property Management | Afrix PMG"/>
+<meta property="og:image" content="images/logo.png"/>
+<link rel="icon" href="images/logo.png" type="image/png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>.pm-intro{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;}
+.pm-img{border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;box-shadow:var(--shadow-lg);}.pm-img img{width:100%;height:100%;object-fit:cover;}
+.pm-text h2{font-family:"Playfair Display",serif;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:700;color:var(--navy);margin-bottom:13px;line-height:1.2;}
+.pm-text p{font-size:.88rem;color:var(--gray-600);line-height:1.8;margin-bottom:12px;}
+.incl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.incl-card{background:#fff;border-radius:var(--radius-lg);padding:26px;border:1.5px solid var(--gray-200);position:relative;overflow:hidden;transition:var(--transition);}
+.incl-card::after{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--gold),var(--gold-light));}
+.incl-card:hover{box-shadow:var(--shadow);transform:translateY(-4px);}
+.incl-icon{width:46px;height:46px;border-radius:12px;background:var(--gold-pale);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--gold);margin-bottom:14px;}
+.incl-card h4{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:7px;}
+.incl-card p{font-size:.82rem;color:var(--gray-600);line-height:1.65;}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.plan-card{background:#fff;border-radius:var(--radius-lg);padding:32px 28px;border:1.5px solid var(--gray-200);text-align:center;position:relative;transition:var(--transition);}
+.plan-card.popular{border-color:var(--gold);box-shadow:0 10px 36px rgba(196,146,42,.16);}
+.pop-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#fff;padding:4px 18px;border-radius:var(--radius-pill);font-size:.73rem;font-weight:700;white-space:nowrap;}
+.plan-card:hover:not(.popular){box-shadow:var(--shadow-lg);transform:translateY(-5px);}
+.plan-name{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:9px;}
+.plan-pct{font-family:"Playfair Display",serif;font-size:2.6rem;font-weight:700;color:var(--navy);margin-bottom:3px;}
+.plan-pct span{font-size:.9rem;font-weight:500;color:var(--gray-400);}
+.plan-desc{font-size:.8rem;color:var(--gray-600);margin-bottom:22px;}
+.plan-features{list-style:none;text-align:left;display:flex;flex-direction:column;gap:9px;margin-bottom:26px;}
+.plan-features li{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--gray-600);}
+.plan-features li i{color:var(--gold);font-size:.73rem;}
+.proc5{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;position:relative;}
+.proc5::before{content:"";position:absolute;top:26px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light));z-index:0;}
+.proc5-step{text-align:center;position:relative;z-index:1;}
+.proc5-num{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#fff;font-size:1rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;box-shadow:0 5px 14px rgba(196,146,42,.3);}
+.proc5-step h4{font-size:.82rem;font-weight:700;color:var(--navy);margin-bottom:5px;}
+.proc5-step p{font-size:.76rem;color:var(--gray-600);line-height:1.5;}
+@media(max-width:1024px){.pm-intro{grid-template-columns:1fr;}.pm-img{display:none;}.incl-grid{grid-template-columns:1fr 1fr;}.plans-grid{grid-template-columns:1fr;}.proc5{grid-template-columns:1fr 1fr;}.proc5::before{display:none;}}
+@media(max-width:768px){.incl-grid{grid-template-columns:1fr;}.proc5{grid-template-columns:1fr;}}</style>
+</head>
+<body>
+<nav class="navbar" id="navbar"><div class="container">
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Afrix PMG" class="nav-logo-img" onerror="this.style.display='none'"/>Afrix<span class="accent">PMG</span></a>
+    <ul class="nav-links" id="navLinks"><li><a href="index.html"><i class="fas fa-home fa-fw"></i> Home</a></li>
+<li><a href="properties.html"><i class="fas fa-building fa-fw"></i> Properties</a></li>
+<li class="dropdown"><a href="#"><i class="fas fa-concierge-bell fa-fw"></i> Services <i class="fas fa-chevron-down chev"></i></a><ul class="dropdown-menu"><li><a href="services.html">All Services</a></li><li><a href="property-management.html">Property Management</a></li><li><a href="diaspora.html">Diaspora Services</a></li></ul></li>
+<li><a href="about.html"><i class="fas fa-users fa-fw"></i> About Us</a></li>
+<li><a href="faq.html"><i class="fas fa-question-circle fa-fw"></i> FAQ</a></li>
+<li><a href="contact.html"><i class="fas fa-envelope fa-fw"></i> Contact</a></li>
+</ul>
+    <div class="nav-actions"><a href="https://wa.me/233539484203?text=Hello%20Afrix." class="btn btn-gold" target="_blank" rel="noopener"><i class="fas fa-plus-circle"></i> List Property</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+  </div></nav>
+<section class="page-hero">
+  <div class="ph-slide ph-active" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&h=700&fit=crop&q=80')"><div class="ph-overlay"></div><div class="container ph-content"><div class="ph-label">Property Management</div><h1 class="ph-title">Stress-Free Property<br><span class='accent'>Ownership in Ghana</span></h1><p class="ph-sub">We handle tenants, maintenance, rent collection and monthly reporting — so you can sit back and earn.</p><div class="ph-btns"><a href="#pm-main" class="btn btn-gold"><i class="fas fa-key"></i> Get Started</a><a href="https://wa.me/233539484203?text=I%27m%20interested%20in%20your%20property%20management%20service." class="btn btn-outline-white" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Us</a></div></div></div>
+  <div class="ph-slide" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&h=700&fit=crop&q=80')"><div class="ph-overlay"></div><div class="container ph-content"><div class="ph-label">What's Included</div><h1 class="ph-title">Complete Management<br><span class='accent'>From Day One</span></h1><p class="ph-sub">Tenant sourcing, lease management, rent collection, maintenance coordination and detailed monthly reports.</p><div class="ph-btns"><a href="#pm-main" class="btn btn-gold"><i class="fas fa-list-check"></i> What's Included</a><a href="contact.html" class="btn btn-outline-white"><i class="fas fa-envelope"></i> Contact Us</a></div></div></div>
+  <div class="ph-slide" style="background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&h=700&fit=crop&q=80')"><div class="ph-overlay"></div><div class="container ph-content"><div class="ph-label">Transparent Pricing</div><h1 class="ph-title">Simple Plans,<br><span class='accent'>No Hidden Fees</span></h1><p class="ph-sub">Our management fees are a straightforward percentage of monthly rental income. No surprises, ever.</p><div class="ph-btns"><a href="#pm-plans" class="btn btn-gold"><i class="fas fa-tags"></i> View Plans</a><a href="https://wa.me/233539484203?text=I%20want%20to%20know%20more%20about%20your%20management%20plans." class="btn btn-outline-white" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Get a Quote</a></div></div></div>
+  <div class="ph-controls"><button class="ph-arrow ph-prev"><i class="fas fa-chevron-left"></i></button><button class="ph-dot ph-dot-active" data-dot="0"></button><button class="ph-dot " data-dot="1"></button><button class="ph-dot " data-dot="2"></button><button class="ph-arrow ph-next"><i class="fas fa-chevron-right"></i></button></div>
+  <div class="ph-breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right"></i><a href="services.html">Services</a><i class="fas fa-chevron-right"></i><span>Property Management</span></div>
+</section>
+
+<div id="pm-main"></div>
+<section class="section-pad" style="background:#fff">
+<div class="container">
+<div class="pm-intro">
+  <div class="pm-img reveal"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=700&h=530&fit=crop" alt="Property Management" loading="lazy"/></div>
+  <div class="reveal">
+    <span class="section-label">Why Choose Afrix Management</span>
+    <div class="pm-text">
+      <h2>Own Property. Never Stress About It.</h2>
+      <p>Managing a rental property in Ghana is demanding — chasing rent, dealing with difficult tenants, coordinating repairs, keeping financial records. It's practically a full-time job.</p>
+      <p>That's where we come in. Afrix Properties takes on full responsibility for your property so you can enjoy passive income without the headaches. Whether you own one apartment or a portfolio of ten units, we've got you covered.</p>
+      <p>With transparent fee structures, detailed monthly reporting, and dedicated property managers, you'll always know exactly what's happening with your investment.</p>
+      <div style="display:flex;gap:12px;margin-top:22px;flex-wrap:wrap">
+        <a href="https://wa.me/233539484203?text=I%27m%20interested%20in%20Afrix%20property%20management." class="btn btn-gold" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Get Started</a>
+        <a href="contact.html" class="btn btn-navy"><i class="fas fa-envelope"></i> Contact Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div></section>
+
+<section class="section-pad" style="background:var(--cream)">
+<div class="container">
+<div class="section-header center reveal"><span class="section-label">What's Included</span><h2 class="section-title">Complete Property Management</h2><p class="section-desc">Every aspect of your property handled professionally and efficiently.</p></div>
+<div class="incl-grid">
+<div class="incl-card reveal"><div class="incl-icon"><i class="fas fa-users"></i></div><h4>Tenant Sourcing &amp; Screening</h4><p>We find and vet quality tenants through background checks, reference verification and employment assessment.</p></div>
+<div class="incl-card reveal delay-1"><div class="incl-icon"><i class="fas fa-file-signature"></i></div><h4>Lease Management</h4><p>We draft and execute comprehensive tenancy agreements, handle renewals and terminations professionally.</p></div>
+<div class="incl-card reveal delay-2"><div class="incl-icon"><i class="fas fa-coins"></i></div><h4>Rent Collection</h4><p>We collect rent on due dates and disburse net income to your bank account with a detailed monthly statement.</p></div>
+<div class="incl-card reveal"><div class="incl-icon"><i class="fas fa-tools"></i></div><h4>Maintenance Coordination</h4><p>Routine maintenance and emergency repairs handled through our trusted network of vetted contractors.</p></div>
+<div class="incl-card reveal delay-1"><div class="incl-icon"><i class="fas fa-search"></i></div><h4>Property Inspections</h4><p>We conduct regular inspections with photos to ensure your property is maintained to the highest standard.</p></div>
+<div class="incl-card reveal delay-2"><div class="incl-icon"><i class="fas fa-chart-bar"></i></div><h4>Monthly Financial Reports</h4><p>Receive a clear monthly report covering income, expenses, maintenance costs and net earnings.</p></div>
+</div></div></section>
+
+<section class="section-pad" style="background:#fff" id="pm-plans">
+<div class="container">
+<div class="section-header center reveal"><span class="section-label">Transparent Pricing</span><h2 class="section-title">Choose Your Management Plan</h2><p class="section-desc">Simple, no-surprise pricing. All plans include rent collection, tenant management and monthly reporting.</p></div>
+<div class="plans-grid">
+<div class="plan-card reveal">
+  <div class="plan-name">Basic</div>
+  <div class="plan-pct">8%<span> of monthly rent</span></div>
+  <div class="plan-desc">For single-unit residential properties</div>
+  <ul class="plan-features">
+    <li><i class="fas fa-check-circle"></i>Tenant sourcing &amp; screening</li>
+    <li><i class="fas fa-check-circle"></i>Rent collection &amp; disbursement</li>
+    <li><i class="fas fa-check-circle"></i>Lease agreement management</li>
+    <li><i class="fas fa-check-circle"></i>Monthly financial statement</li>
+    <li><i class="fas fa-check-circle"></i>Quarterly property inspections</li>
+  </ul>
+  <a href="https://wa.me/233539484203?text=I%27m%20interested%20in%20the%20Basic%20management%20plan." class="btn btn-navy" target="_blank" rel="noopener" style="width:100%;justify-content:center">Get Started</a>
+</div>
+<div class="plan-card popular reveal delay-1">
+  <div class="pop-badge">Most Popular</div>
+  <div class="plan-name">Standard</div>
+  <div class="plan-pct">10%<span> of monthly rent</span></div>
+  <div class="plan-desc">For multi-unit or premium properties</div>
+  <ul class="plan-features">
+    <li><i class="fas fa-check-circle"></i>Everything in Basic</li>
+    <li><i class="fas fa-check-circle"></i>Maintenance coordination</li>
+    <li><i class="fas fa-check-circle"></i>Monthly property inspections</li>
+    <li><i class="fas fa-check-circle"></i>Emergency 24hr response</li>
+    <li><i class="fas fa-check-circle"></i>Tenant dispute resolution</li>
+    <li><i class="fas fa-check-circle"></i>Utility management</li>
+  </ul>
+  <a href="https://wa.me/233539484203?text=I%27m%20interested%20in%20the%20Standard%20management%20plan." class="btn btn-gold" target="_blank" rel="noopener" style="width:100%;justify-content:center">Get Started</a>
+</div>
+<div class="plan-card reveal delay-2">
+  <div class="plan-name">Premium</div>
+  <div class="plan-pct">12%<span> of monthly rent</span></div>
+  <div class="plan-desc">For portfolios &amp; diaspora owners</div>
+  <ul class="plan-features">
+    <li><i class="fas fa-check-circle"></i>Everything in Standard</li>
+    <li><i class="fas fa-check-circle"></i>Dedicated portfolio manager</li>
+    <li><i class="fas fa-check-circle"></i>Annual property valuation</li>
+    <li><i class="fas fa-check-circle"></i>International payment support</li>
+    <li><i class="fas fa-check-circle"></i>Renovation project management</li>
+    <li><i class="fas fa-check-circle"></i>Priority legal support</li>
+  </ul>
+  <a href="https://wa.me/233539484203?text=I%27m%20interested%20in%20the%20Premium%20management%20plan." class="btn btn-navy" target="_blank" rel="noopener" style="width:100%;justify-content:center">Get Started</a>
+</div>
+</div></div></section>
+
+<section class="section-pad" style="background:var(--cream)">
+<div class="container">
+<div class="section-header center reveal"><span class="section-label">How It Works</span><h2 class="section-title">Get Started in 5 Simple Steps</h2></div>
+<div class="proc5">
+<div class="proc5-step reveal"><div class="proc5-num">1</div><h4>Contact Us</h4><p>WhatsApp, call or email us to express interest in our management service.</p></div>
+<div class="proc5-step reveal delay-1"><div class="proc5-num">2</div><h4>Free Inspection</h4><p>We visit and assess your property at no cost to you whatsoever.</p></div>
+<div class="proc5-step reveal delay-2"><div class="proc5-num">3</div><h4>Sign Agreement</h4><p>We agree terms and sign a clear, comprehensive management contract.</p></div>
+<div class="proc5-step reveal delay-3"><div class="proc5-num">4</div><h4>Tenant Placement</h4><p>We market, screen and place quality tenants in your property fast.</p></div>
+<div class="proc5-step reveal delay-4"><div class="proc5-num">5</div><h4>Earn &amp; Relax</h4><p>Receive monthly income and detailed reports. We handle everything else.</p></div>
+</div></div></section>
+
+<section class="cta-section"><div class="container"><div class="cta-inner reveal">
+<div class="cta-label">Stress-Free Ownership Awaits</div>
+<h2 class="cta-title">Let Afrix Manage Your<br>Property Today</h2>
+<p class="cta-desc">Join hundreds of property owners who trust Afrix to protect and grow their rental income — in Ghana and from anywhere in the world.</p>
+<div class="cta-btns">
+<a href="https://wa.me/233539484203?text=I%27m%20interested%20in%20Afrix%20property%20management." class="btn btn-gold" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+<a href="contact.html" class="btn btn-outline-white"><i class="fas fa-envelope"></i> Send a Message</a>
+<a href="tel:0539484203" class="btn btn-white"><i class="fas fa-phone-alt"></i> 0539484203</a>
+</div></div></div></section>
+<footer class="footer"><div class="footer-main container">
+    <div class="footer-brand">
+      <div class="footer-logo-area"><img src="images/logo.png" alt="Afrix PMG" class="footer-logo-img" onerror="this.style.display='none'"/><div class="footer-brand-name">Afrix<span>PMG</span></div></div>
+      <p class="footer-tagline">Managing Value. Building Trust.</p>
+      <p>Ghana&#x27;s premier property management and real estate solutions group.</p>
+      <div class="footer-socials"><a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-btn"><i class="fab fa-instagram"></i></a><a href="#" class="social-btn"><i class="fab fa-twitter"></i></a><a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a></div>
+    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="properties.html">Properties</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Property Sales</a></li><li><a href="services.html">Property Letting</a></li><li><a href="property-management.html">Management</a></li><li><a href="diaspora.html">Diaspora</a></li><li><a href="services.html">Valuation</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4>
+      <div class="footer-contact-item"><i class="fas fa-phone-alt"></i><div><a href="tel:0539484203">0539484203</a></div></div>
+      <div class="footer-contact-item"><i class="fas fa-envelope"></i><div><a href="mailto:lotsuibrahim2@gmail.com">lotsuibrahim2@gmail.com</a></div></div>
+      <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><div>Accra, Ghana</div></div>
+      <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><div><a href="https://wa.me/233539484203" target="_blank" style="color:#25D366">Chat on WhatsApp</a></div></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="container"><p>&#169; 2026 Afrix Properties &amp; Management Group. All rights reserved.</p><p class="dev-credit">Website built by <a href="https://wa.me/233544823484?text=Hello%20Ibratech,%20I%20want%20a%20real%20estate%20website%20like%20Afrix" target="_blank" rel="noopener">Ibratech</a> &middot; <a href="tel:0544823484">0544823484</a></p></div></div>
+</footer>
+<a class="whatsapp-float" href="https://wa.me/233539484203?text=Hello%20Afrix." target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<script src="shared.js"></script><script src="chatbot.js"></script>
+</body></html>

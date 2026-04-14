@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>About Us | Afrix Properties &amp; Management Group</title>
+<meta name="description" content="Learn about Afrix Properties & Management Group — Ghana's trusted real estate partner with over 12 years of experience."/>
+<meta property="og:title" content="About Us | Afrix PMG"/>
+<meta property="og:description" content="Our story, mission, team and values — Managing Value. Building Trust."/>
+<meta property="og:image" content="images/logo.png"/>
+<link rel="icon" href="images/logo.png" type="image/png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+.story-img-wrap{position:relative;}
+.story-img{border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;box-shadow:var(--shadow-lg);}
+.story-img img{width:100%;height:100%;object-fit:cover;}
+.story-badge{position:absolute;bottom:-20px;right:-20px;background:#fff;border-radius:var(--radius);padding:14px 18px;box-shadow:var(--shadow-lg);text-align:center;}
+.story-badge-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--navy);line-height:1;}
+.story-badge-num span{color:var(--gold);}
+.story-badge-label{font-size:.73rem;color:var(--gray-400);margin-top:3px;}
+.story-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:var(--navy);margin-bottom:14px;line-height:1.2;}
+.story-text p{font-size:.9rem;color:var(--gray-600);line-height:1.8;margin-bottom:12px;}
+.vals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.val-card{background:#fff;border-radius:var(--radius-lg);padding:28px;text-align:center;border:1.5px solid var(--gray-200);transition:var(--transition);}
+.val-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--gold-pale);}
+.val-icon{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:1.35rem;color:#fff;margin:0 auto 15px;box-shadow:0 7px 20px rgba(196,146,42,.28);}
+.val-card h3{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.val-card p{font-size:.85rem;color:var(--gray-600);line-height:1.65;}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+.team-card{background:#fff;border-radius:var(--radius-lg);overflow:hidden;border:1.5px solid var(--gray-200);text-align:center;transition:var(--transition);}
+.team-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);}
+.team-photo{height:200px;background:linear-gradient(135deg,var(--gold-pale),var(--gray-100));display:flex;align-items:center;justify-content:center;font-size:3.5rem;color:var(--gold);}
+.team-body{padding:18px;}
+.team-body h4{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:3px;}
+.team-role{font-size:.74rem;color:var(--gold);font-weight:600;margin-bottom:7px;}
+.team-body p{font-size:.78rem;color:var(--gray-600);line-height:1.6;}
+.team-soc{display:flex;justify-content:center;gap:7px;margin-top:10px;}
+.team-soc a{width:28px;height:28px;border-radius:8px;background:var(--gray-100);display:flex;align-items:center;justify-content:center;color:var(--gray-600);font-size:.74rem;transition:var(--transition);}
+.team-soc a:hover{background:var(--gold);color:#fff;}
+@media(max-width:1024px){.story-grid{grid-template-columns:1fr;}.story-img-wrap{display:none;}.team-grid{grid-template-columns:1fr 1fr;}.vals-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:768px){.vals-grid,.team-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Afrix PMG" class="nav-logo-img" onerror="this.style.display='none'"/>Afrix<span class="accent">PMG</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"><i class="fas fa-home fa-fw"></i> Home</a></li>
+      <li><a href="properties.html"><i class="fas fa-building fa-fw"></i> Properties</a></li>
+      <li class="dropdown"><a href="#"><i class="fas fa-concierge-bell fa-fw"></i> Services <i class="fas fa-chevron-down chev"></i></a>
+        <ul class="dropdown-menu"><li><a href="services.html">All Services</a></li><li><a href="property-management.html">Property Management</a></li><li><a href="diaspora.html">Diaspora Services</a></li></ul>
+      </li>
+      <li><a href="about.html" class="active"><i class="fas fa-users fa-fw"></i> About Us</a></li>
+      <li><a href="faq.html"><i class="fas fa-question-circle fa-fw"></i> FAQ</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope fa-fw"></i> Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://wa.me/233539484203?text=Hello%20Afrix%20Properties." class="btn btn-gold" target="_blank" rel="noopener"><i class="fas fa-plus-circle"></i> List Property</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="ph-slide ph-active" style="background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&h=700&fit=crop&q=80')">
+    <div class="ph-overlay"></div>
+    <div class="container ph-content">
+      <div class="ph-label">Our Story</div>
+      <h1 class="ph-title">About Afrix Properties<br>&amp; <span class="accent">Management Group</span></h1>
+      <p class="ph-sub">Over a decade of building trust, managing value and transforming Ghana's real estate landscape — one property at a time.</p>
+      <div class="ph-btns"><a href="#story" class="btn btn-gold"><i class="fas fa-book-open"></i> Our Story</a><a href="contact.html" class="btn btn-outline-white"><i class="fas fa-phone-alt"></i> Talk to Us</a></div>
+    </div>
+  </div>
+  <div class="ph-slide" style="background-image:url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&h=700&fit=crop&q=80')">
+    <div class="ph-overlay"></div>
+    <div class="container ph-content">
+      <div class="ph-label">Our Values</div>
+      <h1 class="ph-title">The Principles That <span class="accent">Guide Us</span></h1>
+      <p class="ph-sub">Integrity, excellence, client-first thinking and community investment are the values that power every decision we make.</p>
+      <div class="ph-btns"><a href="#values" class="btn btn-gold"><i class="fas fa-heart"></i> Our Values</a><a href="properties.html" class="btn btn-outline-white"><i class="fas fa-search"></i> Browse Properties</a></div>
+    </div>
+  </div>
+  <div class="ph-slide" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&h=700&fit=crop&q=80')">
+    <div class="ph-overlay"></div>
+    <div class="container ph-content">
+      <div class="ph-label">Meet the Team</div>
+      <h1 class="ph-title">The People Behind <span class="accent">Afrix PMG</span></h1>
+      <p class="ph-sub">Our experienced, passionate team is here to guide you at every step of your property journey in Ghana.</p>
+      <div class="ph-btns"><a href="#team" class="btn btn-gold"><i class="fas fa-users"></i> Meet the Team</a><a href="https://wa.me/233539484203?text=Hello%20Afrix." class="btn btn-outline-white" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Get Started</a></div>
+    </div>
+  </div>
+  <div class="ph-controls">
+    <button class="ph-arrow ph-prev" aria-label="Prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="ph-dot ph-dot-active" data-dot="0"></button>
+    <button class="ph-dot" data-dot="1"></button>
+    <button class="ph-dot" data-dot="2"></button>
+    <button class="ph-arrow ph-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+  </div>
+  <div class="ph-breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right"></i><span>About Us</span></div>
+</section>
+
+<section class="section-pad" style="background:#fff" id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-img-wrap reveal">
+        <div class="story-img"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&h=530&fit=crop" alt="Afrix team" loading="lazy"/></div>
+        <div class="story-badge"><div class="story-badge-num">12<span>+</span></div><div class="story-badge-label">Years of Excellence</div></div>
+      </div>
+      <div class="reveal">
+        <span class="section-label">Who We Are</span>
+        <div class="story-text">
+          <h2>Ghana's Most Trusted Property Partner</h2>
+          <p>Afrix Properties &amp; Management Group was founded with a simple but powerful mission: to make real estate in Ghana accessible, transparent and rewarding for everyone — from first-time homebuyers to seasoned international investors.</p>
+          <p>Over 12 years, we've grown from a small consultancy into one of Ghana's most respected full-service real estate companies, managing hundreds of properties and serving thousands of clients across the country and in the diaspora.</p>
+          <p>Our tagline — <em style="color:var(--gold)">Managing Value. Building Trust.</em> — is the principle that guides every transaction, every relationship, and every decision we make.</p>
+          <div style="display:flex;gap:14px;margin-top:24px;flex-wrap:wrap">
+            <a href="properties.html" class="btn btn-gold"><i class="fas fa-search"></i> View Properties</a>
+            <a href="contact.html" class="btn btn-navy"><i class="fas fa-phone-alt"></i> Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-band">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="reveal"><div class="stat-num">500<span>+</span></div><div class="stat-label">Properties Sold &amp; Let</div></div>
+      <div class="reveal delay-1"><div class="stat-num">2<span>K+</span></div><div class="stat-label">Satisfied Clients</div></div>
+      <div class="reveal delay-2"><div class="stat-num">12<span>+</span></div><div class="stat-label">Years in Business</div></div>
+      <div class="reveal delay-3"><div class="stat-num">10<span>+</span></div><div class="stat-label">Cities Covered</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" style="background:var(--cream)" id="values">
+  <div class="container">
+    <div class="section-header center reveal"><span class="section-label">Our Core Values</span><h2 class="section-title">The Principles That Guide Us</h2><p class="section-desc">Everything we do is anchored by values that put clients first and results above all.</p></div>
+    <div class="vals-grid">
+      <div class="val-card reveal"><div class="val-icon"><i class="fas fa-handshake"></i></div><h3>Integrity</h3><p>We operate with full transparency. No hidden fees, no misleading listings — what you see is exactly what you get.</p></div>
+      <div class="val-card reveal delay-1"><div class="val-icon"><i class="fas fa-star"></i></div><h3>Excellence</h3><p>We set and maintain the highest standards in property service, from listing quality to client communication and aftercare.</p></div>
+      <div class="val-card reveal delay-2"><div class="val-icon"><i class="fas fa-users"></i></div><h3>Client First</h3><p>Your goals, budget and timeline always come first. We tailor every service to your specific needs.</p></div>
+      <div class="val-card reveal"><div class="val-icon"><i class="fas fa-shield-alt"></i></div><h3>Trust</h3><p>We've earned the trust of over 2,000 clients by consistently delivering what we promise — and more.</p></div>
+      <div class="val-card reveal delay-1"><div class="val-icon"><i class="fas fa-lightbulb"></i></div><h3>Innovation</h3><p>We embrace technology and creative solutions to make property transactions faster, safer and more convenient.</p></div>
+      <div class="val-card reveal delay-2"><div class="val-icon"><i class="fas fa-globe-africa"></i></div><h3>Community</h3><p>We invest in Ghana — supporting local communities, diaspora connections and sustainable development.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" style="background:#fff" id="team">
+  <div class="container">
+    <div class="section-header center reveal"><span class="section-label">Meet the Team</span><h2 class="section-title">The People Behind Afrix</h2><p class="section-desc">Our experienced, passionate team is here to guide you at every step of your property journey.</p></div>
+    <div class="team-grid">
+      <div class="team-card reveal"><div class="team-photo"><i class="fas fa-user-tie"></i></div><div class="team-body"><h4>Emmanuel Afrix</h4><div class="team-role">Founder &amp; CEO</div><p>15+ years in Ghanaian real estate, passionate about making homeownership accessible to all.</p><div class="team-soc"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></div></div></div>
+      <div class="team-card reveal delay-1"><div class="team-photo"><i class="fas fa-user-tie"></i></div><div class="team-body"><h4>Akosua Mensah</h4><div class="team-role">Head of Sales</div><p>Property sales specialist with a track record of 200+ successful transactions across Accra.</p><div class="team-soc"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></div></div></div>
+      <div class="team-card reveal delay-2"><div class="team-photo"><i class="fas fa-user-tie"></i></div><div class="team-body"><h4>Kofi Asante</h4><div class="team-role">Property Manager</div><p>Expert in tenant relations and property maintenance, managing 80+ properties for our clients.</p><div class="team-soc"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></div></div></div>
+      <div class="team-card reveal delay-3"><div class="team-photo"><i class="fas fa-user-tie"></i></div><div class="team-body"><h4>Abena Osei</h4><div class="team-role">Diaspora Services Lead</div><p>Dedicated to helping Ghanaians abroad invest confidently in property back home.</p><div class="team-soc"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section"><div class="container"><div class="cta-inner reveal">
+  <div class="cta-label">Work With Us</div>
+  <h2 class="cta-title">Ready to Start Your<br>Property Journey?</h2>
+  <p class="cta-desc">Join over 2,000 happy clients who trust Afrix Properties to guide them through Ghana's real estate market.</p>
+  <div class="cta-btns">
+    <a href="properties.html" class="btn btn-gold"><i class="fas fa-search"></i> Browse Properties</a>
+    <a href="https://wa.me/233539484203?text=Hello%20Afrix%2C%20I%27d%20like%20to%20get%20started." class="btn btn-outline-white" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+    <a href="contact.html" class="btn btn-white"><i class="fas fa-envelope"></i> Contact Us</a>
+  </div>
+</div></div></section>
+
+<footer class="footer">
+  <div class="footer-main container">
+    <div class="footer-brand">
+      <div class="footer-logo-area"><img src="images/logo.png" alt="Afrix PMG" class="footer-logo-img" onerror="this.style.display='none'"/><div class="footer-brand-name">Afrix<span>PMG</span></div></div>
+      <p class="footer-tagline">Managing Value. Building Trust.</p>
+      <p>Ghana's premier property management and real estate solutions group.</p>
+      <div class="footer-socials"><a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-btn"><i class="fab fa-instagram"></i></a><a href="#" class="social-btn"><i class="fab fa-twitter"></i></a><a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a></div>
+    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="properties.html">Properties</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Property Sales</a></li><li><a href="services.html">Property Letting</a></li><li><a href="property-management.html">Management</a></li><li><a href="diaspora.html">Diaspora</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4>
+      <div class="footer-contact-item"><i class="fas fa-phone-alt"></i><div><a href="tel:0539484203">0539484203</a></div></div>
+      <div class="footer-contact-item"><i class="fas fa-envelope"></i><div><a href="mailto:lotsuibrahim2@gmail.com">lotsuibrahim2@gmail.com</a></div></div>
+      <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><div>Accra, Ghana</div></div>
+      <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><div><a href="https://wa.me/233539484203" target="_blank" style="color:#25D366">Chat on WhatsApp</a></div></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="container"><p>&copy; 2026 Afrix Properties &amp; Management Group. All rights reserved.</p><p class="dev-credit">Website built by <a href="https://wa.me/233544823484?text=Hello%20Ibratech,%20I%20want%20a%20real%20estate%20website%20like%20Afrix" target="_blank" rel="noopener">Ibratech</a> &middot; <a href="tel:0544823484">0544823484</a></p></div></div>
+</footer>
+<a class="whatsapp-float" href="https://wa.me/233539484203?text=Hello%20Afrix." target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<script src="shared.js"></script><script src="chatbot.js"></script>
+</body></html>

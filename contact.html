@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Contact Us | Afrix Properties &amp; Management Group</title>
+<meta name="description" content="Contact Afrix PMG — call, WhatsApp or email us for property enquiries, listings or general support."/>
+<meta property="og:title" content="Contact Us | Afrix PMG"/>
+<meta property="og:image" content="images/logo.png"/>
+<link rel="icon" href="images/logo.png" type="image/png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>.cc-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:-40px;position:relative;z-index:10;}
+.cc-card{background:#fff;border-radius:var(--radius-lg);padding:26px 18px;text-align:center;box-shadow:var(--shadow-lg);border:1.5px solid var(--gray-200);transition:var(--transition);}
+.cc-card:hover{transform:translateY(-4px);border-color:var(--gold-pale);}
+.cc-icon{width:50px;height:50px;border-radius:50%;background:var(--gold-pale);display:flex;align-items:center;justify-content:center;font-size:1.15rem;color:var(--gold);margin:0 auto 12px;}
+.cc-card h4{font-size:.85rem;font-weight:700;color:var(--navy);margin-bottom:5px;}
+.cc-card a,.cc-card p{font-size:.8rem;color:var(--gray-600);transition:var(--transition);}
+.cc-card a:hover{color:var(--gold);}
+.forms-section{padding:64px 0;}
+.form-layout{display:grid;grid-template-columns:1fr 360px;gap:38px;align-items:start;}
+.form-tabs{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap;}
+.form-tab{padding:10px 20px;border-radius:var(--radius-pill);border:1.5px solid var(--gray-200);background:#fff;font-size:.85rem;font-weight:600;color:var(--gray-600);cursor:pointer;transition:var(--transition);font-family:inherit;}
+.form-tab.active,.form-tab:hover{background:var(--navy);border-color:var(--navy);color:#fff;}
+.f-panel{display:none;}.f-panel.active{display:block;}
+.f-card{background:#fff;border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow-sm);border:1.5px solid var(--gray-200);}
+.f-card h3{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:7px;}
+.f-desc{font-size:.855rem;color:var(--gray-600);margin-bottom:24px;line-height:1.6;}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.fg{margin-bottom:15px;}
+.fg label{display:block;font-size:.71rem;font-weight:700;color:var(--gray-600);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;}
+.fg input,.fg select,.fg textarea{width:100%;padding:11px 13px;border:1.5px solid var(--gray-200);border-radius:var(--radius);font-size:.86rem;font-family:inherit;color:var(--gray-900);background:var(--cream);transition:var(--transition);}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px rgba(196,146,42,.08);}
+.fg textarea{resize:vertical;min-height:110px;}
+.f-note{font-size:.74rem;color:var(--gray-400);margin-top:6px;line-height:1.5;}
+.f-submit-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;}
+.success-msg{display:none;background:#f0fdf4;border:1.5px solid #86efac;border-radius:var(--radius);padding:14px 18px;margin-top:16px;font-size:.875rem;color:#15803d;align-items:center;gap:10px;}
+.success-msg.show{display:flex;}
+.con-sidebar{display:flex;flex-direction:column;gap:18px;position:sticky;top:calc(var(--nav-h)+16px);}
+.csb-card{background:#fff;border-radius:var(--radius-lg);padding:24px;border:1.5px solid var(--gray-200);box-shadow:var(--shadow-sm);}
+.csb-card h4{font-size:.88rem;font-weight:700;color:var(--navy);margin-bottom:14px;padding-bottom:9px;border-bottom:1px solid var(--gray-100);}
+.ci{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;}
+.ci-icon{width:38px;height:38px;border-radius:9px;background:var(--gold-pale);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.88rem;flex-shrink:0;}
+.ci h5{font-size:.78rem;font-weight:700;color:var(--navy);margin-bottom:2px;}
+.ci a,.ci p{font-size:.8rem;color:var(--gray-600);transition:var(--transition);line-height:1.5;word-break:break-all;}
+.ci a:hover{color:var(--gold);}
+.hrs-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:6px;}
+.hrs-item{font-size:.76rem;color:var(--gray-600);}.hrs-item strong{display:block;color:var(--navy);font-weight:600;margin-bottom:1px;}
+.wa-sb{background:linear-gradient(135deg,#128C7E,#25D366);border-radius:var(--radius-lg);padding:24px;text-align:center;}
+.wa-sb h4{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:7px;}
+.wa-sb p{font-size:.8rem;color:rgba(255,255,255,.85);margin-bottom:15px;line-height:1.6;}
+.wa-sb-btn{display:flex;align-items:center;justify-content:center;gap:7px;background:#fff;color:#128C7E;padding:11px;border-radius:var(--radius-pill);font-size:.85rem;font-weight:600;text-decoration:none;margin-bottom:8px;transition:var(--transition);}
+.wa-sb-btn:hover{background:rgba(255,255,255,.92);}
+.wa-sb-call{display:flex;align-items:center;justify-content:center;gap:7px;border:1.5px solid rgba(255,255,255,.4);color:#fff;padding:10px;border-radius:var(--radius-pill);font-size:.84rem;font-weight:600;text-decoration:none;transition:var(--transition);}
+.wa-sb-call:hover{background:rgba(255,255,255,.15);}
+.qwa-card{background:#fff;border-radius:var(--radius-lg);padding:22px;border:1.5px solid var(--gray-200);}
+.qwa-card h4{font-size:.85rem;font-weight:700;color:var(--navy);margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid var(--gray-100);}
+.qwa-btn{display:flex;align-items:center;gap:9px;padding:10px 12px;border-radius:var(--radius);background:var(--cream);border:1.5px solid var(--gray-200);font-size:.78rem;font-weight:500;color:var(--gray-900);margin-bottom:7px;text-decoration:none;transition:var(--transition);}
+.qwa-btn:hover{border-color:#25D366;background:#f0fdf4;color:#128C7E;}
+.qwa-btn i{color:#25D366;font-size:.95rem;flex-shrink:0;}
+@media(max-width:1024px){.cc-cards{grid-template-columns:1fr 1fr;}.form-layout{grid-template-columns:1fr;}.con-sidebar{position:static;display:grid;grid-template-columns:1fr 1fr;gap:18px;}}
+@media(max-width:768px){.cc-cards{grid-template-columns:1fr 1fr;}.f-row{grid-template-columns:1fr;}.f-card{padding:22px 18px;}.con-sidebar{grid-template-columns:1fr;}}</style>
+</head>
+<body>
+<nav class="navbar" id="navbar"><div class="container">
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Afrix PMG" class="nav-logo-img" onerror="this.style.display='none'"/>Afrix<span class="accent">PMG</span></a>
+    <ul class="nav-links" id="navLinks"><li><a href="index.html"><i class="fas fa-home fa-fw"></i> Home</a></li>
+<li><a href="properties.html"><i class="fas fa-building fa-fw"></i> Properties</a></li>
+<li class="dropdown"><a href="#"><i class="fas fa-concierge-bell fa-fw"></i> Services <i class="fas fa-chevron-down chev"></i></a><ul class="dropdown-menu"><li><a href="services.html">All Services</a></li><li><a href="property-management.html">Property Management</a></li><li><a href="diaspora.html">Diaspora Services</a></li></ul></li>
+<li><a href="about.html"><i class="fas fa-users fa-fw"></i> About Us</a></li>
+<li><a href="faq.html"><i class="fas fa-question-circle fa-fw"></i> FAQ</a></li>
+<li><a href="contact.html" class="active"><i class="fas fa-envelope fa-fw"></i> Contact</a></li>
+</ul>
+    <div class="nav-actions"><a href="https://wa.me/233539484203?text=Hello%20Afrix." class="btn btn-gold" target="_blank" rel="noopener"><i class="fas fa-plus-circle"></i> List Property</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+  </div></nav>
+<section class="page-hero">
+  <div class="ph-slide ph-active" style="background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&h=700&fit=crop&q=80')"><div class="ph-overlay"></div><div class="container ph-content"><div class="ph-label">Get In Touch</div><h1 class="ph-title">We're Here<br>to <span class='accent'>Help You</span></h1><p class="ph-sub">Whether you have a question, want to list a property, or need an inquiry answered — our team is just a message away.</p><div class="ph-btns"><a href="#contact-forms" class="btn btn-gold"><i class="fas fa-envelope"></i> Send a Message</a><a href="https://wa.me/233539484203?text=Hello%20Afrix%20Properties%2C%20I%20need%20help." class="btn btn-outline-white" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Us</a></div></div></div>
+  <div class="ph-slide" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&h=700&fit=crop&q=80')"><div class="ph-overlay"></div><div class="container ph-content"><div class="ph-label">3 Easy Ways</div><h1 class="ph-title">Buy, Sell, Rent or Manage —<br><span class='accent'>We're Ready</span></h1><p class="ph-sub">Fill in our quick form, chat on WhatsApp, or call us directly. Our team responds within minutes during business hours.</p><div class="ph-btns"><a href="#contact-forms" class="btn btn-gold"><i class="fas fa-paper-plane"></i> Send Enquiry</a><a href="tel:0539484203" class="btn btn-outline-white"><i class="fas fa-phone-alt"></i> Call: 0539484203</a></div></div></div>
+  <div class="ph-slide" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&h=700&fit=crop&q=80')"><div class="ph-overlay"></div><div class="container ph-content"><div class="ph-label">List Your Property</div><h1 class="ph-title">Want Us to Sell or<br><span class='accent'>Let Your Property?</span></h1><p class="ph-sub">Our team handles marketing, viewings, negotiations and paperwork. Free inspection, no upfront fees.</p><div class="ph-btns"><a href="#contact-forms" class="btn btn-gold"><i class="fas fa-plus-circle"></i> List My Property</a><a href="https://wa.me/233539484203?text=Hello%20Afrix%2C%20I%20want%20to%20list%20my%20property." class="btn btn-outline-white" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Us</a></div></div></div>
+  <div class="ph-controls"><button class="ph-arrow ph-prev"><i class="fas fa-chevron-left"></i></button><button class="ph-dot ph-dot-active" data-dot="0"></button><button class="ph-dot " data-dot="1"></button><button class="ph-dot " data-dot="2"></button><button class="ph-arrow ph-next"><i class="fas fa-chevron-right"></i></button></div>
+  <div class="ph-breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right"></i><span>Contact Us</span></div>
+</section>
+
+<div class="container" id="contact-forms">
+  <div class="cc-cards">
+    <div class="cc-card reveal"><div class="cc-icon"><i class="fas fa-phone-alt"></i></div><h4>Call Us</h4><a href="tel:0539484203">0539484203</a><p style="margin-top:5px;font-size:.73rem">Mon–Sat, 8am–6pm GMT</p></div>
+    <div class="cc-card reveal delay-1"><div class="cc-icon" style="background:#dcfce7;color:#16a34a"><i class="fab fa-whatsapp"></i></div><h4>WhatsApp</h4><a href="https://wa.me/233539484203" target="_blank" rel="noopener" style="color:#16a34a">Chat with us now</a><p style="margin-top:5px;font-size:.73rem">Replies within minutes</p></div>
+    <div class="cc-card reveal delay-2"><div class="cc-icon"><i class="fas fa-envelope"></i></div><h4>Email Us</h4><a href="mailto:lotsuibrahim2@gmail.com" style="font-size:.74rem">lotsuibrahim2@gmail.com</a><p style="margin-top:5px;font-size:.73rem">Reply within 24 hours</p></div>
+    <div class="cc-card reveal delay-3"><div class="cc-icon"><i class="fas fa-map-marker-alt"></i></div><h4>Location</h4><p>Accra, Ghana</p><p style="margin-top:5px;font-size:.73rem">Nationwide coverage</p></div>
+  </div>
+</div>
+<section class="forms-section">
+<div class="container">
+<div class="reveal" style="margin-bottom:28px"><span class="section-label">Send a Message</span><h2 class="section-title">How Can We Help You?</h2></div>
+<div class="form-tabs reveal" id="formTabs">
+  <button class="form-tab active" data-form="general">💬 General Enquiry</button>
+  <button class="form-tab" data-form="inquiry">🏠 Property Inquiry</button>
+  <button class="form-tab" data-form="listing">📋 List My Property</button>
+</div>
+<div class="form-layout">
+  <div>
+    <div class="f-panel active" id="form-general"><div class="f-card">
+      <h3>General Enquiry</h3><p class="f-desc">Have a question? Fill the form below and we'll get back to you — or WhatsApp us for an instant response.</p>
+      <div class="f-row">
+        <div class="fg"><label>First Name *</label><input type="text" id="g-fname" placeholder="Kwame"/></div>
+        <div class="fg"><label>Last Name *</label><input type="text" id="g-lname" placeholder="Asante"/></div>
+      </div>
+      <div class="fg"><label>Phone / WhatsApp *</label><input type="tel" id="g-phone" placeholder="+233 xxx xxx xxx"/></div>
+      <div class="fg"><label>Email (optional)</label><input type="email" id="g-email" placeholder="you@email.com"/></div>
+      <div class="fg"><label>Subject</label><select id="g-sub"><option value="">Select a topic…</option><option>Buying a property</option><option>Renting a property</option><option>Property management</option><option>Diaspora services</option><option>Property valuation</option><option>Other</option></select></div>
+      <div class="fg"><label>Your Message *</label><textarea id="g-msg" placeholder="Tell us how we can help you…"></textarea></div>
+      <div class="f-submit-row">
+        <button class="btn btn-gold" onclick="submitGeneral()"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+        <a href="mailto:lotsuibrahim2@gmail.com?subject=Enquiry from Website" class="btn btn-outline"><i class="fas fa-envelope"></i> Send by Email</a>
+      </div>
+      <div class="success-msg" id="g-success"><i class="fas fa-check-circle" style="font-size:1.2rem;color:#16a34a"></i> Message sent! We'll get back to you shortly.</div>
+    </div></div>
+
+    <div class="f-panel" id="form-inquiry"><div class="f-card">
+      <h3>Property Inquiry</h3><p class="f-desc">Looking for a specific property? Tell us your requirements and we'll find the perfect match.</p>
+      <div class="f-row">
+        <div class="fg"><label>Full Name *</label><input type="text" id="i-name" placeholder="Your full name"/></div>
+        <div class="fg"><label>Phone / WhatsApp *</label><input type="tel" id="i-phone" placeholder="+233 xxx xxx xxx"/></div>
+      </div>
+      <div class="fg"><label>Email (optional)</label><input type="email" id="i-email" placeholder="you@email.com"/></div>
+      <div class="f-row">
+        <div class="fg"><label>I'm Looking to</label><select id="i-action"><option value="buy">Buy</option><option value="rent">Rent</option><option value="both">Buy or Rent</option></select></div>
+        <div class="fg"><label>Property Type</label><select id="i-type"><option>Any</option><option>Apartment</option><option>Villa / House</option><option>Townhouse</option><option>Penthouse</option><option>Office</option><option>Land</option></select></div>
+      </div>
+      <div class="f-row">
+        <div class="fg"><label>Preferred Location</label><input type="text" id="i-location" placeholder="e.g. East Legon, Accra"/></div>
+        <div class="fg"><label>Budget (GHS)</label><input type="text" id="i-budget" placeholder="e.g. 2,000,000"/></div>
+      </div>
+      <div class="fg"><label>Additional Requirements</label><textarea id="i-msg" placeholder="Must-have features, timeline, special needs…"></textarea></div>
+      <div class="f-submit-row"><button class="btn btn-gold" onclick="submitInquiry()"><i class="fab fa-whatsapp"></i> Send Inquiry via WhatsApp</button></div>
+      <div class="success-msg" id="i-success"><i class="fas fa-check-circle" style="font-size:1.2rem;color:#16a34a"></i> Inquiry sent! Your agent will contact you soon.</div>
+    </div></div>
+
+    <div class="f-panel" id="form-listing"><div class="f-card">
+      <h3>List Your Property</h3><p class="f-desc">Submit details below. We'll inspect and list your property within 72 hours — no upfront costs.</p>
+      <div class="f-row">
+        <div class="fg"><label>Full Name *</label><input type="text" id="l-name" placeholder="Property owner name"/></div>
+        <div class="fg"><label>Phone / WhatsApp *</label><input type="tel" id="l-phone" placeholder="+233 xxx xxx xxx"/></div>
+      </div>
+      <div class="fg"><label>Email (optional)</label><input type="email" id="l-email" placeholder="you@email.com"/></div>
+      <div class="f-row">
+        <div class="fg"><label>Listing Type *</label><select id="l-action"><option value="sale">For Sale</option><option value="rent">For Rent / Let</option><option value="management">Management Only</option></select></div>
+        <div class="fg"><label>Property Type *</label><select id="l-type"><option>Apartment</option><option>Villa / House</option><option>Townhouse</option><option>Penthouse</option><option>Office</option><option>Land</option></select></div>
+      </div>
+      <div class="fg"><label>Property Address / Location *</label><input type="text" id="l-address" placeholder="e.g. 5 Palm Drive, East Legon, Accra"/></div>
+      <div class="f-row">
+        <div class="fg"><label>Asking Price (GHS)</label><input type="text" id="l-price" placeholder="e.g. 2,500,000 or 4,500/mo"/></div>
+        <div class="fg"><label>Bedrooms</label><select id="l-beds"><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option><option>N/A</option></select></div>
+      </div>
+      <div class="fg"><label>Property Description</label><textarea id="l-desc" placeholder="Size, key features, condition, highlights…"></textarea></div>
+      <p class="f-note"><i class="fas fa-info-circle" style="color:var(--gold)"></i> Our team will arrange a <strong>free inspection &amp; photography</strong> session within 24 hours.</p>
+      <div class="f-submit-row"><button class="btn btn-gold" onclick="submitListing()"><i class="fab fa-whatsapp"></i> Submit Listing via WhatsApp</button></div>
+      <div class="success-msg" id="l-success"><i class="fas fa-check-circle" style="font-size:1.2rem;color:#16a34a"></i> Listing submitted! We'll contact you within 24 hours.</div>
+    </div></div>
+  </div>
+
+  <aside class="con-sidebar">
+    <div class="csb-card">
+      <h4>Our Contact Details</h4>
+      <div class="ci"><div class="ci-icon"><i class="fas fa-phone-alt"></i></div><div><h5>Phone</h5><a href="tel:0539484203">0539484203</a></div></div>
+      <div class="ci"><div class="ci-icon" style="background:#dcfce7;color:#16a34a"><i class="fab fa-whatsapp"></i></div><div><h5>WhatsApp</h5><a href="https://wa.me/233539484203" target="_blank" style="color:#16a34a">+233 539 484 203</a></div></div>
+      <div class="ci"><div class="ci-icon"><i class="fas fa-envelope"></i></div><div><h5>Email</h5><a href="mailto:lotsuibrahim2@gmail.com">lotsuibrahim2@gmail.com</a></div></div>
+      <div class="ci" style="margin-bottom:18px"><div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div><div><h5>Location</h5><p>Accra, Ghana<br>Nationwide Coverage</p></div></div>
+      <h5 style="font-size:.74rem;font-weight:700;color:var(--navy);margin-bottom:9px;text-transform:uppercase;letter-spacing:.05em">Office Hours</h5>
+      <div class="hrs-grid">
+        <div class="hrs-item"><strong>Mon – Fri</strong>8am – 6pm GMT</div>
+        <div class="hrs-item"><strong>Saturday</strong>9am – 4pm GMT</div>
+        <div class="hrs-item"><strong>Sunday</strong>Closed</div>
+        <div class="hrs-item"><strong>WhatsApp</strong>Always available</div>
+      </div>
+    </div>
+    <div class="wa-sb">
+      <h4>⚡ Fastest Response</h4>
+      <p>Skip the form and get an instant reply from our team on WhatsApp — any time, any day.</p>
+      <a href="https://wa.me/233539484203?text=Hello%20Afrix%20Properties%2C%20I%20need%20help." class="wa-sb-btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp" style="font-size:1rem"></i> Chat on WhatsApp</a>
+      <a href="tel:0539484203" class="wa-sb-call"><i class="fas fa-phone-alt"></i> Call: 0539484203</a>
+    </div>
+    <div class="qwa-card">
+      <h4>Quick WhatsApp Messages</h4>
+      <a class="qwa-btn" href="https://wa.me/233539484203?text=Hello%20Afrix%2C%20I%27m%20looking%20to%20buy%20a%20property." target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> I want to buy a property</a>
+      <a class="qwa-btn" href="https://wa.me/233539484203?text=Hello%20Afrix%2C%20I%27m%20looking%20to%20rent%20a%20property." target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> I want to rent a property</a>
+      <a class="qwa-btn" href="https://wa.me/233539484203?text=Hello%20Afrix%2C%20I%20want%20to%20list%20my%20property." target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> I want to list my property</a>
+      <a class="qwa-btn" href="https://wa.me/233539484203?text=Hello%20Afrix%2C%20I%20need%20property%20management." target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> I need property management</a>
+      <a class="qwa-btn" href="https://wa.me/233539484203?text=Hello%20Afrix%2C%20I%27m%20a%20diaspora%20investor." target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> I'm a diaspora investor</a>
+    </div>
+  </aside>
+</div>
+</div></section>
+<footer class="footer"><div class="footer-main container">
+    <div class="footer-brand">
+      <div class="footer-logo-area"><img src="images/logo.png" alt="Afrix PMG" class="footer-logo-img" onerror="this.style.display='none'"/><div class="footer-brand-name">Afrix<span>PMG</span></div></div>
+      <p class="footer-tagline">Managing Value. Building Trust.</p>
+      <p>Ghana&#x27;s premier property management and real estate solutions group.</p>
+      <div class="footer-socials"><a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-btn"><i class="fab fa-instagram"></i></a><a href="#" class="social-btn"><i class="fab fa-twitter"></i></a><a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a></div>
+    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="properties.html">Properties</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Property Sales</a></li><li><a href="services.html">Property Letting</a></li><li><a href="property-management.html">Management</a></li><li><a href="diaspora.html">Diaspora</a></li><li><a href="services.html">Valuation</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4>
+      <div class="footer-contact-item"><i class="fas fa-phone-alt"></i><div><a href="tel:0539484203">0539484203</a></div></div>
+      <div class="footer-contact-item"><i class="fas fa-envelope"></i><div><a href="mailto:lotsuibrahim2@gmail.com">lotsuibrahim2@gmail.com</a></div></div>
+      <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><div>Accra, Ghana</div></div>
+      <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><div><a href="https://wa.me/233539484203" target="_blank" style="color:#25D366">Chat on WhatsApp</a></div></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="container"><p>&#169; 2026 Afrix Properties &amp; Management Group. All rights reserved.</p><p class="dev-credit">Website built by <a href="https://wa.me/233544823484?text=Hello%20Ibratech,%20I%20want%20a%20real%20estate%20website%20like%20Afrix" target="_blank" rel="noopener">Ibratech</a> &middot; <a href="tel:0544823484">0544823484</a></p></div></div>
+</footer>
+<a class="whatsapp-float" href="https://wa.me/233539484203?text=Hello%20Afrix." target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<script src="shared.js"></script><script src="chatbot.js"></script>
+<script>const WA='233539484203';
+const v=id=>{const e=document.getElementById(id);return e?e.value.trim():''};
+function openWA(text,sid){
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(text)}`,'_blank');
+  const s=document.getElementById(sid);
+  if(s){s.classList.add('show');setTimeout(()=>s.classList.remove('show'),6000);}
+}
+function submitGeneral(){
+  const name=`${v('g-fname')} ${v('g-lname')}`.trim(),phone=v('g-phone'),msg=v('g-msg');
+  if(!name||!phone||!msg){alert('Please fill in your name, phone and message.');return;}
+  openWA(`Hello Afrix Properties,\n\nName: ${name}\nPhone: ${phone}\nSubject: ${v('g-sub')||'General Enquiry'}\n\n${msg}`,'g-success');
+}
+function submitInquiry(){
+  const name=v('i-name'),phone=v('i-phone');
+  if(!name||!phone){alert('Please fill in your name and phone number.');return;}
+  openWA(`Hello Afrix Properties,\n\nProperty Inquiry:\nName: ${name}\nPhone: ${phone}\nLooking to: ${v('i-action')}\nType: ${v('i-type')}\nLocation: ${v('i-location')||'Flexible'}\nBudget: ${v('i-budget')||'Not specified'}\n\n${v('i-msg')}`,'i-success');
+}
+function submitListing(){
+  const name=v('l-name'),phone=v('l-phone'),address=v('l-address');
+  if(!name||!phone||!address){alert('Please fill in your name, phone and property address.');return;}
+  openWA(`Hello Afrix Properties,\n\nNew Listing:\nOwner: ${name}\nPhone: ${phone}\nListing Type: ${v('l-action')}\nProperty Type: ${v('l-type')}\nAddress: ${address}\nAsking Price: ${v('l-price')||'To discuss'}\nBedrooms: ${v('l-beds')}\n\nDescription: ${v('l-desc')||'To be discussed'}`,'l-success');
+}
+document.getElementById('formTabs').addEventListener('click',e=>{
+  const tab=e.target.closest('.form-tab');if(!tab)return;
+  document.querySelectorAll('.form-tab').forEach(t=>t.classList.toggle('active',t===tab));
+  document.querySelectorAll('.f-panel').forEach(p=>p.classList.toggle('active',p.id===`form-${tab.dataset.form}`));
+});</script>
+</body></html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Afrix Properties & Management Group | Managing Value. Building Trust.</title>
+  <meta name="description" content="Ghana's premier real estate and property management company. Find luxury homes, apartments, offices and investment properties across Accra, Tema, Kumasi and beyond."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://afrixproperties.com/"/>
+  <meta property="og:title" content="Afrix Properties & Management Group"/>
+  <meta property="og:description" content="Managing Value. Building Trust. Ghana's premier real estate platform."/>
+  <!-- og:image: replace with full URL after deployment e.g. https://yourdomain.com/images/logo.png -->
+  <meta property="og:image" content="images/logo.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <!-- Favicon — replace with your logo -->
+  <link rel="icon" href="images/logo.png" type="image/png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    /* ── HOME-ONLY: Page loader ── */
+    #page-loader{position:fixed;inset:0;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:99999;transition:opacity .6s ease,visibility .6s ease}
+    #page-loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+    .loader-logo{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+    .loader-logo-img{height:48px;width:48px;object-fit:contain;border-radius:10px}
+    .loader-logo-text{font-size:1.8rem;font-weight:800;color:#fff}
+    .loader-logo-text span{color:var(--gold)}
+    .loader-tag{color:var(--gray-400);font-size:.82rem;margin-bottom:36px;letter-spacing:.06em}
+    .loader-bar{width:180px;height:3px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden}
+    .loader-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:2px;animation:lFill 2.2s ease forwards}
+    @keyframes lFill{from{width:0}to{width:100%}}
+
+    /* ── Search section ── */
+    .search-section{background:#fff;padding:0;position:relative;z-index:10}
+    .search-card{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:30px 34px;margin-top:-44px;position:relative}
+    .search-tabs{display:flex;gap:4px;margin-bottom:22px}
+    .s-tab{padding:8px 20px;border-radius:var(--radius-pill);border:none;background:var(--gray-100);font-size:.85rem;font-weight:600;color:var(--gray-600);transition:var(--transition);cursor:pointer;font-family:inherit}
+    .s-tab.active{background:var(--navy);color:#fff}
+    .search-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:14px;align-items:end}
+    .s-field label{display:block;font-size:.72rem;font-weight:700;color:var(--gray-600);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em}
+    .s-field select,.s-field input{width:100%;padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:var(--radius);font-size:.875rem;font-family:inherit;color:var(--gray-900);background:var(--cream);transition:var(--transition);appearance:none;cursor:pointer}
+    .s-field select:focus,.s-field input:focus{outline:none;border-color:var(--gold);background:#fff}
+
+    /* ── Services grid ── */
+    .srv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px}
+    .srv-card{background:#fff;border-radius:var(--radius-lg);padding:30px;border:1.5px solid var(--gray-200);transition:var(--transition);position:relative;overflow:hidden}
+    .srv-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transform:scaleX(0);transition:var(--transition)}
+    .srv-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--gold-pale)}
+    .srv-card:hover::after{transform:scaleX(1)}
+    .srv-icon{width:54px;height:54px;background:var(--gold-pale);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;color:var(--gold);margin-bottom:18px}
+    .srv-card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:9px}
+    .srv-card p{font-size:.855rem;color:var(--gray-600);line-height:1.65;margin-bottom:14px}
+    .srv-link{display:inline-flex;align-items:center;gap:5px;font-size:.82rem;font-weight:600;color:var(--gold);transition:var(--transition)}
+    .srv-link:hover{gap:9px}
+
+    /* ── Testimonials ── */
+    .testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+    .testi-card{background:#fff;border-radius:var(--radius-lg);padding:26px;box-shadow:var(--shadow-sm);border:1px solid var(--gray-200);transition:var(--transition)}
+    .testi-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+    .testi-stars{color:var(--gold);font-size:.88rem;margin-bottom:12px}
+    .testi-text{font-size:.875rem;color:var(--gray-600);line-height:1.75;font-style:italic;margin-bottom:18px}
+    .testi-author{display:flex;align-items:center;gap:12px}
+    .testi-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--navy));display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:.88rem;flex-shrink:0}
+    .testi-author strong{font-size:.875rem;color:var(--navy);display:block}
+    .testi-author span{font-size:.74rem;color:var(--gray-400)}
+
+    @media(max-width:1024px){.search-row{grid-template-columns:1fr 1fr}}
+    @media(max-width:768px){.search-row{grid-template-columns:1fr}.search-card{padding:22px 18px;margin-top:-28px}.srv-grid{grid-template-columns:1fr}.testi-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<!-- PAGE LOADER (Home only) -->
+<div id="page-loader">
+  <div class="loader-logo">
+    <img src="images/logo.png" alt="Afrix PMG" class="loader-logo-img" onerror="this.style.display='none'"/>
+    <div class="loader-logo-text">Afrix<span>PMG</span></div>
+  </div>
+  <p class="loader-tag">Managing Value. Building Trust.</p>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- ════════════════ NAVBAR ════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.png" alt="Afrix PMG Logo" class="nav-logo-img" onerror="this.style.display='none'"/>
+      Afrix<span class="accent">PMG</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active"><i class="fas fa-home fa-fw"></i> Home</a></li>
+      <li><a href="properties.html"><i class="fas fa-building fa-fw"></i> Properties</a></li>
+      <li class="dropdown">
+        <a href="#"><i class="fas fa-concierge-bell fa-fw"></i> Services <i class="fas fa-chevron-down chev"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="services.html">All Services</a></li>
+          <li><a href="property-management.html">Property Management</a></li>
+          <li><a href="diaspora.html">Diaspora Services</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html"><i class="fas fa-users fa-fw"></i> About Us</a></li>
+      <li><a href="faq.html"><i class="fas fa-question-circle fa-fw"></i> FAQ</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope fa-fw"></i> Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://wa.me/233539484203?text=Hello%20Afrix%20Properties%2C%20I%20want%20to%20list%20my%20property." class="btn btn-gold" target="_blank" rel="noopener">
+        <i class="fas fa-plus-circle"></i> List Property
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════════ HOME HERO (3 SLIDES) ════════════════ -->
+<section class="home-hero" id="home">
+  <div class="home-hero-swiper" id="homeSwiper">
+
+    <!-- SLIDE 1 -->
+    <div class="home-slide hs-active" data-slide="0">
+      <div class="container">
+        <div class="hero-text">
+          <span class="hero-badge"><span class="hero-badge-dot"></span> Ghana's #1 Property Group</span>
+          <h1 class="hero-title">Professional Property<br><span class="accent">Solutions</span> You Can Trust</h1>
+          <p class="hero-sub">We make buying, selling, renting and managing property in Ghana easy, exciting and completely stress-free.</p>
+          <div class="hero-btns">
+            <a href="properties.html" class="btn btn-gold"><i class="fas fa-search"></i> View Properties</a>
+            <a href="https://wa.me/233539484203?text=Hello%20Afrix%2C%20I%20want%20to%20list%20my%20property." class="btn btn-navy" target="_blank" rel="noopener"><i class="fas fa-plus"></i> List Property</a>
+            <a href="property-management.html" class="btn btn-outline"><i class="fas fa-key"></i> Get Management</a>
+          </div>
+          <div class="hero-stats">
+            <div><div class="hero-stat-num">500<span>+</span></div><div class="hero-stat-label">Properties Listed</div></div>
+            <div><div class="hero-stat-num">12<span>+</span></div><div class="hero-stat-label">Years Experience</div></div>
+            <div><div class="hero-stat-num">98<span>%</span></div><div class="hero-stat-label">Client Satisfaction</div></div>
+          </div>
+        </div>
+        <div class="hero-img-wrap">
+          <div class="hero-img-main">
+            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&h=680&fit=crop&q=80" alt="Luxury property Ghana" loading="eager"/>
+          </div>
+          <div class="hero-float-card">
+            <div class="hero-float-icon"><i class="fas fa-award"></i></div>
+            <div class="hero-float-text"><strong>Award-Winning Agency</strong><span>Ghana Real Estate Awards 2024</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="home-slide" data-slide="1">
+      <div class="container">
+        <div class="hero-text">
+          <span class="hero-badge"><span class="hero-badge-dot"></span> Premium Listings Available</span>
+          <h1 class="hero-title">Find Your <span class="accent">Dream Home</span><br>in Ghana</h1>
+          <p class="hero-sub">From luxury villas in East Legon to modern apartments in Airport Residential — discover thousands of properties tailored to you.</p>
+          <div class="hero-btns">
+            <a href="properties.html" class="btn btn-gold"><i class="fas fa-home"></i> Browse All Properties</a>
+            <a href="contact.html" class="btn btn-navy"><i class="fas fa-phone"></i> Speak to an Agent</a>
+          </div>
+          <div class="hero-stats">
+            <div><div class="hero-stat-num">10<span>+</span></div><div class="hero-stat-label">Cities Covered</div></div>
+            <div><div class="hero-stat-num">GHS<span>1B+</span></div><div class="hero-stat-label">Value Managed</div></div>
+            <div><div class="hero-stat-num">2K<span>+</span></div><div class="hero-stat-label">Happy Clients</div></div>
+          </div>
+        </div>
+        <div class="hero-img-wrap">
+          <div class="hero-img-main">
+            <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=900&h=680&fit=crop&q=80" alt="Modern home Ghana" loading="lazy"/>
+          </div>
+          <div class="hero-float-card">
+            <div class="hero-float-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="hero-float-text"><strong>Accra · Tema · Kumasi</strong><span>Nationwide coverage</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="home-slide" data-slide="2">
+      <div class="container">
+        <div class="hero-text">
+          <span class="hero-badge"><span class="hero-badge-dot"></span> Diaspora Investment Partner</span>
+          <h1 class="hero-title">Invest Safely <span class="accent">Back Home</span><br>From Anywhere</h1>
+          <p class="hero-sub">Living abroad? We help Ghanaians in the diaspora buy, sell and manage property in Ghana safely — handling everything remotely.</p>
+          <div class="hero-btns">
+            <a href="diaspora.html" class="btn btn-gold"><i class="fas fa-globe-africa"></i> Diaspora Services</a>
+            <a href="https://wa.me/233539484203?text=Hello%20Afrix%2C%20I'm%20in%20the%20diaspora%20and%20want%20to%20invest%20in%20Ghana." class="btn btn-navy" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+          </div>
+          <div class="hero-stats">
+            <div><div class="hero-stat-num">15<span>+</span></div><div class="hero-stat-label">Countries Served</div></div>
+            <div><div class="hero-stat-num">300<span>+</span></div><div class="hero-stat-label">Diaspora Clients</div></div>
+            <div><div class="hero-stat-num">100<span>%</span></div><div class="hero-stat-label">Remote Process</div></div>
+          </div>
+        </div>
+        <div class="hero-img-wrap">
+          <div class="hero-img-main">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=900&h=680&fit=crop&q=80" alt="Diaspora investment" loading="lazy"/>
+          </div>
+          <div class="hero-float-card">
+            <div class="hero-float-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="hero-float-text"><strong>100% Secure Transactions</strong><span>End-to-end verified</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Swiper controls -->
+    <div class="home-swiper-controls">
+      <button class="hs-arrow" id="hsPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+      <button class="hs-dot active" data-dot="0"></button>
+      <button class="hs-dot" data-dot="1"></button>
+      <button class="hs-dot" data-dot="2"></button>
+      <button class="hs-arrow" id="hsNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ SEARCH BAR ════════════════ -->
+<section class="search-section">
+  <div class="container">
+    <div class="search-card reveal">
+      <!-- Tabs switch Buy/Rent context for the URL redirect -->
+      <div class="search-tabs">
+        <button class="s-tab active" data-tab="buy">Buy</button>
+        <button class="s-tab" data-tab="rent">Rent</button>
+        <button class="s-tab" data-tab="manage">Manage</button>
+      </div>
+      <div class="search-row">
+        <div class="s-field">
+          <label for="s-type">Property Type</label>
+          <select id="s-type">
+            <option value="">All Types</option>
+            <option value="villa">Villa</option>
+            <option value="apartment">Apartment</option>
+            <option value="house">House</option>
+            <option value="townhouse">Townhouse</option>
+            <option value="penthouse">Penthouse</option>
+            <option value="office">Office/Commercial</option>
+            <option value="land">Land</option>
+          </select>
+        </div>
+        <div class="s-field">
+          <label for="s-location">Location</label>
+          <select id="s-location">
+            <option value="">All Locations</option>
+            <option value="accra">Accra</option>
+            <option value="tema">Tema</option>
+            <option value="kumasi">Kumasi</option>
+            <option value="takoradi">Takoradi</option>
+          </select>
+        </div>
+        <div class="s-field">
+          <label for="s-price">Max Price (GHS)</label>
+          <select id="s-price">
+            <option value="">Any Price</option>
+            <option value="500000">Up to 500K</option>
+            <option value="1000000">Up to 1M</option>
+            <option value="2000000">Up to 2M</option>
+            <option value="5000000">Up to 5M</option>
+            <option value="10000000">Up to 10M</option>
+          </select>
+        </div>
+        <div class="s-field">
+          <label for="s-beds">Bedrooms</label>
+          <select id="s-beds">
+            <option value="">Any</option>
+            <option value="1">1+</option>
+            <option value="2">2+</option>
+            <option value="3">3+</option>
+            <option value="4">4+</option>
+            <option value="5">5+</option>
+          </select>
+        </div>
+        <!-- Search button — triggers handleSearch() below -->
+        <button class="btn btn-gold" onclick="handleSearch()" style="height:46px;padding:0 24px">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ FEATURED PROPERTIES ════════════════ -->
+<section class="section-pad" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Fresh Listings</span>
+      <h2 class="section-title">Featured Properties</h2>
+      <p class="section-desc">Hand-picked premium listings across Ghana's most sought-after locations.</p>
+    </div>
+    <div class="properties-grid" id="featuredGrid"></div>
+    <div style="text-align:center;margin-top:40px">
+      <a href="properties.html" class="btn btn-navy reveal">View All Properties <i class="fas fa-arrow-right" style="margin-left:4px"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ STATS BAND ════════════════ -->
+<section class="stats-band">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="reveal"><div class="stat-num" data-count="500" data-suffix="+">500+</div><div class="stat-label">Properties Sold & Let</div></div>
+      <div class="reveal delay-1"><div class="stat-num">2<span>K+</span></div><div class="stat-label">Happy Clients</div></div>
+      <div class="reveal delay-2"><div class="stat-num">12<span>+</span></div><div class="stat-label">Years in Business</div></div>
+      <div class="reveal delay-3"><div class="stat-num">GHS 1<span>B+</span></div><div class="stat-label">Value Under Management</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ SERVICES ════════════════ -->
+<section class="section-pad" style="background:#fff">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">What We Do</span>
+      <h2 class="section-title">Our Core Services</h2>
+      <p class="section-desc">From buying your first home to managing your investment portfolio — we've got every step covered.</p>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card reveal"><div class="srv-icon"><i class="fas fa-search-location"></i></div><h3>Property Sales & Acquisition</h3><p>We connect buyers with verified, premium properties and guide you from search to keys in hand.</p><a href="services.html" class="srv-link">Learn more <i class="fas fa-arrow-right"></i></a></div>
+      <div class="srv-card reveal delay-1"><div class="srv-icon"><i class="fas fa-key"></i></div><h3>Property Management</h3><p>Stress-free ownership. We handle tenants, maintenance, rent collection and monthly reporting.</p><a href="property-management.html" class="srv-link">Learn more <i class="fas fa-arrow-right"></i></a></div>
+      <div class="srv-card reveal delay-2"><div class="srv-icon"><i class="fas fa-globe-africa"></i></div><h3>Diaspora Investment</h3><p>We help Ghanaians abroad invest in property back home with full transparency and remote convenience.</p><a href="diaspora.html" class="srv-link">Learn more <i class="fas fa-arrow-right"></i></a></div>
+      <div class="srv-card reveal delay-3"><div class="srv-icon"><i class="fas fa-file-contract"></i></div><h3>Property Letting & Rentals</h3><p>We market, screen tenants and secure lettings with full documentation and lease support.</p><a href="services.html" class="srv-link">Learn more <i class="fas fa-arrow-right"></i></a></div>
+      <div class="srv-card reveal"><div class="srv-icon"><i class="fas fa-chart-line"></i></div><h3>Valuation & Advisory</h3><p>Professional property valuation, market analysis and investment advisory services.</p><a href="services.html" class="srv-link">Learn more <i class="fas fa-arrow-right"></i></a></div>
+      <div class="srv-card reveal delay-1"><div class="srv-icon"><i class="fas fa-hard-hat"></i></div><h3>Development & Construction</h3><p>We partner with reputable developers to deliver quality builds on time and on budget.</p><a href="services.html" class="srv-link">Learn more <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ TESTIMONIALS ════════════════ -->
+<section class="section-pad" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="section-label">Client Stories</span>
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p class="section-desc">Real experiences from real clients who found their perfect property with Afrix.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-text">"Afrix helped me find my dream home in East Legon in just three weeks. The team was incredibly professional, transparent and made the whole process seamless."</p><div class="testi-author"><div class="testi-av">KA</div><div><strong>Kwame Asante</strong><span>Homebuyer, East Legon</span></div></div></div>
+      <div class="testi-card reveal delay-1"><div class="testi-stars">★★★★★</div><p class="testi-text">"Living in the UK, I was nervous about investing remotely. Afrix handled everything — legal checks, viewings and negotiations on my behalf. Total peace of mind."</p><div class="testi-author"><div class="testi-av">AB</div><div><strong>Abena Boateng</strong><span>Diaspora Investor, London</span></div></div></div>
+      <div class="testi-card reveal delay-2"><div class="testi-stars">★★★★★</div><p class="testi-text">"Their property management is top-notch. I handed over my 3 rental units and they've been collecting rent and managing tenants. My income increased by 20%!"</p><div class="testi-author"><div class="testi-av">EO</div><div><strong>Emmanuel Ofori</strong><span>Property Owner, Tema</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ CTA ════════════════ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="cta-label">Let's Get Started</div>
+      <h2 class="cta-title">Ready to Find Your<br>Perfect Property?</h2>
+      <p class="cta-desc">Whether you're buying, selling, renting or managing — Afrix Properties is your trusted partner every step of the way.</p>
+      <div class="cta-btns">
+        <a href="properties.html" class="btn btn-gold"><i class="fas fa-search"></i> Browse Properties</a>
+        <a href="https://wa.me/233539484203?text=Hello%20Afrix%20Properties%2C%20I%20need%20assistance." class="btn btn-outline-white" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+        <a href="tel:0539484203" class="btn btn-white"><i class="fas fa-phone-alt"></i> 0539484203</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer class="footer">
+  <div class="footer-main container">
+    <div class="footer-brand">
+      <div class="footer-logo-area">
+        <img src="images/logo.png" alt="Afrix PMG" class="footer-logo-img" onerror="this.style.display='none'"/>
+        <div class="footer-brand-name">Afrix<span>PMG</span></div>
+      </div>
+      <p class="footer-tagline">Managing Value. Building Trust.</p>
+      <p>Ghana's premier property management and real estate solutions group. We help you buy, sell, rent and manage property with confidence.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-btn" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="properties.html">Browse Properties</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Our Services</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Services</h4>
+      <ul>
+        <li><a href="services.html">Property Sales</a></li>
+        <li><a href="services.html">Property Letting</a></li>
+        <li><a href="property-management.html">Property Management</a></li>
+        <li><a href="diaspora.html">Diaspora Services</a></li>
+        <li><a href="services.html">Valuation</a></li>
+        <li><a href="services.html">Development</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <div class="footer-contact-item"><i class="fas fa-phone-alt"></i><div><a href="tel:0539484203">0539484203</a></div></div>
+      <div class="footer-contact-item"><i class="fas fa-envelope"></i><div><a href="mailto:lotsuibrahim2@gmail.com">lotsuibrahim2@gmail.com</a></div></div>
+      <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><div>Accra, Ghana</div></div>
+      <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><div><a href="https://wa.me/233539484203" target="_blank" rel="noopener" style="color:#25D366">Chat on WhatsApp</a></div></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 Afrix Properties & Management Group. All rights reserved.</p>
+      <p class="dev-credit">Website built by <a href="https://wa.me/233544823484?text=Hello%20Ibratech,%20I%20want%20a%20real%20estate%20website%20like%20Afrix" target="_blank" rel="noopener">Ibratech</a> · <a href="tel:0544823484">0544823484</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a class="whatsapp-float" href="https://wa.me/233539484203?text=Hello%20Afrix%20Properties%2C%20I%20need%20help." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="shared.js"></script>
+<script src="chatbot.js"></script>
+<script>
+  // ── PAGE LOADER (home only)
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const l = document.getElementById('page-loader');
+      if (l) l.classList.add('hidden');
+    }, 2300);
+  });
+
+  // ── SEARCH TABS
+  document.querySelectorAll('.s-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.s-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+
+  // ── SEARCH FUNCTION
+  // Collects dropdown values and redirects to properties.html with URL params
+  // properties.html reads these params and pre-fills its filters automatically
+  function handleSearch() {
+    const type     = document.getElementById('s-type').value;
+    const location = document.getElementById('s-location').value;
+    const price    = document.getElementById('s-price').value;
+    const beds     = document.getElementById('s-beds').value;
+    const status   = document.querySelector('.s-tab.active').dataset.tab;
+
+    const params = new URLSearchParams();
+    if (type)     params.set('type', type);
+    if (location) params.set('location', location);
+    if (price)    params.set('maxPrice', price);
+    if (beds)     params.set('beds', beds);
+    if (status && status !== 'manage') params.set('status', status);
+
+    // Redirect to properties page with filters as URL query string
+    window.location.href = 'properties.html?' + params.toString();
+  }
+
+  // ── PROPERTIES DATA
+  // Edit this array to change listings. Same array in properties.html + property-details.html
+  const PROPERTIES = [
+    {id:1,title:"Luxury 4-Bedroom Villa",type:"villa",status:"sale",price:4200000,location:"East Legon, Accra",city:"accra",bedrooms:4,bathrooms:3,size:320,image:"https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=450&fit=crop&q=80"},
+    {id:2,title:"Modern 3-Bedroom Apartment",type:"apartment",status:"rent",price:2800,location:"Cantonments, Accra",city:"accra",bedrooms:3,bathrooms:2,size:185,image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=450&fit=crop&q=80"},
+    {id:3,title:"Executive 5-Bedroom Mansion",type:"villa",status:"sale",price:7500000,location:"Trasacco Valley, Accra",city:"accra",bedrooms:5,bathrooms:5,size:580,image:"https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&h=450&fit=crop&q=80"},
+    {id:4,title:"2-Bedroom Furnished Apartment",type:"apartment",status:"rent",price:1500,location:"Airport Residential, Accra",city:"accra",bedrooms:2,bathrooms:2,size:110,image:"https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&h=450&fit=crop&q=80"},
+  ];
+
+  function renderFeatured() {
+    const grid = document.getElementById('featuredGrid');
+    if (!grid) return;
+    grid.innerHTML = PROPERTIES.map(p => {
+      const price = p.status === 'rent'
+        ? `GHS ${p.price.toLocaleString()}<span>/mo</span>`
+        : `GHS ${p.price.toLocaleString()}`;
+      return `
+        <div class="property-card reveal" onclick="window.location='property-details.html?id=${p.id}'">
+          <div class="property-card-img">
+            <img src="${p.image}" alt="${p.title}" loading="lazy"/>
+            <span class="property-badge ${p.status==='sale'?'badge-sale':'badge-rent'}">For ${p.status==='sale'?'Sale':'Rent'}</span>
+            <button class="property-save" onclick="event.stopPropagation();this.classList.toggle('saved')" aria-label="Save"><i class="fas fa-heart"></i></button>
+          </div>
+          <div class="property-card-body">
+            <div class="property-price">${price}</div>
+            <div class="property-title">${p.title}</div>
+            <div class="property-location"><i class="fas fa-map-marker-alt"></i>${p.location}</div>
+            <div class="property-meta">
+              <span><i class="fas fa-bed"></i>${p.bedrooms} Beds</span>
+              <span><i class="fas fa-bath"></i>${p.bathrooms} Baths</span>
+              <span><i class="fas fa-ruler-combined"></i>${p.size}m²</span>
+            </div>
+          </div>
+          <div class="property-card-footer">
+            <a href="property-details.html?id=${p.id}" class="btn btn-navy" onclick="event.stopPropagation()">View Details</a>
+            <a href="https://wa.me/233539484203?text=Hello%20Afrix%2C%20I'm%20interested%20in%20${encodeURIComponent(p.title)}%20(ID:${p.id})." class="btn btn-outline" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="fab fa-whatsapp"></i> Enquire</a>
+          </div>
+        </div>`;
+    }).join('');
+    // Re-observe new elements for reveal
+    document.querySelectorAll('.property-card.reveal').forEach(el => {
+      revealObs && revealObs.observe(el);
+    });
+  }
+  renderFeatured();
+</script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>FAQ | Afrix Properties &amp; Management Group</title>
+<meta name="description" content="Answers to common questions about buying, selling, renting and property management in Ghana — Afrix PMG."/>
+<meta property="og:title" content="FAQ | Afrix PMG"/>
+<meta property="og:image" content="images/logo.png"/>
+<link rel="icon" href="images/logo.png" type="image/png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>.faq-layout{display:grid;grid-template-columns:1fr 340px;gap:40px;padding:56px 0;}
+.faq-main{}
+.faq-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;}
+.faq-tab{padding:9px 20px;border-radius:var(--radius-pill);border:1.5px solid var(--gray-200);background:#fff;font-size:.84rem;font-weight:600;color:var(--gray-600);cursor:pointer;transition:var(--transition);font-family:inherit;}
+.faq-tab.active,.faq-tab:hover{background:var(--navy);border-color:var(--navy);color:#fff;}
+.faq-group{display:none;}.faq-group.active{display:block;}
+.faq-item{background:#fff;border-radius:var(--radius);border:1.5px solid var(--gray-200);margin-bottom:10px;overflow:hidden;transition:var(--transition);}
+.faq-item.open{border-color:var(--gold);box-shadow:var(--shadow-sm);}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 20px;background:none;border:none;text-align:left;font-size:.89rem;font-weight:600;color:var(--navy);cursor:pointer;transition:var(--transition);font-family:inherit;}
+.faq-item.open .faq-q{color:var(--gold);}
+.faq-icon{width:28px;height:28px;border-radius:50%;background:var(--gray-100);display:flex;align-items:center;justify-content:center;color:var(--gray-600);font-size:.78rem;flex-shrink:0;transition:var(--transition);}
+.faq-item.open .faq-icon{background:var(--gold);color:#fff;transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;padding:0 20px;}
+.faq-a.open{max-height:400px;padding-bottom:18px;}
+.faq-a p{font-size:.87rem;color:var(--gray-600);line-height:1.75;}
+.faq-a a{color:var(--gold);font-weight:600;}
+.faq-sidebar{display:flex;flex-direction:column;gap:18px;}
+.fsb-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--radius-lg);padding:22px;}
+.fsb-card h4{font-size:.88rem;font-weight:700;color:var(--navy);margin-bottom:14px;padding-bottom:9px;border-bottom:1px solid var(--gray-100);}
+.fsb-links li{margin-bottom:9px;}
+.fsb-links a{display:flex;align-items:center;gap:8px;font-size:.83rem;color:var(--gray-600);transition:var(--transition);padding:8px 10px;border-radius:8px;}
+.fsb-links a:hover{background:var(--gold-pale);color:var(--gold);}
+.fsb-links i{font-size:.72rem;color:var(--gold);}
+.wa-cta-card{background:linear-gradient(135deg,#128C7E,#25D366);border-radius:var(--radius-lg);padding:24px;text-align:center;}
+.wa-cta-card h4{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:8px;}
+.wa-cta-card p{font-size:.8rem;color:rgba(255,255,255,.85);margin-bottom:16px;line-height:1.6;}
+.wa-cta-card .btn-wa-w{display:flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:#128C7E;padding:11px;border-radius:var(--radius-pill);font-size:.855rem;font-weight:600;text-decoration:none;transition:var(--transition);margin-bottom:8px;}
+.wa-cta-card .btn-wa-w:hover{background:rgba(255,255,255,.9);}
+.wa-cta-card .btn-call-w{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,.15);color:#fff;padding:10px;border-radius:var(--radius-pill);font-size:.84rem;font-weight:600;text-decoration:none;border:1.5px solid rgba(255,255,255,.4);transition:var(--transition);}
+.wa-cta-card .btn-call-w:hover{background:rgba(255,255,255,.25);}
+@media(max-width:1024px){.faq-layout{grid-template-columns:1fr;}.faq-sidebar{display:none;}}</style>
+</head>
+<body>
+<nav class="navbar" id="navbar"><div class="container">
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Afrix PMG" class="nav-logo-img" onerror="this.style.display='none'"/>Afrix<span class="accent">PMG</span></a>
+    <ul class="nav-links" id="navLinks"><li><a href="index.html"><i class="fas fa-home fa-fw"></i> Home</a></li>
+<li><a href="properties.html"><i class="fas fa-building fa-fw"></i> Properties</a></li>
+<li class="dropdown"><a href="#"><i class="fas fa-concierge-bell fa-fw"></i> Services <i class="fas fa-chevron-down chev"></i></a><ul class="dropdown-menu"><li><a href="services.html">All Services</a></li><li><a href="property-management.html">Property Management</a></li><li><a href="diaspora.html">Diaspora Services</a></li></ul></li>
+<li><a href="about.html"><i class="fas fa-users fa-fw"></i> About Us</a></li>
+<li><a href="faq.html" class="active"><i class="fas fa-question-circle fa-fw"></i> FAQ</a></li>
+<li><a href="contact.html"><i class="fas fa-envelope fa-fw"></i> Contact</a></li>
+</ul>
+    <div class="nav-actions"><a href="https://wa.me/233539484203?text=Hello%20Afrix." class="btn btn-gold" target="_blank" rel="noopener"><i class="fas fa-plus-circle"></i> List Property</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+  </div></nav>
+<section class="page-hero">
+  <div class="ph-slide ph-active" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&h=700&fit=crop&q=80')"><div class="ph-overlay"></div><div class="container ph-content"><div class="ph-label">Help Centre</div><h1 class="ph-title">Frequently Asked <span class='accent'>Questions</span></h1><p class="ph-sub">Find quick answers about buying, renting, selling, management and diaspora services. Still stuck? We're a WhatsApp away.</p><div class="ph-btns"><a href="#faqs" class="btn btn-gold"><i class="fas fa-search"></i> Browse FAQs</a><a href="https://wa.me/233539484203?text=Hello%20Afrix%2C%20I%20have%20a%20question." class="btn btn-outline-white" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Ask a Question</a></div></div></div>
+  <div class="ph-slide" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&h=700&fit=crop&q=80')"><div class="ph-overlay"></div><div class="container ph-content"><div class="ph-label">Buying &amp; Renting</div><h1 class="ph-title">Everything You Need<br>to Know About <span class='accent'>Property</span></h1><p class="ph-sub">From documents needed to how long it takes — all your buying and renting questions answered.</p><div class="ph-btns"><a href="#faqs" class="btn btn-gold"><i class="fas fa-home"></i> Buying &amp; Renting FAQs</a><a href="properties.html" class="btn btn-outline-white"><i class="fas fa-search"></i> Browse Properties</a></div></div></div>
+  <div class="ph-slide" style="background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&h=700&fit=crop&q=80')"><div class="ph-overlay"></div><div class="container ph-content"><div class="ph-label">Management &amp; Diaspora</div><h1 class="ph-title">Questions About Our <span class='accent'>Services</span></h1><p class="ph-sub">How property management works, diaspora investment process, fees and everything in between.</p><div class="ph-btns"><a href="#faqs" class="btn btn-gold"><i class="fas fa-key"></i> Service FAQs</a><a href="contact.html" class="btn btn-outline-white"><i class="fas fa-phone-alt"></i> Contact Us</a></div></div></div>
+  <div class="ph-controls"><button class="ph-arrow ph-prev"><i class="fas fa-chevron-left"></i></button><button class="ph-dot ph-dot-active" data-dot="0"></button><button class="ph-dot " data-dot="1"></button><button class="ph-dot " data-dot="2"></button><button class="ph-arrow ph-next"><i class="fas fa-chevron-right"></i></button></div>
+  <div class="ph-breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right"></i><span>FAQ</span></div>
+</section>
+
+<div id="faqs"></div>
+<div class="container"><div class="faq-layout">
+  <div class="faq-main">
+    <div class="faq-tabs" id="faqTabs"><button class="faq-tab  active" data-cat="buying">🏠 Buying</button><button class="faq-tab" data-cat="renting">🔑 Renting</button><button class="faq-tab" data-cat="selling">💰 Selling</button><button class="faq-tab" data-cat="management">⚙️ Management</button><button class="faq-tab" data-cat="diaspora">🌍 Diaspora</button><button class="faq-tab" data-cat="general">❓ General</button></div>
+    <div class="faq-group  active" id="cat-buying"><div class="faq-item"><button class="faq-q">How do I buy a property through Afrix?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>Simply browse our listings, shortlist what you love, then contact us. We assign a dedicated agent who handles viewings, negotiations and all legal paperwork from first search to keys in hand.</p></div></div>
+<div class="faq-item"><button class="faq-q">What documents do I need to buy property?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>You'll need: a valid national ID or passport, proof of income or source of funds, and (for land) a title search at the Lands Commission. Our legal team guides you through every document.</p></div></div>
+<div class="faq-item"><button class="faq-q">How long does the buying process take?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>A typical apartment or house purchase takes 4–8 weeks. Land transactions with title searches may take 2–4 months. We work hard to keep things moving quickly.</p></div></div>
+<div class="faq-item"><button class="faq-q">Can I negotiate the asking price?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>Absolutely! Our agents are skilled negotiators and will advocate for the best price on your behalf. We know the market and will advise what is realistically achievable.</p></div></div>
+<div class="faq-item"><button class="faq-q">What are your fees for buying?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>Our fees are transparent — usually a percentage of the purchase price paid by the seller. We outline all costs clearly before you sign anything. No hidden charges.</p></div></div>
+</div><div class="faq-group" id="cat-renting"><div class="faq-item"><button class="faq-q">How do I rent a property through Afrix?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>Browse rental listings (filter by 'Rent'), shortlist your favourites, then contact us to arrange viewings. We process your application, reference checks and lease agreement efficiently.</p></div></div>
+<div class="faq-item"><button class="faq-q">What is required to rent in Ghana?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>Most landlords require 1–2 years rent in advance (standard in Ghana), a valid ID, employment letter or proof of business, and sometimes a guarantor. We communicate each landlord's requirements upfront.</p></div></div>
+<div class="faq-item"><button class="faq-q">Can I view the property before committing?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>Always. We never expect you to commit without a viewing. We arrange in-person and virtual tours (video call) depending on your location.</p></div></div>
+<div class="faq-item"><button class="faq-q">Are utilities included in the rent?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>It depends on the property. Serviced apartments often include utilities; standalone houses usually don't. We clearly state what is included in every listing.</p></div></div>
+</div><div class="faq-group" id="cat-selling"><div class="faq-item"><button class="faq-q">How do I list my property for sale?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>WhatsApp us or fill in our contact form. An agent will schedule a free inspection, advise on pricing, and list your property within days.</p></div></div>
+<div class="faq-item"><button class="faq-q">How do you determine the right asking price?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>We use comparative market analysis — recent sales of similar properties, current demand, your property's condition and our deep local knowledge.</p></div></div>
+<div class="faq-item"><button class="faq-q">What is your commission for selling?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>Our seller's commission is a competitive percentage of the final sale price. We outline this clearly in our listing agreement. Contact us for a no-obligation discussion.</p></div></div>
+<div class="faq-item"><button class="faq-q">How long will it take to sell my property?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>Well-priced properties in prime locations typically sell within 30–90 days. We use targeted digital marketing and our buyer database to attract qualified buyers.</p></div></div>
+</div><div class="faq-group" id="cat-management"><div class="faq-item"><button class="faq-q">What does your property management service include?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>Our full management covers: tenant sourcing & screening, lease management, rent collection & disbursement, routine inspections, maintenance coordination, emergency repairs and monthly financial reporting.</p></div></div>
+<div class="faq-item"><button class="faq-q">How much do you charge for property management?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>Our fees are 8–12% of monthly rental income depending on property type and services required. No upfront fee to start.</p></div></div>
+<div class="faq-item"><button class="faq-q">How will I receive my rental income?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>We collect rent and disburse net income to your nominated bank account — whether it's a Ghanaian or international account — with a detailed monthly statement.</p></div></div>
+<div class="faq-item"><button class="faq-q">What if a tenant damages my property?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>We conduct thorough move-in and move-out inspections with photo evidence. A security deposit is held to cover damages. If damage exceeds the deposit, we pursue the tenant legally.</p></div></div>
+</div><div class="faq-group" id="cat-diaspora"><div class="faq-item"><button class="faq-q">Can I buy property in Ghana while living abroad?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>Absolutely. We specialise in diaspora clients. We offer virtual tours, handle all due diligence and legal work, and can act as your Power of Attorney to complete the purchase — 100% remotely.</p></div></div>
+<div class="faq-item"><button class="faq-q">How do I pay for a property from abroad?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>We support secure international wire transfers (SWIFT). All transactions are fully documented and receipted. We work with reputable legal and banking partners.</p></div></div>
+<div class="faq-item"><button class="faq-q">How do I know the property is legitimate if I can't visit?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>We conduct a full physical inspection, legal title search at the Lands Commission, and provide you with a detailed report with photos and live video tours.</p></div></div>
+<div class="faq-item"><button class="faq-q">Can you manage my property after I buy it?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>Yes — that's exactly what many diaspora clients do. We manage the property, find tenants, collect rent and send monthly income statements to your overseas account.</p></div></div>
+</div><div class="faq-group" id="cat-general"><div class="faq-item"><button class="faq-q">Where does Afrix PMG operate?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>We operate primarily in Greater Accra (East Legon, Cantonments, Airport Residential, Trasacco, Spintex, Tema) and also serve clients in Kumasi, Takoradi and other major Ghanaian cities.</p></div></div>
+<div class="faq-item"><button class="faq-q">How do I contact Afrix Properties?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>Via WhatsApp or phone on 0539484203, email at lotsuibrahim2@gmail.com, or through our Contact form. WhatsApp is fastest — we typically reply within minutes!</p></div></div>
+<div class="faq-item"><button class="faq-q">What are your office hours?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>Monday–Friday 8am–6pm and Saturday 9am–4pm (GMT). WhatsApp is monitored outside these hours too.</p></div></div>
+<div class="faq-item"><button class="faq-q">Is Afrix PMG a licensed real estate company?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-a"><p>Yes. Afrix Properties & Management Group operates fully within Ghana's regulatory framework for real estate and property management.</p></div></div>
+</div>
+  </div>
+  <aside class="faq-sidebar">
+    <div class="fsb-card"><h4>Browse Topics</h4><ul class="fsb-links">
+      <li><a href="#" onclick="switchTab('buying');return false"><i class="fas fa-chevron-right"></i> Buying Property</a></li>
+      <li><a href="#" onclick="switchTab('renting');return false"><i class="fas fa-chevron-right"></i> Renting</a></li>
+      <li><a href="#" onclick="switchTab('selling');return false"><i class="fas fa-chevron-right"></i> Selling</a></li>
+      <li><a href="#" onclick="switchTab('management');return false"><i class="fas fa-chevron-right"></i> Property Management</a></li>
+      <li><a href="#" onclick="switchTab('diaspora');return false"><i class="fas fa-chevron-right"></i> Diaspora Services</a></li>
+      <li><a href="#" onclick="switchTab('general');return false"><i class="fas fa-chevron-right"></i> General Questions</a></li>
+    </ul></div>
+    <div class="fsb-card"><h4>Useful Links</h4><ul class="fsb-links">
+      <li><a href="properties.html"><i class="fas fa-chevron-right"></i> Browse Properties</a></li>
+      <li><a href="services.html"><i class="fas fa-chevron-right"></i> Our Services</a></li>
+      <li><a href="property-management.html"><i class="fas fa-chevron-right"></i> Property Management</a></li>
+      <li><a href="diaspora.html"><i class="fas fa-chevron-right"></i> Diaspora Investment</a></li>
+    </ul></div>
+    <div class="wa-cta-card"><h4>Still Have Questions?</h4><p>Our friendly team is available Mon–Sat, 8am–6pm. Just send a message.</p>
+      <a href="https://wa.me/233539484203?text=Hello%20Afrix%2C%20I%20have%20a%20question." class="btn-wa-w" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+      <a href="tel:0539484203" class="btn-call-w"><i class="fas fa-phone-alt"></i> 0539484203</a>
+    </div>
+  </aside>
+</div></div>
+<section class="cta-section"><div class="container"><div class="cta-inner reveal">
+  <div class="cta-label">Didn't Find Your Answer?</div>
+  <h2 class="cta-title">Our Experts Are<br>Standing By</h2>
+  <p class="cta-desc">Reach out and we'll get back to you promptly — usually within minutes on WhatsApp.</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/233539484203?text=Hello%20Afrix%2C%20I%20have%20a%20question." class="btn btn-gold" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+    <a href="contact.html" class="btn btn-outline-white"><i class="fas fa-envelope"></i> Send Us a Message</a>
+  </div>
+</div></div></section>
+<footer class="footer"><div class="footer-main container">
+    <div class="footer-brand">
+      <div class="footer-logo-area"><img src="images/logo.png" alt="Afrix PMG" class="footer-logo-img" onerror="this.style.display='none'"/><div class="footer-brand-name">Afrix<span>PMG</span></div></div>
+      <p class="footer-tagline">Managing Value. Building Trust.</p>
+      <p>Ghana&#x27;s premier property management and real estate solutions group.</p>
+      <div class="footer-socials"><a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-btn"><i class="fab fa-instagram"></i></a><a href="#" class="social-btn"><i class="fab fa-twitter"></i></a><a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a></div>
+    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="properties.html">Properties</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Property Sales</a></li><li><a href="services.html">Property Letting</a></li><li><a href="property-management.html">Management</a></li><li><a href="diaspora.html">Diaspora</a></li><li><a href="services.html">Valuation</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4>
+      <div class="footer-contact-item"><i class="fas fa-phone-alt"></i><div><a href="tel:0539484203">0539484203</a></div></div>
+      <div class="footer-contact-item"><i class="fas fa-envelope"></i><div><a href="mailto:lotsuibrahim2@gmail.com">lotsuibrahim2@gmail.com</a></div></div>
+      <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><div>Accra, Ghana</div></div>
+      <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><div><a href="https://wa.me/233539484203" target="_blank" style="color:#25D366">Chat on WhatsApp</a></div></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="container"><p>&#169; 2026 Afrix Properties &amp; Management Group. All rights reserved.</p><p class="dev-credit">Website built by <a href="https://wa.me/233544823484?text=Hello%20Ibratech,%20I%20want%20a%20real%20estate%20website%20like%20Afrix" target="_blank" rel="noopener">Ibratech</a> &middot; <a href="tel:0544823484">0544823484</a></p></div></div>
+</footer>
+<a class="whatsapp-float" href="https://wa.me/233539484203?text=Hello%20Afrix." target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<script src="shared.js"></script><script src="chatbot.js"></script>
+<script>document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-item');
+    const isOpen=item.classList.contains('open');
+    btn.closest('.faq-group').querySelectorAll('.faq-item.open').forEach(o=>{o.classList.remove('open');o.querySelector('.faq-a').classList.remove('open');});
+    if(!isOpen){item.classList.add('open');item.querySelector('.faq-a').classList.add('open');}
+  });
+});
+function switchTab(cat){
+  document.querySelectorAll('.faq-tab').forEach(t=>t.classList.toggle('active',t.dataset.cat===cat));
+  document.querySelectorAll('.faq-group').forEach(g=>g.classList.toggle('active',g.id===`cat-${cat}`));
+}
+document.getElementById('faqTabs').addEventListener('click',e=>{const t=e.target.closest('.faq-tab');if(t)switchTab(t.dataset.cat);});</script>
+</body></html>

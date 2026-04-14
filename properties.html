@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Browse Properties | Afrix Properties &amp; Management Group</title>
+<meta name="description" content="Browse premium properties for sale and rent across Ghana."/>
+<meta property="og:title" content="Browse Properties | Afrix PMG"/>
+<meta property="og:description" content="Browse premium properties for sale and rent across Ghana."/>
+<meta property="og:image" content="images/logo.png"/>
+<link rel="icon" href="images/logo.png" type="image/png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.filter-bar{background:#fff;padding:24px 0;border-bottom:1px solid var(--gray-200);}
+.filter-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;}
+.f-field{display:flex;flex-direction:column;gap:5px;flex:1;min-width:130px;}
+.f-field label{font-size:.71rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:.05em;}
+.f-field select{padding:10px 13px;border:1.5px solid var(--gray-200);border-radius:var(--radius);font-size:.84rem;font-family:inherit;color:var(--gray-900);background:var(--cream);transition:var(--transition);appearance:none;cursor:pointer;}
+.f-field select:focus{outline:none;border-color:var(--gold);background:#fff;}
+.results-info{font-size:.81rem;color:var(--gray-600);margin-top:14px;} .results-info strong{color:var(--navy);}
+.props-layout{display:grid;grid-template-columns:250px 1fr;gap:30px;padding:44px 0;}
+.props-sidebar{display:flex;flex-direction:column;gap:18px;position:sticky;top:calc(var(--nav-h)+16px);height:fit-content;}
+.sb-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--radius-lg);padding:20px;}
+.sb-card h4{font-size:.86rem;font-weight:700;color:var(--navy);margin-bottom:13px;padding-bottom:9px;border-bottom:1px solid var(--gray-100);}
+.tag-row{display:flex;flex-wrap:wrap;gap:7px;}
+.tag{padding:6px 12px;border-radius:var(--radius-pill);background:var(--gray-100);border:1.5px solid transparent;font-size:.75rem;font-weight:600;cursor:pointer;transition:var(--transition);font-family:inherit;}
+.tag.active,.tag:hover{background:var(--gold-pale);border-color:var(--gold);color:var(--gold-dark);}
+.pr-slider{width:100%;accent-color:var(--gold);margin:8px 0;}
+.pr-labels{display:flex;justify-content:space-between;font-size:.73rem;color:var(--gray-600);}
+.cb-list{display:flex;flex-direction:column;gap:8px;}
+.cb-list label{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--gray-600);cursor:pointer;}
+.cb-list input[type=checkbox]{accent-color:var(--gold);width:15px;height:15px;}
+.sb-cta{background:var(--navy);border-radius:var(--radius-lg);padding:20px;text-align:center;}
+.sb-cta h4{font-size:.88rem;font-weight:700;color:#fff;margin-bottom:8px;}
+.sb-cta p{font-size:.8rem;color:rgba(255,255,255,.65);margin-bottom:14px;line-height:1.6;}
+.pagination{display:flex;justify-content:center;gap:8px;padding:36px 0 0;}
+.pg-btn{width:38px;height:38px;border-radius:var(--radius);border:1.5px solid var(--gray-200);background:#fff;font-size:.875rem;cursor:pointer;transition:var(--transition);display:flex;align-items:center;justify-content:center;font-family:inherit;}
+.pg-btn.active,.pg-btn:hover{background:var(--gold);border-color:var(--gold);color:#fff;}
+@media(max-width:1024px){.props-layout{grid-template-columns:1fr;} .props-sidebar{display:none;}}
+@media(max-width:768px){.filter-row{flex-direction:column;} .f-field{min-width:100%;}}
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.png" alt="Afrix PMG" class="nav-logo-img" onerror="this.style.display='none'"/>
+      Afrix<span class="accent">PMG</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"><i class="fas fa-home fa-fw"></i> Home</a></li>
+      <li><a href="properties.html" class="active"><i class="fas fa-building fa-fw"></i> Properties</a></li>
+<li class="dropdown">
+        <a href="#"><i class="fas fa-concierge-bell fa-fw"></i> Services <i class="fas fa-chevron-down chev"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="services.html">All Services</a></li>
+          <li><a href="property-management.html">Property Management</a></li>
+          <li><a href="diaspora.html">Diaspora Services</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html"><i class="fas fa-users fa-fw"></i> About Us</a></li>
+      <li><a href="faq.html"><i class="fas fa-question-circle fa-fw"></i> FAQ</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope fa-fw"></i> Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://wa.me/233539484203?text=Hello%20Afrix%20Properties." class="btn btn-gold" target="_blank" rel="noopener"><i class="fas fa-plus-circle"></i> List Property</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<section class="page-hero">
+  <div class="ph-slide ph-active" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&h=700&fit=crop&q=80')">
+    <div class="ph-overlay"></div>
+    <div class="container ph-content">
+      <div class="ph-label">Browse Listings</div>
+      <h1 class="ph-title">Discover Premium <span class='accent'>Properties</span><br>Across Ghana</h1>
+      <p class="ph-sub">Verified homes, apartments, offices and land across Accra, Tema, Kumasi and beyond.</p>
+      <div class="ph-btns"><a href="#listings" class="btn btn-gold"><i class="fas fa-search"></i> Start Browsing</a><a href="https://wa.me/233539484203?text=I%20need%20help%20finding%20a%20property." class="btn btn-outline-white" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Talk to Agent</a></div>
+    </div>
+  </div>
+  <div class="ph-slide" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&h=700&fit=crop&q=80')">
+    <div class="ph-overlay"></div>
+    <div class="container ph-content">
+      <div class="ph-label">New Listings</div>
+      <h1 class="ph-title">Fresh Properties<br><span class='accent'>Added This Week</span></h1>
+      <p class="ph-sub">Luxury villas to affordable apartments — our listings are updated regularly with Ghana's best properties.</p>
+      <div class="ph-btns"><a href="#listings" class="btn btn-gold"><i class="fas fa-fire"></i> View New Listings</a><a href="contact.html" class="btn btn-outline-white"><i class="fas fa-envelope"></i> Get Alerts</a></div>
+    </div>
+  </div>
+  <div class="ph-slide" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&h=700&fit=crop&q=80')">
+    <div class="ph-overlay"></div>
+    <div class="container ph-content">
+      <div class="ph-label">List Your Property</div>
+      <h1 class="ph-title">Got a Property<br>to <span class='accent'>Sell or Rent?</span></h1>
+      <p class="ph-sub">List with Afrix PMG and reach thousands of verified buyers and tenants. Free inspection. No upfront fees.</p>
+      <div class="ph-btns"><a href="https://wa.me/233539484203?text=I%20want%20to%20list%20my%20property." class="btn btn-gold" target="_blank" rel="noopener"><i class="fas fa-plus-circle"></i> List My Property</a><a href="contact.html" class="btn btn-outline-white"><i class="fas fa-info-circle"></i> Learn More</a></div>
+    </div>
+  </div>
+  <div class="ph-controls">
+    <button class="ph-arrow ph-prev" aria-label="Prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="ph-dot ph-dot-active" data-dot="0"></button><button class="ph-dot " data-dot="1"></button><button class="ph-dot " data-dot="2"></button>
+    <button class="ph-arrow ph-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+  </div>
+  <div class="ph-breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right"></i><span>Properties</span></div>
+</section>
+
+<div class="filter-bar" id="listings">
+  <div class="container">
+    <div class="filter-row">
+      <div class="f-field"><label for="f-status">Status</label><select id="f-status"><option value="">Buy &amp; Rent</option><option value="sale">For Sale</option><option value="rent">For Rent</option></select></div>
+      <div class="f-field"><label for="f-type">Type</label><select id="f-type"><option value="">All Types</option><option value="villa">Villa</option><option value="apartment">Apartment</option><option value="house">House</option><option value="townhouse">Townhouse</option><option value="penthouse">Penthouse</option><option value="office">Office</option><option value="land">Land</option></select></div>
+      <div class="f-field"><label for="f-loc">Location</label><select id="f-loc"><option value="">All Locations</option><option value="accra">Accra</option><option value="tema">Tema</option><option value="kumasi">Kumasi</option><option value="takoradi">Takoradi</option></select></div>
+      <div class="f-field"><label for="f-beds">Bedrooms</label><select id="f-beds"><option value="">Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option></select></div>
+      <div class="f-field"><label for="f-price">Max Price (GHS)</label><select id="f-price"><option value="">Any Price</option><option value="500000">500K</option><option value="1000000">1M</option><option value="2000000">2M</option><option value="5000000">5M</option><option value="10000000">10M</option></select></div>
+      <div style="display:flex;gap:8px;flex-shrink:0;">
+        <button class="btn btn-gold" onclick="applyFilters()"><i class="fas fa-search"></i> Filter</button>
+        <button class="btn btn-outline" onclick="clearFilters()" title="Clear filters"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+    <div class="results-info" id="resultsInfo">Loading properties…</div>
+  </div>
+</div>
+<div class="container">
+  <div class="props-layout">
+    <aside class="props-sidebar">
+      <div class="sb-card">
+        <h4>Bedrooms</h4>
+        <div class="tag-row">
+          <button class="tag active" data-bed="">Any</button>
+          <button class="tag" data-bed="1">1+</button><button class="tag" data-bed="2">2+</button>
+          <button class="tag" data-bed="3">3+</button><button class="tag" data-bed="4">4+</button>
+          <button class="tag" data-bed="5">5+</button>
+        </div>
+      </div>
+      <div class="sb-card">
+        <h4>Price Range (GHS)</h4>
+        <input type="range" class="pr-slider" id="priceSlider" min="0" max="10000000" step="100000" value="10000000" oninput="document.getElementById('priceLabel').textContent='GHS '+parseInt(this.value).toLocaleString()"/>
+        <div class="pr-labels"><span>GHS 0</span><span id="priceLabel">GHS 10,000,000</span></div>
+      </div>
+      <div class="sb-card">
+        <h4>Amenities</h4>
+        <div class="cb-list">
+          <label><input type="checkbox"/> Swimming Pool</label>
+          <label><input type="checkbox"/> 24hr Security</label>
+          <label><input type="checkbox"/> Generator</label>
+          <label><input type="checkbox"/> Furnished</label>
+          <label><input type="checkbox"/> Parking</label>
+        </div>
+      </div>
+      <div class="sb-cta">
+        <h4>Need Help?</h4>
+        <p>Our agents are ready to find your perfect property.</p>
+        <a href="https://wa.me/233539484203?text=Hello%20Afrix%2C%20I%20need%20help%20finding%20a%20property." class="btn btn-gold" target="_blank" rel="noopener" style="width:100%;justify-content:center;"><i class="fab fa-whatsapp"></i> WhatsApp Agent</a>
+      </div>
+    </aside>
+    <div>
+      <div class="properties-grid" id="propertiesGrid"></div>
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-main container">
+    <div class="footer-brand">
+      <div class="footer-logo-area">
+        <img src="images/logo.png" alt="Afrix PMG" class="footer-logo-img" onerror="this.style.display='none'"/>
+        <div class="footer-brand-name">Afrix<span>PMG</span></div>
+      </div>
+      <p class="footer-tagline">Managing Value. Building Trust.</p>
+      <p>Ghana&#x27;s premier property management and real estate solutions group.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-btn" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul>
+      <li><a href="index.html">Home</a></li><li><a href="properties.html">Properties</a></li>
+      <li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li>
+      <li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Services</h4><ul>
+      <li><a href="services.html">Property Sales</a></li>
+      <li><a href="services.html">Property Letting</a></li>
+      <li><a href="property-management.html">Property Management</a></li>
+      <li><a href="diaspora.html">Diaspora Services</a></li>
+      <li><a href="services.html">Valuation</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Contact</h4>
+      <div class="footer-contact-item"><i class="fas fa-phone-alt"></i><div><a href="tel:0539484203">0539484203</a></div></div>
+      <div class="footer-contact-item"><i class="fas fa-envelope"></i><div><a href="mailto:lotsuibrahim2@gmail.com">lotsuibrahim2@gmail.com</a></div></div>
+      <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><div>Accra, Ghana</div></div>
+      <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><div><a href="https://wa.me/233539484203" target="_blank" style="color:#25D366">Chat on WhatsApp</a></div></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="container">
+    <p>&#169; 2026 Afrix Properties &amp; Management Group. All rights reserved.</p>
+    <p class="dev-credit">Website built by <a href="https://wa.me/233544823484?text=Hello%20Ibratech,%20I%20want%20a%20real%20estate%20website%20like%20Afrix" target="_blank" rel="noopener">Ibratech</a> &middot; <a href="tel:0544823484">0544823484</a></p>
+  </div></div>
+</footer>
+<a class="whatsapp-float" href="https://wa.me/233539484203?text=Hello%20Afrix." target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<script src="shared.js"></script>
+<script src="chatbot.js"></script>
+<script>
+const PROPERTIES=[
+  {id:1,title:"Luxury 4-Bedroom Villa",type:"villa",status:"sale",price:4200000,location:"East Legon, Accra",city:"accra",bedrooms:4,bathrooms:3,size:320,image:"https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=450&fit=crop&q=80"},
+  {id:2,title:"Modern 3-Bedroom Apartment",type:"apartment",status:"rent",price:2800,location:"Cantonments, Accra",city:"accra",bedrooms:3,bathrooms:2,size:185,image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=450&fit=crop&q=80"},
+  {id:3,title:"Executive 5-Bedroom Mansion",type:"villa",status:"sale",price:7500000,location:"Trasacco Valley, Accra",city:"accra",bedrooms:5,bathrooms:5,size:580,image:"https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&h=450&fit=crop&q=80"},
+  {id:4,title:"2-Bedroom Studio Apartment",type:"apartment",status:"rent",price:1500,location:"Airport Residential, Accra",city:"accra",bedrooms:2,bathrooms:2,size:110,image:"https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&h=450&fit=crop&q=80"},
+  {id:5,title:"3-Bedroom Townhouse",type:"townhouse",status:"sale",price:1200000,location:"Tema Community 25",city:"tema",bedrooms:3,bathrooms:2,size:210,image:"https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&h=450&fit=crop&q=80"},
+  {id:6,title:"Luxury Penthouse",type:"penthouse",status:"sale",price:3800000,location:"Ridge, Accra",city:"accra",bedrooms:4,bathrooms:4,size:380,image:"https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&h=450&fit=crop&q=80"},
+  {id:7,title:"4-Bedroom Family Home",type:"house",status:"sale",price:2100000,location:"Spintex Road, Accra",city:"accra",bedrooms:4,bathrooms:3,size:280,image:"https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=600&h=450&fit=crop&q=80"},
+  {id:8,title:"1-Bedroom Serviced Apartment",type:"apartment",status:"rent",price:900,location:"Labone, Accra",city:"accra",bedrooms:1,bathrooms:1,size:65,image:"https://images.unsplash.com/photo-1551038247-3d9af20df552?w=600&h=450&fit=crop&q=80"},
+  {id:9,title:"Commercial Office Space",type:"office",status:"rent",price:8000,location:"Osu, Accra",city:"accra",bedrooms:0,bathrooms:2,size:350,image:"https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=450&fit=crop&q=80"},
+  {id:10,title:"2 Plots of Land",type:"land",status:"sale",price:450000,location:"Pokuase, Accra",city:"accra",bedrooms:0,bathrooms:0,size:500,image:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=450&fit=crop&q=80"},
+  {id:11,title:"3-Bedroom Semi-Detached",type:"house",status:"rent",price:3500,location:"East Legon Hills, Accra",city:"accra",bedrooms:3,bathrooms:2,size:200,image:"https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&h=450&fit=crop&q=80"},
+  {id:12,title:"5-Bedroom Detached Villa",type:"villa",status:"sale",price:5500000,location:"Kumasi, Ashanti",city:"kumasi",bedrooms:5,bathrooms:4,size:420,image:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=450&fit=crop&q=80"},
+];
+const PER_PAGE=9; let filtered=[...PROPERTIES], curPage=1;
+function applyURLParams(){
+  const p=new URLSearchParams(window.location.search);
+  if(p.get('status')) document.getElementById('f-status').value=p.get('status');
+  if(p.get('type'))   document.getElementById('f-type').value=p.get('type');
+  if(p.get('location')) document.getElementById('f-loc').value=p.get('location');
+  if(p.get('beds'))   document.getElementById('f-beds').value=p.get('beds');
+  if(p.get('maxPrice')) document.getElementById('f-price').value=p.get('maxPrice');
+  if([...p.entries()].length) applyFilters(); else render();
+}
+function applyFilters(){
+  const st=document.getElementById('f-status').value, ty=document.getElementById('f-type').value,
+        lo=document.getElementById('f-loc').value, be=document.getElementById('f-beds').value,
+        pr=document.getElementById('f-price').value;
+  filtered=PROPERTIES.filter(p=>{
+    if(st&&p.status!==st)return false; if(ty&&p.type!==ty)return false;
+    if(lo&&p.city!==lo)return false; if(be&&p.bedrooms<+be)return false;
+    if(pr&&p.price>+pr)return false; return true;
+  }); curPage=1; render();
+}
+function clearFilters(){
+  ['f-status','f-type','f-loc','f-beds','f-price'].forEach(id=>document.getElementById(id).value='');
+  filtered=[...PROPERTIES]; curPage=1; render();
+}
+function render(){
+  const grid=document.getElementById('propertiesGrid'), info=document.getElementById('resultsInfo');
+  const slice=filtered.slice((curPage-1)*PER_PAGE, curPage*PER_PAGE);
+  info.innerHTML=`Showing <strong>${filtered.length}</strong> ${filtered.length===1?'property':'properties'}`;
+  if(!slice.length){
+    grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:60px 0"><i class="fas fa-search" style="font-size:2.5rem;color:var(--gray-200);display:block;margin-bottom:14px"></i><h3 style="color:var(--navy);margin-bottom:8px">No Properties Found</h3><p style="color:var(--gray-600)">Try adjusting your filters or <a href="contact.html" style="color:var(--gold)">contact an agent</a>.</p></div>';
+    document.getElementById('pagination').innerHTML=''; return;
+  }
+  grid.innerHTML=slice.map(p=>{
+    const price=p.status==='rent'?`GHS ${p.price.toLocaleString()}<span>/mo</span>`:`GHS ${p.price.toLocaleString()}`;
+    const beds=p.bedrooms?`<span><i class="fas fa-bed"></i>${p.bedrooms} Beds</span>`:'';
+    const baths=p.bathrooms?`<span><i class="fas fa-bath"></i>${p.bathrooms} Baths</span>`:'';
+    return `<div class="property-card" onclick="window.location='property-details.html?id=${p.id}'">
+      <div class="property-card-img">
+        <img src="${p.image}" alt="${p.title}" loading="lazy"/>
+        <span class="property-badge ${p.status==='sale'?'badge-sale':'badge-rent'}">For ${p.status==='sale'?'Sale':'Rent'}</span>
+        <button class="property-save" onclick="event.stopPropagation();this.classList.toggle('saved')" aria-label="Save"><i class="fas fa-heart"></i></button>
+      </div>
+      <div class="property-card-body">
+        <div class="property-price">${price}</div>
+        <div class="property-title">${p.title}</div>
+        <div class="property-location"><i class="fas fa-map-marker-alt"></i>${p.location}</div>
+        <div class="property-meta">${beds}${baths}<span><i class="fas fa-ruler-combined"></i>${p.size}m²</span></div>
+      </div>
+      <div class="property-card-footer">
+        <a href="property-details.html?id=${p.id}" class="btn btn-navy" onclick="event.stopPropagation()">Details</a>
+        <a href="https://wa.me/233539484203?text=Hello%20Afrix%2C%20I%27m%20interested%20in%20${encodeURIComponent(p.title)}%20(ID:${p.id})." class="btn btn-outline" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="fab fa-whatsapp"></i> Enquire</a>
+      </div>
+    </div>`;
+  }).join('');
+  renderPag();
+}
+function renderPag(){
+  const total=Math.ceil(filtered.length/PER_PAGE), pag=document.getElementById('pagination');
+  if(total<=1){pag.innerHTML='';return;}
+  let h=curPage>1?`<button class="pg-btn" onclick="goP(${curPage-1})"><i class="fas fa-chevron-left"></i></button>`:'';
+  for(let i=1;i<=total;i++) h+=`<button class="pg-btn ${i===curPage?'active':''}" onclick="goP(${i})">${i}</button>`;
+  if(curPage<total) h+=`<button class="pg-btn" onclick="goP(${curPage+1})"><i class="fas fa-chevron-right"></i></button>`;
+  pag.innerHTML=h;
+}
+function goP(n){curPage=n;render();window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('.tag[data-bed]').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tag[data-bed]').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active'); document.getElementById('f-beds').value=t.dataset.bed; applyFilters();
+  });
+});
+applyURLParams();
+</script>
+</body>
+</html>
