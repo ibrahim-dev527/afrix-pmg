@@ -12,6 +12,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <link rel="stylesheet" href="shared.css"/>
+<!-- ── Supabase config loads the SDK and creates window.sb ── -->
+<script src="supabase-config.js"></script>
 <style>
 .filter-bar{background:#fff;padding:24px 0;border-bottom:1px solid var(--gray-200);}
 .filter-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;}
@@ -40,6 +42,33 @@
 .pg-btn.active,.pg-btn:hover{background:var(--gold);border-color:var(--gold);color:#fff;}
 @media(max-width:1024px){.props-layout{grid-template-columns:1fr;} .props-sidebar{display:none;}}
 @media(max-width:768px){.filter-row{flex-direction:column;} .f-field{min-width:100%;}}
+/* ── CATEGORY TABS (updated) ── */
+.cat-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;}
+.cat-tab{padding:9px 18px;border-radius:50px;border:1.5px solid var(--gray-200);background:#fff;font-size:.82rem;font-weight:600;color:var(--gray-600);cursor:pointer;transition:var(--transition);font-family:inherit;white-space:nowrap;}
+.cat-tab.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+.cat-tab.tab-sell{border-color:var(--gold);color:var(--gold-dark);}
+.cat-tab.tab-sell:hover,.cat-tab.tab-sell.active{background:linear-gradient(135deg,var(--gold),var(--gold-light));border-color:var(--gold);color:#fff;}
+.cat-tab.tab-manage{border-color:var(--navy);color:var(--navy);}
+.cat-tab.tab-manage:hover,.cat-tab.tab-manage.active{background:var(--navy);color:#fff;}
+/* ── SELL / MANAGE MODALS ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:5000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:all .3s;}
+.overlay.open{opacity:1;visibility:visible;}
+.overlay-card{background:#fff;border-radius:20px;width:100%;max-width:560px;max-height:88vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.18);transform:scale(.95);transition:transform .3s;}
+.overlay.open .overlay-card{transform:scale(1);}
+.ov-head{padding:20px 24px;border-bottom:1px solid var(--gray-200);display:flex;align-items:center;gap:12px;position:sticky;top:0;background:#fff;z-index:1;}
+.ov-head h3{font-size:1rem;font-weight:700;color:var(--navy);flex:1;}
+.ov-close{width:30px;height:30px;border-radius:50%;border:none;background:var(--gray-100);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.ov-body{padding:24px;}
+.ov-fg{margin-bottom:15px;}
+.ov-fg label{display:block;font-size:.72rem;font-weight:700;color:var(--gray-600);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em;}
+.ov-fg input,.ov-fg select,.ov-fg textarea{width:100%;padding:11px 13px;border:1.5px solid var(--gray-200);border-radius:var(--radius);font-size:.875rem;font-family:inherit;color:var(--gray-900);background:var(--cream);transition:border .2s;}
+.ov-fg input:focus,.ov-fg select:focus,.ov-fg textarea:focus{outline:none;border-color:var(--gold);background:#fff;}
+.ov-fg textarea{resize:vertical;min-height:90px;}
+.ov-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.ov-footer{padding:16px 24px;border-top:1px solid var(--gray-200);display:flex;gap:10px;justify-content:flex-end;position:sticky;bottom:0;background:#fff;}
+.success-banner{background:#dcfce7;border:1.5px solid #86efac;border-radius:var(--radius);padding:14px 18px;font-size:.875rem;color:#15803d;display:none;align-items:center;gap:10px;margin-bottom:16px;}
+.success-banner.show{display:flex;}
+
 </style>
 </head>
 <body>
@@ -106,10 +135,80 @@
   <div class="ph-breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right"></i><span>Properties</span></div>
 </section>
 
+<!-- SELL PROPERTY MODAL -->
+<div class="overlay" id="sellModal">
+  <div class="overlay-card">
+    <div class="ov-head"><h3>📋 Submit Your Property for Listing</h3><button class="ov-close" onclick="closeOverlay('sellModal')">×</button></div>
+    <div class="ov-body">
+      <div class="success-banner" id="sellSuccess"><i class="fas fa-check-circle"></i> Submitted! Our team will contact you within 24 hours.</div>
+      <p style="font-size:.855rem;color:var(--gray-600);margin-bottom:20px;line-height:1.65">Fill in the details below. Our team will inspect your property and list it on our platform within 72 hours — at no upfront cost.</p>
+      <div class="ov-grid">
+        <div class="ov-fg"><label>Full Name *</label><input type="text" id="sell-name" placeholder="Property owner name"/></div>
+        <div class="ov-fg"><label>Phone / WhatsApp *</label><input type="tel" id="sell-phone" placeholder="+233 xxx xxx xxx"/></div>
+      </div>
+      <div class="ov-fg"><label>Email (optional)</label><input type="email" id="sell-email" placeholder="you@email.com"/></div>
+      <div class="ov-grid">
+        <div class="ov-fg"><label>Listing Type *</label>
+          <select id="sell-type"><option value="sale">For Sale</option><option value="rent">For Rent</option><option value="short_stay">Short Stay</option><option value="airbnb">Airbnb</option><option value="long_term">Long Term</option></select>
+        </div>
+        <div class="ov-fg"><label>Property Type *</label>
+          <select id="sell-ptype"><option>Apartment</option><option>Villa / House</option><option>Townhouse</option><option>Office</option><option>Land</option></select>
+        </div>
+      </div>
+      <div class="ov-fg"><label>Property Address *</label><input type="text" id="sell-address" placeholder="e.g. 5 Palm Drive, East Legon, Accra"/></div>
+      <div class="ov-grid">
+        <div class="ov-fg"><label>Asking Price (GHS)</label><input type="text" id="sell-price" placeholder="e.g. 2,500,000"/></div>
+        <div class="ov-fg"><label>Bedrooms</label><select id="sell-beds"><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option><option>N/A</option></select></div>
+      </div>
+      <div class="ov-fg"><label>Description</label><textarea id="sell-desc" placeholder="Describe your property…"></textarea></div>
+    </div>
+    <div class="ov-footer">
+      <button style="padding:10px 18px;background:var(--gray-100);border:none;border-radius:50px;cursor:pointer;font-weight:600" onclick="closeOverlay('sellModal')">Cancel</button>
+      <button style="padding:10px 22px;background:linear-gradient(135deg,#C4922A,#E8B84B);color:#fff;border:none;border-radius:50px;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:7px" onclick="submitSell()"><i class="fab fa-whatsapp"></i> Submit via WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<!-- MANAGE PROPERTY MODAL -->
+<div class="overlay" id="manageModal">
+  <div class="overlay-card">
+    <div class="ov-head"><h3>🔑 Request Property Management</h3><button class="ov-close" onclick="closeOverlay('manageModal')">×</button></div>
+    <div class="ov-body">
+      <div class="success-banner" id="manageSuccess"><i class="fas fa-check-circle"></i> Request sent! Our team will reach out within 24 hours.</div>
+      <p style="font-size:.855rem;color:var(--gray-600);margin-bottom:20px;line-height:1.65">Let Afrix PMG handle your tenants, rent collection, maintenance and reporting. Fill in the form below to get started.</p>
+      <div class="ov-grid">
+        <div class="ov-fg"><label>Your Name *</label><input type="text" id="mgmt-name" placeholder="Property owner name"/></div>
+        <div class="ov-fg"><label>Phone / WhatsApp *</label><input type="tel" id="mgmt-phone" placeholder="+233 xxx xxx xxx"/></div>
+      </div>
+      <div class="ov-fg"><label>Email (optional)</label><input type="email" id="mgmt-email" placeholder="you@email.com"/></div>
+      <div class="ov-fg"><label>Property Address *</label><input type="text" id="mgmt-address" placeholder="e.g. 5 Palm Drive, East Legon, Accra"/></div>
+      <div class="ov-fg"><label>Property Type</label>
+        <select id="mgmt-ptype"><option>Apartment</option><option>Villa / House</option><option>Townhouse</option><option>Office</option><option>Multiple Units</option></select>
+      </div>
+      <div class="ov-fg"><label>Additional Message</label><textarea id="mgmt-msg" placeholder="Tell us more about your property and management needs…"></textarea></div>
+    </div>
+    <div class="ov-footer">
+      <button style="padding:10px 18px;background:var(--gray-100);border:none;border-radius:50px;cursor:pointer;font-weight:600" onclick="closeOverlay('manageModal')">Cancel</button>
+      <button style="padding:10px 22px;background:linear-gradient(135deg,#C4922A,#E8B84B);color:#fff;border:none;border-radius:50px;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:7px" onclick="submitManage()"><i class="fab fa-whatsapp"></i> Request via WhatsApp</button>
+    </div>
+  </div>
+</div>
+
 <div class="filter-bar" id="listings">
   <div class="container">
+    <!-- CATEGORY TABS: Buy | Sell | Rent | Short-Stay | Airbnb | Long-Term | Manage -->
+    <div class="cat-tabs" id="catTabs">
+      <button class="cat-tab active" data-cat="all">🏘 All</button>
+      <button class="cat-tab" data-cat="buy">🏠 Buy</button>
+      <button class="cat-tab tab-sell" data-cat="sell">💰 Sell</button>
+      <button class="cat-tab" data-cat="rent">🔑 Rent</button>
+      <button class="cat-tab" data-cat="short_stay">⏱ Short Stay</button>
+      <button class="cat-tab" data-cat="airbnb">🛎 Airbnb</button>
+      <button class="cat-tab" data-cat="long_term">📅 Long Term</button>
+      <button class="cat-tab tab-manage" data-cat="manage">⚙️ Manage</button>
+    </div>
     <div class="filter-row">
-      <div class="f-field"><label for="f-status">Status</label><select id="f-status"><option value="">Buy &amp; Rent</option><option value="sale">For Sale</option><option value="rent">For Rent</option></select></div>
+      <div class="f-field"><label for="f-status">Status</label><select id="f-status"><option value="">Buy &amp; Rent</option><option value="buy">For Sale</option><option value="rent">For Rent</option><option value="short_stay">Short Stay</option><option value="airbnb">Airbnb</option><option value="long_term">Long Term</option></select></div>
       <div class="f-field"><label for="f-type">Type</label><select id="f-type"><option value="">All Types</option><option value="villa">Villa</option><option value="apartment">Apartment</option><option value="house">House</option><option value="townhouse">Townhouse</option><option value="penthouse">Penthouse</option><option value="office">Office</option><option value="land">Land</option></select></div>
       <div class="f-field"><label for="f-loc">Location</label><select id="f-loc"><option value="">All Locations</option><option value="accra">Accra</option><option value="tema">Tema</option><option value="kumasi">Kumasi</option><option value="takoradi">Takoradi</option></select></div>
       <div class="f-field"><label for="f-beds">Bedrooms</label><select id="f-beds"><option value="">Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option></select></div>
@@ -197,7 +296,7 @@
     </div>
   </div>
   <div class="footer-bottom"><div class="container">
-    <p>&#169; 2026 Afrix Properties &amp; Management Group. All rights reserved.</p>
+    <p>&#169; 2024 Afrix Properties &amp; Management Group. All rights reserved.</p>
     <p class="dev-credit">Website built by <a href="https://wa.me/233544823484?text=Hello%20Ibratech,%20I%20want%20a%20real%20estate%20website%20like%20Afrix" target="_blank" rel="noopener">Ibratech</a> &middot; <a href="tel:0544823484">0544823484</a></p>
   </div></div>
 </footer>
@@ -205,92 +304,297 @@
 <script src="shared.js"></script>
 <script src="chatbot.js"></script>
 <script>
-const PROPERTIES=[
-  {id:1,title:"Luxury 4-Bedroom Villa",type:"villa",status:"sale",price:4200000,location:"East Legon, Accra",city:"accra",bedrooms:4,bathrooms:3,size:320,image:"https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=450&fit=crop&q=80"},
-  {id:2,title:"Modern 3-Bedroom Apartment",type:"apartment",status:"rent",price:2800,location:"Cantonments, Accra",city:"accra",bedrooms:3,bathrooms:2,size:185,image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=450&fit=crop&q=80"},
-  {id:3,title:"Executive 5-Bedroom Mansion",type:"villa",status:"sale",price:7500000,location:"Trasacco Valley, Accra",city:"accra",bedrooms:5,bathrooms:5,size:580,image:"https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&h=450&fit=crop&q=80"},
-  {id:4,title:"2-Bedroom Studio Apartment",type:"apartment",status:"rent",price:1500,location:"Airport Residential, Accra",city:"accra",bedrooms:2,bathrooms:2,size:110,image:"https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&h=450&fit=crop&q=80"},
-  {id:5,title:"3-Bedroom Townhouse",type:"townhouse",status:"sale",price:1200000,location:"Tema Community 25",city:"tema",bedrooms:3,bathrooms:2,size:210,image:"https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&h=450&fit=crop&q=80"},
-  {id:6,title:"Luxury Penthouse",type:"penthouse",status:"sale",price:3800000,location:"Ridge, Accra",city:"accra",bedrooms:4,bathrooms:4,size:380,image:"https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&h=450&fit=crop&q=80"},
-  {id:7,title:"4-Bedroom Family Home",type:"house",status:"sale",price:2100000,location:"Spintex Road, Accra",city:"accra",bedrooms:4,bathrooms:3,size:280,image:"https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=600&h=450&fit=crop&q=80"},
-  {id:8,title:"1-Bedroom Serviced Apartment",type:"apartment",status:"rent",price:900,location:"Labone, Accra",city:"accra",bedrooms:1,bathrooms:1,size:65,image:"https://images.unsplash.com/photo-1551038247-3d9af20df552?w=600&h=450&fit=crop&q=80"},
-  {id:9,title:"Commercial Office Space",type:"office",status:"rent",price:8000,location:"Osu, Accra",city:"accra",bedrooms:0,bathrooms:2,size:350,image:"https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=450&fit=crop&q=80"},
-  {id:10,title:"2 Plots of Land",type:"land",status:"sale",price:450000,location:"Pokuase, Accra",city:"accra",bedrooms:0,bathrooms:0,size:500,image:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=450&fit=crop&q=80"},
-  {id:11,title:"3-Bedroom Semi-Detached",type:"house",status:"rent",price:3500,location:"East Legon Hills, Accra",city:"accra",bedrooms:3,bathrooms:2,size:200,image:"https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&h=450&fit=crop&q=80"},
-  {id:12,title:"5-Bedroom Detached Villa",type:"villa",status:"sale",price:5500000,location:"Kumasi, Ashanti",city:"kumasi",bedrooms:5,bathrooms:4,size:420,image:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=450&fit=crop&q=80"},
+/*
+ * PROPERTIES.HTML — DYNAMIC SUPABASE VERSION
+ * ============================================
+ * Data flow:
+ *  1. Page loads → applyURLParams() checks URL search params
+ *  2. loadFromSupabase() queries Supabase properties table
+ *  3. Falls back to STATIC_FALLBACK if Supabase not configured
+ *  4. render() builds property cards from data
+ *  5. Category tabs update f-status select + trigger new query
+ *
+ * To add new listing types: add to f-status select AND catTabs
+ */
+
+// ── Static fallback (used when Supabase is not yet configured) ──
+const STATIC_FALLBACK = [
+  {id:'1',title:"Luxury 4-Bedroom Villa",listing_type:"buy",price:4200000,price_period:"total",location:"East Legon, Accra",city:"accra",type:"villa",bedrooms:4,bathrooms:3,size:320,images:["https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=450&fit=crop&q=80"],status:"active"},
+  {id:'2',title:"Modern 3-Bedroom Apartment",listing_type:"rent",price:2800,price_period:"per_month",location:"Cantonments, Accra",city:"accra",type:"apartment",bedrooms:3,bathrooms:2,size:185,images:["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=450&fit=crop&q=80"],status:"active"},
+  {id:'3',title:"Executive 5-Bedroom Mansion",listing_type:"buy",price:7500000,price_period:"total",location:"Trasacco Valley",city:"accra",type:"villa",bedrooms:5,bathrooms:5,size:580,images:["https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&h=450&fit=crop&q=80"],status:"active"},
+  {id:'4',title:"Airbnb Studio — Airport",listing_type:"airbnb",price:350,price_period:"per_night",location:"Airport Residential",city:"accra",type:"apartment",bedrooms:1,bathrooms:1,size:65,images:["https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&h=450&fit=crop&q=80"],status:"active"},
+  {id:'5',title:"Short-Stay 2BR Apartment",listing_type:"short_stay",price:180,price_period:"per_night",location:"Cantonments, Accra",city:"accra",type:"apartment",bedrooms:2,bathrooms:1,size:90,images:["https://images.unsplash.com/photo-1551038247-3d9af20df552?w=600&h=450&fit=crop&q=80"],status:"active"},
+  {id:'6',title:"Long-Term 3BR Family Home",listing_type:"long_term",price:2500,price_period:"per_month",location:"Spintex Road",city:"accra",type:"house",bedrooms:3,bathrooms:2,size:200,images:["https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&h=450&fit=crop&q=80"],status:"active"},
+  {id:'7',title:"Luxury Penthouse",listing_type:"buy",price:3800000,price_period:"total",location:"Ridge, Accra",city:"accra",type:"penthouse",bedrooms:4,bathrooms:4,size:380,images:["https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&h=450&fit=crop&q=80"],status:"active"},
+  {id:'8',title:"3-Bedroom Townhouse",listing_type:"buy",price:1200000,price_period:"total",location:"Tema Community 25",city:"tema",type:"townhouse",bedrooms:3,bathrooms:2,size:210,images:["https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&h=450&fit=crop&q=80"],status:"active"},
+  {id:'9',title:"Commercial Office Space",listing_type:"rent",price:8000,price_period:"per_month",location:"Osu, Accra",city:"accra",type:"office",bedrooms:0,bathrooms:2,size:350,images:["https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=450&fit=crop&q=80"],status:"active"},
+  {id:'10',title:"5-Bedroom Detached Villa",listing_type:"buy",price:5500000,price_period:"total",location:"Kumasi, Ashanti",city:"kumasi",type:"villa",bedrooms:5,bathrooms:4,size:420,images:["https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=450&fit=crop&q=80"],status:"active"},
 ];
-const PER_PAGE=9; let filtered=[...PROPERTIES], curPage=1;
-function applyURLParams(){
-  const p=new URLSearchParams(window.location.search);
-  if(p.get('status')) document.getElementById('f-status').value=p.get('status');
-  if(p.get('type'))   document.getElementById('f-type').value=p.get('type');
-  if(p.get('location')) document.getElementById('f-loc').value=p.get('location');
-  if(p.get('beds'))   document.getElementById('f-beds').value=p.get('beds');
-  if(p.get('maxPrice')) document.getElementById('f-price').value=p.get('maxPrice');
-  if([...p.entries()].length) applyFilters(); else render();
-}
-function applyFilters(){
-  const st=document.getElementById('f-status').value, ty=document.getElementById('f-type').value,
-        lo=document.getElementById('f-loc').value, be=document.getElementById('f-beds').value,
-        pr=document.getElementById('f-price').value;
-  filtered=PROPERTIES.filter(p=>{
-    if(st&&p.status!==st)return false; if(ty&&p.type!==ty)return false;
-    if(lo&&p.city!==lo)return false; if(be&&p.bedrooms<+be)return false;
-    if(pr&&p.price>+pr)return false; return true;
-  }); curPage=1; render();
-}
-function clearFilters(){
-  ['f-status','f-type','f-loc','f-beds','f-price'].forEach(id=>document.getElementById(id).value='');
-  filtered=[...PROPERTIES]; curPage=1; render();
-}
-function render(){
-  const grid=document.getElementById('propertiesGrid'), info=document.getElementById('resultsInfo');
-  const slice=filtered.slice((curPage-1)*PER_PAGE, curPage*PER_PAGE);
-  info.innerHTML=`Showing <strong>${filtered.length}</strong> ${filtered.length===1?'property':'properties'}`;
-  if(!slice.length){
-    grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:60px 0"><i class="fas fa-search" style="font-size:2.5rem;color:var(--gray-200);display:block;margin-bottom:14px"></i><h3 style="color:var(--navy);margin-bottom:8px">No Properties Found</h3><p style="color:var(--gray-600)">Try adjusting your filters or <a href="contact.html" style="color:var(--gold)">contact an agent</a>.</p></div>';
-    document.getElementById('pagination').innerHTML=''; return;
+
+const PER_PAGE = 9;
+let allData = [], filtered = [], curPage = 1;
+
+// ── Load properties from Supabase (with fallback) ──
+async function loadFromSupabase(listingType) {
+  const grid = document.getElementById('propertiesGrid');
+  grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px"><div style="display:inline-block;width:36px;height:36px;border:3px solid var(--gray-200);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite"></div><p style="margin-top:14px;color:var(--gray-400);font-size:.85rem">Loading properties…</p></div>';
+
+  // Check if Supabase is configured (not placeholder)
+  const isConfigured = typeof SUPABASE_URL !== "undefined" && !SUPABASE_URL.includes("YOUR_PROJECT");
+
+  if (!isConfigured) {
+    // Use static fallback
+    allData = listingType && listingType !== "all"
+      ? STATIC_FALLBACK.filter(p => p.listing_type === listingType)
+      : STATIC_FALLBACK;
+    filtered = [...allData];
+    curPage = 1;
+    render();
+    return;
   }
-  grid.innerHTML=slice.map(p=>{
-    const price=p.status==='rent'?`GHS ${p.price.toLocaleString()}<span>/mo</span>`:`GHS ${p.price.toLocaleString()}`;
-    const beds=p.bedrooms?`<span><i class="fas fa-bed"></i>${p.bedrooms} Beds</span>`:'';
-    const baths=p.bathrooms?`<span><i class="fas fa-bath"></i>${p.bathrooms} Baths</span>`:'';
+
+  // Live Supabase query
+  onSbReady(async (sb) => {
+    let query = sb.from("properties").select("*").eq("status", "active").order("created_at", {ascending: false});
+    if (listingType && listingType !== "all") query = query.eq("listing_type", listingType);
+    const { data, error } = await query;
+    if (error) {
+      console.warn("Supabase error, falling back to static data:", error.message);
+      allData = STATIC_FALLBACK; filtered = [...allData]; curPage = 1; render(); return;
+    }
+    allData = data || [];
+    filtered = [...allData];
+    curPage = 1;
+    render();
+  });
+}
+
+// ── Filters applied on top of already-loaded data ──
+function applyFilters() {
+  const ty  = document.getElementById("f-type").value;
+  const lo  = document.getElementById("f-loc").value;
+  const be  = document.getElementById("f-beds").value;
+  const pr  = document.getElementById("f-price").value;
+  const st  = document.getElementById("f-status").value;
+
+  filtered = allData.filter(p => {
+    if (st && p.listing_type !== st) return false;
+    if (ty && p.type !== ty) return false;
+    if (lo && p.city !== lo) return false;
+    if (be && p.bedrooms < +be) return false;
+    if (pr && p.price > +pr) return false;
+    return true;
+  });
+  curPage = 1;
+  render();
+}
+
+function clearFilters() {
+  ["f-status","f-type","f-loc","f-beds","f-price"].forEach(id => document.getElementById(id).value = "");
+  filtered = [...allData]; curPage = 1; render();
+}
+
+// ── Render property cards ──
+function render() {
+  const grid = document.getElementById("propertiesGrid");
+  const info = document.getElementById("resultsInfo");
+  const slice = filtered.slice((curPage - 1) * PER_PAGE, curPage * PER_PAGE);
+  info.innerHTML = `Showing <strong>${filtered.length}</strong> ${filtered.length === 1 ? "property" : "properties"}`;
+
+  if (!slice.length) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px 0">
+      <i class="fas fa-search" style="font-size:2.5rem;color:var(--gray-200);display:block;margin-bottom:14px"></i>
+      <h3 style="color:var(--navy);margin-bottom:8px">No Properties Found</h3>
+      <p style="color:var(--gray-600)">Try adjusting your filters or <a href="contact.html" style="color:var(--gold)">contact an agent</a>.</p>
+    </div>`;
+    document.getElementById("pagination").innerHTML = ""; return;
+  }
+
+  grid.innerHTML = slice.map(p => {
+    const imgs  = Array.isArray(p.images) ? p.images : (JSON.parse(p.images || "[]"));
+    const thumb = imgs[0] || "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=450&fit=crop";
+    const price = formatPrice(p.price, p.price_period);
+    const beds  = p.bedrooms ? `<span><i class="fas fa-bed"></i>${p.bedrooms} Beds</span>` : "";
+    const baths = p.bathrooms ? `<span><i class="fas fa-bath"></i>${p.bathrooms} Baths</span>` : "";
+    const badgeMap = { buy:"badge-sale", rent:"badge-rent", short_stay:"badge-rent", airbnb:"badge-sale", long_term:"badge-rent" };
+    const labelMap = { buy:"For Sale", rent:"For Rent", short_stay:"Short Stay", airbnb:"Airbnb", long_term:"Long Term" };
     return `<div class="property-card" onclick="window.location='property-details.html?id=${p.id}'">
       <div class="property-card-img">
-        <img src="${p.image}" alt="${p.title}" loading="lazy"/>
-        <span class="property-badge ${p.status==='sale'?'badge-sale':'badge-rent'}">For ${p.status==='sale'?'Sale':'Rent'}</span>
+        <img src="${thumb}" alt="${p.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=450&fit=crop'"/>
+        <span class="property-badge ${badgeMap[p.listing_type]||'badge-sale'}">${labelMap[p.listing_type]||p.listing_type}</span>
         <button class="property-save" onclick="event.stopPropagation();this.classList.toggle('saved')" aria-label="Save"><i class="fas fa-heart"></i></button>
       </div>
       <div class="property-card-body">
         <div class="property-price">${price}</div>
         <div class="property-title">${p.title}</div>
         <div class="property-location"><i class="fas fa-map-marker-alt"></i>${p.location}</div>
-        <div class="property-meta">${beds}${baths}<span><i class="fas fa-ruler-combined"></i>${p.size}m²</span></div>
+        <div class="property-meta">${beds}${baths}${p.size?`<span><i class="fas fa-ruler-combined"></i>${p.size}m²</span>`:""}</div>
       </div>
       <div class="property-card-footer">
         <a href="property-details.html?id=${p.id}" class="btn btn-navy" onclick="event.stopPropagation()">Details</a>
-        <a href="https://wa.me/233539484203?text=Hello%20Afrix%2C%20I%27m%20interested%20in%20${encodeURIComponent(p.title)}%20(ID:${p.id})." class="btn btn-outline" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="fab fa-whatsapp"></i> Enquire</a>
+        <a href="https://wa.me/233539484203?text=Hello%20Afrix%2C%20I%27m%20interested%20in%20${encodeURIComponent(p.title)}." class="btn btn-outline" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="fab fa-whatsapp"></i> Enquire</a>
       </div>
     </div>`;
-  }).join('');
+  }).join("");
   renderPag();
 }
-function renderPag(){
-  const total=Math.ceil(filtered.length/PER_PAGE), pag=document.getElementById('pagination');
-  if(total<=1){pag.innerHTML='';return;}
-  let h=curPage>1?`<button class="pg-btn" onclick="goP(${curPage-1})"><i class="fas fa-chevron-left"></i></button>`:'';
-  for(let i=1;i<=total;i++) h+=`<button class="pg-btn ${i===curPage?'active':''}" onclick="goP(${i})">${i}</button>`;
-  if(curPage<total) h+=`<button class="pg-btn" onclick="goP(${curPage+1})"><i class="fas fa-chevron-right"></i></button>`;
-  pag.innerHTML=h;
+
+function renderPag() {
+  const total = Math.ceil(filtered.length / PER_PAGE);
+  const pag = document.getElementById("pagination");
+  if (total <= 1) { pag.innerHTML = ""; return; }
+  let h = curPage > 1 ? `<button class="pg-btn" onclick="goP(${curPage-1})"><i class="fas fa-chevron-left"></i></button>` : "";
+  for (let i = 1; i <= total; i++) h += `<button class="pg-btn ${i===curPage?"active":""}" onclick="goP(${i})">${i}</button>`;
+  if (curPage < total) h += `<button class="pg-btn" onclick="goP(${curPage+1})"><i class="fas fa-chevron-right"></i></button>`;
+  pag.innerHTML = h;
 }
-function goP(n){curPage=n;render();window.scrollTo({top:0,behavior:'smooth'});}
-document.querySelectorAll('.tag[data-bed]').forEach(t=>{
-  t.addEventListener('click',()=>{
-    document.querySelectorAll('.tag[data-bed]').forEach(x=>x.classList.remove('active'));
-    t.classList.add('active'); document.getElementById('f-beds').value=t.dataset.bed; applyFilters();
+function goP(n) { curPage = n; render(); window.scrollTo({top:0,behavior:"smooth"}); }
+
+// ── Read URL params from search bar redirect ──
+function applyURLParams() {
+  const params = new URLSearchParams(window.location.search);
+  const listing = params.get("listing") || params.get("status") || "all";
+  const type    = params.get("type")    || "";
+  const loc     = params.get("location")|| "";
+  const beds    = params.get("beds")    || "";
+  const maxP    = params.get("maxPrice")|| "";
+
+  if (type)  document.getElementById("f-type").value = type;
+  if (loc)   document.getElementById("f-loc").value  = loc;
+  if (beds)  document.getElementById("f-beds").value = beds;
+  if (maxP)  document.getElementById("f-price").value = maxP;
+
+  // Activate matching tab
+  const tab = document.querySelector(`.cat-tab[data-cat="${listing}"]`);
+  if (tab) { document.querySelectorAll(".cat-tab").forEach(t => t.classList.remove("active")); tab.classList.add("active"); }
+
+  loadFromSupabase(listing === "all" ? null : listing);
+}
+
+// ── CATEGORY TAB CLICK HANDLER ──
+document.getElementById("catTabs").addEventListener("click", e => {
+  const tab = e.target.closest(".cat-tab");
+  if (!tab) return;
+  const cat = tab.dataset.cat;
+
+  // Sell → open modal
+  if (cat === "sell") { openOverlay("sellModal"); return; }
+  // Manage → open modal
+  if (cat === "manage") { openOverlay("manageModal"); return; }
+
+  // Filter tabs
+  document.querySelectorAll(".cat-tab").forEach(t => t.classList.remove("active"));
+  tab.classList.add("active");
+  // Sync the dropdown
+  document.getElementById("f-status").value = cat === "all" ? "" : cat;
+  loadFromSupabase(cat === "all" ? null : cat);
+});
+
+// ── SELL FORM → Supabase + WhatsApp ──
+async function submitSell() {
+  const name    = document.getElementById("sell-name").value.trim();
+  const phone   = document.getElementById("sell-phone").value.trim();
+  const address = document.getElementById("sell-address").value.trim();
+  if (!name || !phone || !address) { alert("Please fill in your name, phone and property address."); return; }
+
+  const payload = {
+    owner_name:    name,
+    phone,
+    email:         document.getElementById("sell-email").value.trim(),
+    listing_type:  document.getElementById("sell-type").value,
+    property_type: document.getElementById("sell-ptype").value,
+    address,
+    price:         document.getElementById("sell-price").value.trim(),
+    bedrooms:      document.getElementById("sell-beds").value,
+    description:   document.getElementById("sell-desc").value.trim(),
+    status:        "pending",
+  };
+
+  const isConfigured = typeof SUPABASE_URL !== "undefined" && !SUPABASE_URL.includes("YOUR_PROJECT");
+  if (isConfigured) {
+    onSbReady(async (sb) => {
+      await sb.from("property_submissions").insert([payload]);
+    });
+  }
+
+  // Also open WhatsApp
+  const waText = `Hello Afrix Properties,
+
+New Property Listing:
+Owner: ${name}
+Phone: ${phone}
+Type: ${payload.listing_type}
+Address: ${address}
+Price: ${payload.price||"To discuss"}
+
+${payload.description||""}`;
+  window.open(`https://wa.me/233539484203?text=${encodeURIComponent(waText)}`, "_blank");
+
+  document.getElementById("sellSuccess").classList.add("show");
+  setTimeout(() => { closeOverlay("sellModal"); document.getElementById("sellSuccess").classList.remove("show"); }, 3000);
+}
+
+// ── MANAGE FORM → Supabase + WhatsApp ──
+async function submitManage() {
+  const name    = document.getElementById("mgmt-name").value.trim();
+  const phone   = document.getElementById("mgmt-phone").value.trim();
+  const address = document.getElementById("mgmt-address").value.trim();
+  if (!name || !phone || !address) { alert("Please fill in your name, phone and property address."); return; }
+
+  const payload = {
+    name, phone,
+    email:            document.getElementById("mgmt-email").value.trim(),
+    property_address: address,
+    property_type:    document.getElementById("mgmt-ptype").value,
+    message:          document.getElementById("mgmt-msg").value.trim(),
+    status:           "new",
+  };
+
+  const isConfigured = typeof SUPABASE_URL !== "undefined" && !SUPABASE_URL.includes("YOUR_PROJECT");
+  if (isConfigured) {
+    onSbReady(async (sb) => {
+      await sb.from("management_requests").insert([payload]);
+    });
+  }
+
+  const waText = `Hello Afrix Properties,
+
+Management Request:
+Name: ${name}
+Phone: ${phone}
+Property: ${address}
+Type: ${payload.property_type}
+
+${payload.message||""}`;
+  window.open(`https://wa.me/233539484203?text=${encodeURIComponent(waText)}`, "_blank");
+
+  document.getElementById("manageSuccess").classList.add("show");
+  setTimeout(() => { closeOverlay("manageModal"); document.getElementById("manageSuccess").classList.remove("show"); }, 3000);
+}
+
+// ── Modal helpers ──
+function openOverlay(id)  { document.getElementById(id).classList.add("open");  document.body.style.overflow = "hidden"; }
+function closeOverlay(id) { document.getElementById(id).classList.remove("open"); document.body.style.overflow = ""; }
+document.querySelectorAll(".overlay").forEach(o => o.addEventListener("click", e => { if (e.target === o) closeOverlay(o.id); }));
+
+// ── Sidebar bed tags ──
+document.querySelectorAll(".tag[data-bed]").forEach(t => {
+  t.addEventListener("click", () => {
+    document.querySelectorAll(".tag[data-bed]").forEach(x => x.classList.remove("active"));
+    t.classList.add("active");
+    document.getElementById("f-beds").value = t.dataset.bed;
+    applyFilters();
   });
 });
+
+// ── Keyframe for spinner ──
+const spinStyle = document.createElement("style");
+spinStyle.textContent = "@keyframes spin{to{transform:rotate(360deg)}}";
+document.head.appendChild(spinStyle);
+
+// ── INIT ──
 applyURLParams();
 </script>
+
 </body>
 </html>

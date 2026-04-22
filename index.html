@@ -18,6 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="shared.css"/>
+<script src="supabase-config.js"></script>
   <style>
     /* ── HOME-ONLY: Page loader ── */
     #page-loader{position:fixed;inset:0;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:99999;transition:opacity .6s ease,visibility .6s ease}
@@ -222,10 +223,15 @@
   <div class="container">
     <div class="search-card reveal">
       <!-- Tabs switch Buy/Rent context for the URL redirect -->
-      <div class="search-tabs">
-        <button class="s-tab active" data-tab="buy">Buy</button>
-        <button class="s-tab" data-tab="rent">Rent</button>
-        <button class="s-tab" data-tab="manage">Manage</button>
+      <div class="search-tabs" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px">
+        <button class="s-tab active" data-tab="all">All</button>
+        <button class="s-tab" data-tab="buy">🏠 Buy</button>
+        <button class="s-tab" data-tab="sell" style="border-color:var(--gold);color:var(--gold-dark)">💰 Sell</button>
+        <button class="s-tab" data-tab="rent">🔑 Rent</button>
+        <button class="s-tab" data-tab="short_stay">⏱ Short Stay</button>
+        <button class="s-tab" data-tab="airbnb">🛎 Airbnb</button>
+        <button class="s-tab" data-tab="long_term">📅 Long Term</button>
+        <button class="s-tab" data-tab="manage" style="border-color:var(--navy);color:var(--navy)">⚙️ Manage</button>
       </div>
       <div class="search-row">
         <div class="s-field">
@@ -410,7 +416,7 @@
   </div>
   <div class="footer-bottom">
     <div class="container">
-      <p>© 2026 Afrix Properties & Management Group. All rights reserved.</p>
+      <p>© 2024 Afrix Properties & Management Group. All rights reserved.</p>
       <p class="dev-credit">Website built by <a href="https://wa.me/233544823484?text=Hello%20Ibratech,%20I%20want%20a%20real%20estate%20website%20like%20Afrix" target="_blank" rel="noopener">Ibratech</a> · <a href="tel:0544823484">0544823484</a></p>
     </div>
   </div>

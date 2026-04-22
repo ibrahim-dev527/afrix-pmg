@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Setup Guide | Afrix PMG</title>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="icon" href="images/logo.png" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root{--gold:#C4922A;--navy:#0B1E33;--navy-mid:#162D47;--white:#fff;--cream:#F9F8F5;--gray-100:#F4F3EF;--gray-200:#E8E6E0;--gray-600:#5C5A55;--gray-900:#1C1C1C;--success:#16a34a;--danger:#dc2626;--radius:12px;--radius-lg:18px;--shadow:0 4px 16px rgba(0,0,0,.08);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Poppins',sans-serif;background:var(--cream);color:var(--gray-900);line-height:1.6;}
+a{color:var(--gold);text-decoration:none;} a:hover{text-decoration:underline;}
+code{background:#1e293b;color:#e2e8f0;padding:2px 8px;border-radius:6px;font-size:.85rem;font-family:'Courier New',monospace;}
+pre{background:#1e293b;color:#e2e8f0;padding:20px;border-radius:var(--radius);overflow-x:auto;font-size:.84rem;font-family:'Courier New',monospace;line-height:1.7;margin:12px 0;}
+pre .comment{color:#64748b;}
+pre .key{color:#93c5fd;}
+pre .val{color:#86efac;}
+pre .str{color:#fde68a;}
+.container{max-width:860px;margin:0 auto;padding:0 24px;}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy-mid));padding:60px 0;text-align:center;margin-bottom:48px;}
+.hero-logo{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;}
+.hero-logo img{height:52px;width:52px;object-fit:contain;border-radius:12px;}
+.hero-logo-text{font-size:2rem;font-weight:800;color:#fff;}
+.hero-logo-text span{color:var(--gold);}
+.hero h1{font-size:1.6rem;font-weight:700;color:#fff;margin-bottom:10px;}
+.hero p{color:rgba(255,255,255,.7);font-size:.95rem;max-width:520px;margin:0 auto;}
+
+/* NAV TABS */
+.nav-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:36px;background:#fff;padding:12px;border-radius:var(--radius-lg);box-shadow:var(--shadow);}
+.nav-tab{padding:10px 18px;border-radius:50px;border:none;background:transparent;font-size:.84rem;font-weight:600;color:var(--gray-600);cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s;display:flex;align-items:center;gap:7px;}
+.nav-tab.active{background:var(--navy);color:#fff;}
+.nav-tab:hover:not(.active){background:var(--gray-100);}
+
+/* STEP SECTIONS */
+.step-section{display:none;} .step-section.active{display:block;}
+.step-card{background:#fff;border-radius:var(--radius-lg);padding:28px 32px;box-shadow:var(--shadow);border:1px solid var(--gray-200);margin-bottom:20px;}
+.step-header{display:flex;align-items:flex-start;gap:18px;margin-bottom:18px;}
+.step-num{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#E8B84B);color:#fff;font-size:1rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(196,146,42,.35);}
+.step-title{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.step-sub{font-size:.84rem;color:var(--gray-600);}
+.step-body p{font-size:.9rem;color:var(--gray-600);margin-bottom:10px;}
+.step-body ul,.step-body ol{padding-left:20px;margin-bottom:10px;}
+.step-body li{font-size:.88rem;color:var(--gray-600);margin-bottom:7px;}
+.step-body strong{color:var(--gray-900);}
+.tip-box{background:#f0fdf4;border:1.5px solid #86efac;border-radius:var(--radius);padding:14px 18px;margin:14px 0;display:flex;gap:10px;align-items:flex-start;}
+.tip-box i{color:var(--success);margin-top:3px;flex-shrink:0;}
+.tip-box p{font-size:.84rem;color:#166534;margin:0;}
+.warn-box{background:#fefce8;border:1.5px solid #fde047;border-radius:var(--radius);padding:14px 18px;margin:14px 0;display:flex;gap:10px;align-items:flex-start;}
+.warn-box i{color:#ca8a04;margin-top:3px;flex-shrink:0;}
+.warn-box p{font-size:.84rem;color:#713f12;margin:0;}
+.img-placeholder{background:var(--gray-100);border-radius:var(--radius);padding:24px;text-align:center;margin:14px 0;border:1.5px dashed var(--gray-200);}
+.img-placeholder i{font-size:2rem;color:var(--gray-200);display:block;margin-bottom:8px;}
+.img-placeholder p{font-size:.8rem;color:var(--gray-600);}
+.copy-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:var(--gray-100);border:none;border-radius:8px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s;margin-top:8px;}
+.copy-btn:hover{background:var(--gray-200);}
+.copy-btn.copied{background:#dcfce7;color:var(--success);}
+
+/* CHECKLIST */
+.checklist{display:flex;flex-direction:column;gap:10px;margin:14px 0;}
+.check-item{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--cream);border-radius:10px;cursor:pointer;transition:all .2s;border:1.5px solid var(--gray-200);}
+.check-item.done{background:#f0fdf4;border-color:#86efac;}
+.check-item input{width:18px;height:18px;accent-color:var(--success);flex-shrink:0;}
+.check-item label{font-size:.875rem;cursor:pointer;color:var(--gray-900);}
+.check-item.done label{text-decoration:line-through;color:var(--gray-600);}
+
+/* PROGRESS BAR */
+.progress-section{background:#fff;border-radius:var(--radius-lg);padding:20px 24px;box-shadow:var(--shadow);margin-bottom:28px;display:flex;align-items:center;gap:16px;}
+.progress-bar{flex:1;height:8px;background:var(--gray-200);border-radius:4px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),#E8B84B);border-radius:4px;transition:width .4s ease;}
+.progress-label{font-size:.82rem;font-weight:700;color:var(--navy);white-space:nowrap;}
+
+/* FILE LIST */
+.file-list{display:grid;gap:8px;margin:14px 0;}
+.file-item{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--cream);border-radius:10px;border:1px solid var(--gray-200);}
+.file-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+.file-icon.html{background:#dbeafe;color:#1d4ed8;}
+.file-icon.js{background:#fef3c7;color:#d97706;}
+.file-icon.css{background:#f3e8ff;color:#7c3aed;}
+.file-name{font-size:.875rem;font-weight:600;color:var(--navy);}
+.file-desc{font-size:.78rem;color:var(--gray-600);}
+
+/* LINKS GRID */
+.links-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+.link-card{background:var(--cream);border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:16px;display:flex;align-items:center;gap:12px;transition:all .2s;}
+.link-card:hover{border-color:var(--gold);background:var(--white);}
+.link-card-icon{width:40px;height:40px;border-radius:10px;background:var(--gold-pale,#F9EDD0);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.link-card-text strong{display:block;font-size:.87rem;color:var(--navy);margin-bottom:2px;}
+.link-card-text span{font-size:.76rem;color:var(--gray-600);}
+
+/* SQL TABLE */
+.sql-table{width:100%;border-collapse:collapse;font-size:.8rem;margin:12px 0;}
+.sql-table th{background:var(--navy);color:#fff;padding:9px 13px;text-align:left;}
+.sql-table td{padding:9px 13px;border-bottom:1px solid var(--gray-100);}
+.sql-table tr:nth-child(even) td{background:var(--cream);}
+.col-type{color:var(--gold);font-weight:600;}
+
+/* FOOTER */
+.page-footer{text-align:center;padding:40px 0;font-size:.8rem;color:var(--gray-600);}
+.page-footer a{color:var(--gold);}
+
+@media(max-width:600px){.links-grid{grid-template-columns:1fr;}.nav-tabs{flex-direction:column;}.step-card{padding:20px 18px;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="container">
+    <div class="hero-logo">
+      <img src="images/logo.png" alt="Afrix PMG" onerror="this.style.display='none'"/>
+      <div class="hero-logo-text">Afrix<span>PMG</span></div>
+    </div>
+    <h1>⚙️ Complete Setup Guide</h1>
+    <p>Follow these steps to connect your website to Supabase, configure the database, and go live. Should take 15–20 minutes.</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- OVERALL PROGRESS -->
+  <div class="progress-section">
+    <i class="fas fa-rocket" style="color:var(--gold);font-size:1.2rem"></i>
+    <div>
+      <div style="font-size:.82rem;font-weight:700;color:var(--navy);margin-bottom:6px">Setup Progress</div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    </div>
+    <div class="progress-label" id="progressLabel">0 / 6 steps</div>
+  </div>
+
+  <!-- NAV TABS -->
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showStep(0)"><i class="fas fa-list-check"></i> Overview</button>
+    <button class="nav-tab" onclick="showStep(1)"><i class="fas fa-user-plus"></i> Supabase Account</button>
+    <button class="nav-tab" onclick="showStep(2)"><i class="fas fa-database"></i> Create Tables</button>
+    <button class="nav-tab" onclick="showStep(3)"><i class="fas fa-images"></i> Storage</button>
+    <button class="nav-tab" onclick="showStep(4)"><i class="fas fa-code"></i> API Keys</button>
+    <button class="nav-tab" onclick="showStep(5)"><i class="fas fa-user-shield"></i> Admin Login</button>
+    <button class="nav-tab" onclick="showStep(6)"><i class="fas fa-globe"></i> Deploy</button>
+  </div>
+
+  <!-- ═══ STEP 0: OVERVIEW ═══ -->
+  <div class="step-section active" id="step-0">
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num"><i class="fas fa-map"></i></div>
+        <div><div class="step-title">What You're Setting Up</div><div class="step-sub">A full real estate platform powered by Supabase</div></div>
+      </div>
+      <div class="step-body">
+        <p>Your Afrix Properties website is already designed and built. This guide connects it to <strong>Supabase</strong> — a free, powerful backend that gives you:</p>
+        <ul>
+          <li>📦 <strong>Database</strong> — stores all properties, leads, submissions</li>
+          <li>🔐 <strong>Authentication</strong> — secure admin login</li>
+          <li>🖼 <strong>Storage</strong> — upload and serve property images</li>
+          <li>📡 <strong>Real-time API</strong> — your website reads live data automatically</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num"><i class="fas fa-folder"></i></div>
+        <div><div class="step-title">Your Project Files</div><div class="step-sub">Here's what every file does</div></div>
+      </div>
+      <div class="file-list">
+        <div class="file-item"><div class="file-icon html"><i class="fab fa-html5"></i></div><div><div class="file-name">index.html</div><div class="file-desc">Home page — hero swiper, search bar, featured properties</div></div></div>
+        <div class="file-item"><div class="file-icon html"><i class="fab fa-html5"></i></div><div><div class="file-name">properties.html</div><div class="file-desc">Property listings — dynamic from Supabase, 7 category tabs</div></div></div>
+        <div class="file-item"><div class="file-icon html"><i class="fab fa-html5"></i></div><div><div class="file-name">property-details.html</div><div class="file-desc">Single property page — loaded by ?id= URL parameter</div></div></div>
+        <div class="file-item"><div class="file-icon html"><i class="fab fa-html5"></i></div><div><div class="file-name">admin.html</div><div class="file-desc">CMS Dashboard — manage properties, leads, content, media</div></div></div>
+        <div class="file-item"><div class="file-icon html"><i class="fab fa-html5"></i></div><div><div class="file-name">contact.html</div><div class="file-desc">3 contact forms — saves to Supabase + opens WhatsApp</div></div></div>
+        <div class="file-item"><div class="file-icon html"><i class="fab fa-html5"></i></div><div><div class="file-name">about.html / services.html / faq.html</div><div class="file-desc">Static content pages with 3-slide hero swiper</div></div></div>
+        <div class="file-item"><div class="file-icon html"><i class="fab fa-html5"></i></div><div><div class="file-name">property-management.html / diaspora.html</div><div class="file-desc">Service detail pages with pricing and process sections</div></div></div>
+        <div class="file-icon js" style="display:none"></div>
+        <div class="file-item"><div class="file-icon js"><i class="fab fa-js"></i></div><div><div class="file-name">supabase-config.js</div><div class="file-desc">⭐ EDIT THIS FILE — paste your Supabase URL and API key here</div></div></div>
+        <div class="file-item"><div class="file-icon js"><i class="fab fa-js"></i></div><div><div class="file-name">chatbot.js</div><div class="file-desc">Floating chatbot with 25+ Q&A answers + WhatsApp fallback</div></div></div>
+        <div class="file-item"><div class="file-icon js"><i class="fab fa-js"></i></div><div><div class="file-name">shared.js</div><div class="file-desc">Shared logic — navbar, mobile drawer, hero swipers, scroll reveal</div></div></div>
+        <div class="file-item"><div class="file-icon css"><i class="fab fa-css3-alt"></i></div><div><div class="file-name">shared.css</div><div class="file-desc">All shared styles — navbar, footer, buttons, property cards</div></div></div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num"><i class="fas fa-tasks"></i></div>
+        <div><div class="step-title">Setup Checklist</div><div class="step-sub">Check off each step as you complete it</div></div>
+      </div>
+      <div class="checklist" id="checklist">
+        <div class="check-item" id="chk-0"><input type="checkbox" id="c0" onchange="updateCheck(0)"/><label for="c0">Create a free Supabase account at supabase.com</label></div>
+        <div class="check-item" id="chk-1"><input type="checkbox" id="c1" onchange="updateCheck(1)"/><label for="c1">Create a new Supabase project</label></div>
+        <div class="check-item" id="chk-2"><input type="checkbox" id="c2" onchange="updateCheck(2)"/><label for="c2">Run the SQL setup script to create all tables</label></div>
+        <div class="check-item" id="chk-3"><input type="checkbox" id="c3" onchange="updateCheck(3)"/><label for="c3">Create the "property-images" Storage bucket</label></div>
+        <div class="check-item" id="chk-4"><input type="checkbox" id="c4" onchange="updateCheck(4)"/><label for="c4">Paste API keys into supabase-config.js</label></div>
+        <div class="check-item" id="chk-5"><input type="checkbox" id="c5" onchange="updateCheck(5)"/><label for="c5">Create admin account in Supabase Auth</label></div>
+        <div class="check-item" id="chk-6"><input type="checkbox" id="c6" onchange="updateCheck(6)"/><label for="c6">Test admin login at admin.html — add a test property</label></div>
+        <div class="check-item" id="chk-7"><input type="checkbox" id="c7" onchange="updateCheck(7)"/><label for="c7">Deploy to Netlify or your web host</label></div>
+      </div>
+    </div>
+
+    <div class="links-grid">
+      <a href="https://supabase.com" target="_blank" rel="noopener" class="link-card">
+        <div class="link-card-icon">🚀</div>
+        <div class="link-card-text"><strong>Supabase.com</strong><span>Create your free account here</span></div>
+      </a>
+      <a href="admin.html" class="link-card">
+        <div class="link-card-icon">🔐</div>
+        <div class="link-card-text"><strong>admin.html</strong><span>Your CMS Dashboard</span></div>
+      </a>
+      <a href="https://app.netlify.com" target="_blank" rel="noopener" class="link-card">
+        <div class="link-card-icon">🌐</div>
+        <div class="link-card-text"><strong>Netlify.com</strong><span>Free website hosting</span></div>
+      </a>
+      <a href="index.html" class="link-card">
+        <div class="link-card-icon">🏠</div>
+        <div class="link-card-text"><strong>index.html</strong><span>View your website</span></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 1: SUPABASE ACCOUNT ═══ -->
+  <div class="step-section" id="step-1">
+    <div class="step-card">
+      <div class="step-header"><div class="step-num">1</div><div><div class="step-title">Create Your Supabase Account</div><div class="step-sub">Free — no credit card required</div></div></div>
+      <div class="step-body">
+        <ol>
+          <li>Go to <a href="https://supabase.com" target="_blank" rel="noopener"><strong>supabase.com</strong></a> and click <strong>"Start your project"</strong></li>
+          <li>Sign up using your <strong>GitHub account</strong> or email</li>
+          <li>Click <strong>"New project"</strong></li>
+          <li>Fill in:
+            <ul>
+              <li><strong>Name:</strong> afrix-properties</li>
+              <li><strong>Database Password:</strong> choose a strong password and save it</li>
+              <li><strong>Region:</strong> choose the closest to Ghana (e.g. <em>West EU</em> or <em>East US</em>)</li>
+            </ul>
+          </li>
+          <li>Click <strong>"Create new project"</strong> — takes about 60 seconds to set up</li>
+        </ol>
+        <div class="tip-box"><i class="fas fa-check-circle"></i><p>The <strong>Free tier</strong> gives you 500MB database, 1GB storage, and 50,000 monthly active users — more than enough to run a real estate website.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 2: CREATE TABLES ═══ -->
+  <div class="step-section" id="step-2">
+    <div class="step-card">
+      <div class="step-header"><div class="step-num">2</div><div><div class="step-title">Create Database Tables</div><div class="step-sub">Run the SQL script in Supabase</div></div></div>
+      <div class="step-body">
+        <ol>
+          <li>In your Supabase project, click <strong>"SQL Editor"</strong> in the left sidebar</li>
+          <li>Click <strong>"New query"</strong></li>
+          <li>Copy and paste the entire SQL block below</li>
+          <li>Click <strong>"Run"</strong> (or press Ctrl+Enter)</li>
+          <li>You should see <em>"Success. No rows returned"</em></li>
+        </ol>
+
+        <button class="copy-btn" onclick="copySql(this)"><i class="fas fa-copy"></i> Copy SQL</button>
+        <pre id="sqlBlock"><span class="comment">-- ═══════════════════════════════════════════════
+-- AFRIX PROPERTIES — Complete Database Setup
+-- Run this once in Supabase SQL Editor
+-- ═══════════════════════════════════════════════</span>
+
+<span class="comment">-- 1. PROPERTIES TABLE</span>
+CREATE TABLE IF NOT EXISTS properties (
+  id           uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  title        text NOT NULL,
+  description  text,
+  price        numeric NOT NULL DEFAULT 0,
+  price_period text DEFAULT <span class="str">'total'</span>,
+  location     text NOT NULL,
+  city         text DEFAULT <span class="str">'accra'</span>,
+  type         text NOT NULL,
+  listing_type text NOT NULL,
+  bedrooms     integer DEFAULT 0,
+  bathrooms    integer DEFAULT 0,
+  size         numeric,
+  features     jsonb DEFAULT <span class="str">'[]'</span>,
+  images       jsonb DEFAULT <span class="str">'[]'</span>,
+  featured     boolean DEFAULT false,
+  status       text DEFAULT <span class="str">'active'</span>,
+  created_at   timestamptz DEFAULT now(),
+  updated_at   timestamptz DEFAULT now()
+);
+
+<span class="comment">-- 2. LEADS TABLE (contact forms)</span>
+CREATE TABLE IF NOT EXISTS leads (
+  id          uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  name        text,
+  phone       text,
+  email       text,
+  subject     text,
+  message     text,
+  lead_type   text DEFAULT <span class="str">'general'</span>,
+  property_id uuid,
+  status      text DEFAULT <span class="str">'new'</span>,
+  created_at  timestamptz DEFAULT now()
+);
+
+<span class="comment">-- 3. PROPERTY SUBMISSIONS (sell requests)</span>
+CREATE TABLE IF NOT EXISTS property_submissions (
+  id            uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  owner_name    text,
+  phone         text,
+  email         text,
+  listing_type  text,
+  property_type text,
+  address       text,
+  price         text,
+  bedrooms      text,
+  description   text,
+  status        text DEFAULT <span class="str">'pending'</span>,
+  created_at    timestamptz DEFAULT now()
+);
+
+<span class="comment">-- 4. MANAGEMENT REQUESTS</span>
+CREATE TABLE IF NOT EXISTS management_requests (
+  id               uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  name             text,
+  phone            text,
+  email            text,
+  property_address text,
+  property_type    text,
+  message          text,
+  status           text DEFAULT <span class="str">'new'</span>,
+  created_at       timestamptz DEFAULT now()
+);
+
+<span class="comment">-- 5. SITE CONTENT (CMS)</span>
+CREATE TABLE IF NOT EXISTS site_content (
+  id         uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  page       text NOT NULL,
+  section    text NOT NULL,
+  title      text,
+  content    text,
+  updated_at timestamptz DEFAULT now(),
+  UNIQUE(page, section)
+);
+
+<span class="comment">-- 6. MEDIA LIBRARY</span>
+CREATE TABLE IF NOT EXISTS media (
+  id         uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  filename   text,
+  url        text NOT NULL,
+  bucket     text DEFAULT <span class="str">'property-images'</span>,
+  size       integer,
+  created_at timestamptz DEFAULT now()
+);
+
+<span class="comment">-- ── ROW LEVEL SECURITY ──</span>
+ALTER TABLE properties ENABLE ROW LEVEL SECURITY;
+ALTER TABLE leads ENABLE ROW LEVEL SECURITY;
+ALTER TABLE property_submissions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE management_requests ENABLE ROW LEVEL SECURITY;
+ALTER TABLE site_content ENABLE ROW LEVEL SECURITY;
+ALTER TABLE media ENABLE ROW LEVEL SECURITY;
+
+<span class="comment">-- PUBLIC: read active properties</span>
+CREATE POLICY <span class="str">"Public read active properties"</span>
+  ON properties FOR SELECT USING (status = <span class="str">'active'</span>);
+
+<span class="comment">-- PUBLIC: read site content</span>
+CREATE POLICY <span class="str">"Public read site_content"</span>
+  ON site_content FOR SELECT USING (true);
+
+<span class="comment">-- PUBLIC: submit leads/forms</span>
+CREATE POLICY <span class="str">"Public insert leads"</span>
+  ON leads FOR INSERT WITH CHECK (true);
+CREATE POLICY <span class="str">"Public insert submissions"</span>
+  ON property_submissions FOR INSERT WITH CHECK (true);
+CREATE POLICY <span class="str">"Public insert management"</span>
+  ON management_requests FOR INSERT WITH CHECK (true);
+
+<span class="comment">-- ADMIN: full access when authenticated</span>
+CREATE POLICY <span class="str">"Admin all properties"</span>
+  ON properties FOR ALL USING (auth.role() = <span class="str">'authenticated'</span>);
+CREATE POLICY <span class="str">"Admin all leads"</span>
+  ON leads FOR ALL USING (auth.role() = <span class="str">'authenticated'</span>);
+CREATE POLICY <span class="str">"Admin all submissions"</span>
+  ON property_submissions FOR ALL USING (auth.role() = <span class="str">'authenticated'</span>);
+CREATE POLICY <span class="str">"Admin all management"</span>
+  ON management_requests FOR ALL USING (auth.role() = <span class="str">'authenticated'</span>);
+CREATE POLICY <span class="str">"Admin all content"</span>
+  ON site_content FOR ALL USING (auth.role() = <span class="str">'authenticated'</span>);
+CREATE POLICY <span class="str">"Admin all media"</span>
+  ON media FOR ALL USING (auth.role() = <span class="str">'authenticated'</span>);
+
+<span class="comment">-- DEFAULT CONTENT ROWS</span>
+INSERT INTO site_content (page, section, title, content) VALUES
+  (<span class="str">'home'</span>,<span class="str">'hero_title'</span>,<span class="str">'Professional Property Solutions You Can Trust'</span>,<span class="str">'We make buying, selling, renting and managing property in Ghana easy and stress-free.'</span>),
+  (<span class="str">'home'</span>,<span class="str">'hero_sub'</span>,<span class="str">''</span>,<span class="str">'Ghana''s #1 trusted real estate partner.'</span>),
+  (<span class="str">'home'</span>,<span class="str">'stats_properties'</span>,<span class="str">'500+'</span>,<span class="str">'Properties Listed'</span>),
+  (<span class="str">'home'</span>,<span class="str">'stats_years'</span>,<span class="str">'12+'</span>,<span class="str">'Years Experience'</span>),
+  (<span class="str">'about'</span>,<span class="str">'story_title'</span>,<span class="str">'Ghana''s Most Trusted Property Partner'</span>,<span class="str">''</span>),
+  (<span class="str">'about'</span>,<span class="str">'story_text'</span>,<span class="str">''</span>,<span class="str">'Afrix Properties was founded with a mission to make real estate in Ghana accessible, transparent and rewarding for everyone.'</span>)
+ON CONFLICT (page, section) DO NOTHING;</pre>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header"><div class="step-num" style="background:var(--navy)"><i class="fas fa-table"></i></div><div><div class="step-title">Tables That Will Be Created</div><div class="step-sub">6 tables to power your entire platform</div></div></div>
+      <table class="sql-table">
+        <thead><tr><th>Table</th><th>Purpose</th><th>Key Columns</th></tr></thead>
+        <tbody>
+          <tr><td><code>properties</code></td><td>All property listings</td><td>title, price, listing_type, images, features</td></tr>
+          <tr><td><code>leads</code></td><td>Contact form submissions</td><td>name, phone, message, lead_type, status</td></tr>
+          <tr><td><code>property_submissions</code></td><td>Public property listing requests</td><td>owner_name, address, listing_type, status</td></tr>
+          <tr><td><code>management_requests</code></td><td>Property management requests</td><td>name, phone, property_address, status</td></tr>
+          <tr><td><code>site_content</code></td><td>Editable website text</td><td>page, section, title, content</td></tr>
+          <tr><td><code>media</code></td><td>Image library</td><td>filename, url, size</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 3: STORAGE ═══ -->
+  <div class="step-section" id="step-3">
+    <div class="step-card">
+      <div class="step-header"><div class="step-num">3</div><div><div class="step-title">Create Image Storage Bucket</div><div class="step-sub">Where property photos are stored and served</div></div></div>
+      <div class="step-body">
+        <ol>
+          <li>In your Supabase dashboard, click <strong>"Storage"</strong> in the left sidebar</li>
+          <li>Click <strong>"New bucket"</strong></li>
+          <li>Name it exactly: <code>property-images</code></li>
+          <li>Toggle <strong>"Public bucket"</strong> to <strong>ON</strong> (so images can be viewed by website visitors)</li>
+          <li>Click <strong>"Create bucket"</strong></li>
+        </ol>
+        <div class="warn-box"><i class="fas fa-exclamation-triangle"></i><p>The bucket name must be exactly <strong>property-images</strong> (lowercase, with hyphen). This is hardcoded in the admin dashboard and supabase-config.js.</p></div>
+        <div class="tip-box"><i class="fas fa-check-circle"></i><p>Once created, the admin dashboard can upload images directly. Public URLs are automatically generated and stored in your properties table.</p></div>
+
+        <h4 style="margin:18px 0 10px;color:var(--navy);font-size:.95rem">How Images Work</h4>
+        <ol>
+          <li>Admin uploads image in <strong>admin.html</strong> → Media Library or property form</li>
+          <li>File is uploaded to Supabase Storage: <code>property-images/properties/filename.jpg</code></li>
+          <li>Public URL is retrieved: <code>https://xxx.supabase.co/storage/v1/object/public/property-images/...</code></li>
+          <li>URL is saved in the <code>properties.images</code> column as a JSON array</li>
+          <li>Your website reads the URL and displays the image using <code>&lt;img src="..."&gt;</code></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 4: API KEYS ═══ -->
+  <div class="step-section" id="step-4">
+    <div class="step-card">
+      <div class="step-header"><div class="step-num">4</div><div><div class="step-title">Paste Your API Keys</div><div class="step-sub">The most important step — connects your website to Supabase</div></div></div>
+      <div class="step-body">
+        <h4 style="margin-bottom:10px;color:var(--navy)">Step 4a — Find Your API Keys</h4>
+        <ol>
+          <li>In Supabase, click the ⚙️ <strong>"Project Settings"</strong> icon (bottom of left sidebar)</li>
+          <li>Click <strong>"API"</strong></li>
+          <li>You'll see two values — copy both:</li>
+        </ol>
+        <table class="sql-table" style="margin:12px 0">
+          <thead><tr><th>Value</th><th>Where to find it</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Project URL</strong></td><td>Looks like: <code>https://abcxyz.supabase.co</code></td></tr>
+            <tr><td><strong>anon public key</strong></td><td>Long string starting with <code>eyJ...</code></td></tr>
+          </tbody>
+        </table>
+
+        <h4 style="margin:18px 0 10px;color:var(--navy)">Step 4b — Edit supabase-config.js</h4>
+        <ol>
+          <li>Open <strong>supabase-config.js</strong> in any text editor (Notepad, VS Code, etc.)</li>
+          <li>Find lines 18–19 and replace the placeholder values:</li>
+        </ol>
+        <pre><span class="comment">// BEFORE (placeholder):</span>
+const <span class="key">SUPABASE_URL</span>      = <span class="str">'https://YOUR_PROJECT_ID.supabase.co'</span>;
+const <span class="key">SUPABASE_ANON_KEY</span> = <span class="str">'YOUR_ANON_PUBLIC_KEY_HERE'</span>;
+
+<span class="comment">// AFTER (paste your real values):</span>
+const <span class="key">SUPABASE_URL</span>      = <span class="str">'https://abcxyzexample.supabase.co'</span>;
+const <span class="key">SUPABASE_ANON_KEY</span> = <span class="str">'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'</span>;</pre>
+        <div class="warn-box"><i class="fas fa-exclamation-triangle"></i><p>Save the file after editing. The <code>anon</code> key is safe to use in browser-side code. <strong>Never</strong> use the <code>service_role</code> secret key in frontend code.</p></div>
+        <div class="tip-box"><i class="fas fa-check-circle"></i><p>Once you save supabase-config.js with real keys, the website will immediately start loading properties from your Supabase database instead of the static fallback data.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 5: ADMIN LOGIN ═══ -->
+  <div class="step-section" id="step-5">
+    <div class="step-card">
+      <div class="step-header"><div class="step-num">5</div><div><div class="step-title">Create Your Admin Account</div><div class="step-sub">Login credentials for the admin dashboard</div></div></div>
+      <div class="step-body">
+        <ol>
+          <li>In Supabase, click <strong>"Authentication"</strong> in the left sidebar</li>
+          <li>Click <strong>"Users"</strong></li>
+          <li>Click <strong>"Invite user"</strong> or <strong>"Add user"</strong></li>
+          <li>Enter your email address (e.g. <code>admin@afrixproperties.com</code>)</li>
+          <li>Set a strong password</li>
+          <li>Click <strong>"Create user"</strong></li>
+        </ol>
+        <div class="tip-box"><i class="fas fa-check-circle"></i><p>You can add multiple admin users. Anyone with a confirmed account in Supabase Auth can log in to admin.html.</p></div>
+
+        <h4 style="margin:18px 0 10px;color:var(--navy)">Test the Admin Login</h4>
+        <ol>
+          <li>Open <a href="admin.html"><strong>admin.html</strong></a> in your browser</li>
+          <li>Enter the email and password you just created</li>
+          <li>Click <strong>"Sign In to Dashboard"</strong></li>
+          <li>You should see the full CMS dashboard</li>
+          <li>Try adding a property using the <strong>"Add Property"</strong> button</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header"><div class="step-num" style="background:var(--navy)"><i class="fas fa-shield-alt"></i></div><div><div class="step-title">Admin Dashboard Features</div></div></div>
+      <div class="step-body">
+        <ul>
+          <li>📦 <strong>Properties Manager</strong> — Add, edit, delete properties. Upload images. Set type, price, location, features.</li>
+          <li>📬 <strong>Sell Submissions</strong> — Review properties submitted by the public. Approve or reject.</li>
+          <li>🔑 <strong>Management Requests</strong> — See landlords who want property management.</li>
+          <li>👥 <strong>Leads</strong> — All contact form submissions with WhatsApp quick-reply buttons.</li>
+          <li>✏️ <strong>Content Manager</strong> — Edit homepage text, about page content, etc. without touching code.</li>
+          <li>🖼 <strong>Media Library</strong> — Upload images, copy URLs, manage your photo library.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 6: DEPLOY ═══ -->
+  <div class="step-section" id="step-6">
+    <div class="step-card">
+      <div class="step-header"><div class="step-num">6</div><div><div class="step-title">Deploy to the Internet</div><div class="step-sub">Put your website live with a real domain</div></div></div>
+      <div class="step-body">
+        <h4 style="margin-bottom:10px;color:var(--navy)">Option A — Netlify (Recommended, Free)</h4>
+        <ol>
+          <li>Go to <a href="https://app.netlify.com" target="_blank" rel="noopener">app.netlify.com</a> → Sign up free</li>
+          <li>Click <strong>"Add new site"</strong> → <strong>"Deploy manually"</strong></li>
+          <li>Drag and drop your entire <strong>afrix/</strong> folder onto the page</li>
+          <li>Your site goes live at a URL like <code>afrix-pmg.netlify.app</code></li>
+          <li>To add your own domain: <strong>Site Settings → Domain management → Add domain</strong></li>
+        </ol>
+        <div class="tip-box"><i class="fas fa-check-circle"></i><p>Netlify gives you free HTTPS/SSL automatically. Your site will be accessible at <code>https://afrixproperties.com</code> once you connect your domain.</p></div>
+
+        <h4 style="margin:18px 0 10px;color:var(--navy)">Option B — Traditional Web Hosting (cPanel)</h4>
+        <ol>
+          <li>Log in to your hosting control panel (cPanel or Plesk)</li>
+          <li>Open <strong>File Manager</strong> → Navigate to <code>public_html</code></li>
+          <li>Upload all files from the <code>afrix/</code> folder</li>
+          <li>Your site is live at your domain</li>
+        </ol>
+
+        <h4 style="margin:18px 0 10px;color:var(--navy)">After Deployment — Update og:url</h4>
+        <p>Once you have your live URL, update the <code>og:url</code> meta tag on each page:</p>
+        <pre>&lt;meta property="og:url" content="<span class="str">https://afrixproperties.com/index.html</span>"/&gt;</pre>
+        <p>Also update <code>og:image</code> to the full URL of your logo:</p>
+        <pre>&lt;meta property="og:image" content="<span class="str">https://afrixproperties.com/images/logo.png</span>"/&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end container -->
+
+<div class="page-footer">
+  <p>Afrix Properties & Management Group &mdash; Managing Value. Building Trust.</p>
+  <p style="margin-top:6px">Website built by <a href="https://wa.me/233544823484?text=Hello%20Ibratech,%20I%20want%20a%20real%20estate%20website%20like%20Afrix" target="_blank" rel="noopener">Ibratech</a> &middot; <a href="tel:0544823484">0544823484</a></p>
+</div>
+
+<script>
+let currentStep = 0;
+const totalChecks = 8;
+let checkedCount = 0;
+
+function showStep(n) {
+  document.querySelectorAll('.step-section').forEach((s,i) => s.classList.toggle('active', i === n));
+  document.querySelectorAll('.nav-tab').forEach((t,i) => t.classList.toggle('active', i === n));
+  currentStep = n;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function updateCheck(i) {
+  const item = document.getElementById('chk-' + i);
+  const cb   = document.getElementById('c' + i);
+  item.classList.toggle('done', cb.checked);
+  checkedCount = document.querySelectorAll('#checklist input:checked').length;
+  const pct = Math.round((checkedCount / totalChecks) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = checkedCount + ' / ' + totalChecks + ' steps';
+}
+
+function copySql(btn) {
+  const sql = document.getElementById('sqlBlock').textContent;
+  navigator.clipboard.writeText(sql).then(() => {
+    btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.innerHTML = '<i class="fas fa-copy"></i> Copy SQL'; btn.classList.remove('copied'); }, 2500);
+  });
+}
+</script>
+</body>
+</html>
